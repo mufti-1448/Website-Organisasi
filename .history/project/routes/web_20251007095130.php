@@ -13,7 +13,7 @@ Route::resource('anggota', AnggotaController::class);
 // Tambahkan route resource untuk controller lainnya sesuai kebutuhan
 // Contoh:
 Route::resource('rapat', RapatController::class);
-Route::resource('program_kerja', ProgramKerjaController::class);
+Route::resource('programkerja', ProgramKerjaController::class);
 Route::resource('notulen', NotulenController::class);
 Route::resource('evaluasi', EvaluasiController::class);
 Route::resource('dokumentasi', DokumentasiController::class);

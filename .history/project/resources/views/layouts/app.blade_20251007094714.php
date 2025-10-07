@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Sistem Organisasi Sekolah')</title>
 
-    <!-- Bootstrap CSS -->
+    {{-- Bootstrap CSS (offline) --}}
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="{{ asset('bootstrap-icons/bootstrap-icons.css') }}">
+    {{-- Bootstrap Icons (offline) --}}
+    <link rel="stylesheet" href="{{ asset('bootstrap-icons/font/bootstrap-icons.css') }}">
 
     <style>
         body {
