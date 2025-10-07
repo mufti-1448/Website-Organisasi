@@ -19,7 +19,7 @@ class Rapat extends Model
      */
     public function notulen()
     {
-        return $this->hasOne(Notulen::class, 'rapat_id');
+        return $this->haso(Notulen::class, 'rapat_id');
     }
 
     /**
