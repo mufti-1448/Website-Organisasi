@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-4 text-center">
                 @if($anggota->foto)
-                    <img src="{{ asset('uploads/anggota/' . $anggota->foto) }}" alt="Foto {{ $anggota->nama }}" class="img-fluid rounded mb-3" style="max-width: 200px;">
+                    <img src="{{ asset('storage/anggota/' . $anggota->foto) }}" alt="Foto {{ $anggota->nama }}" class="img-fluid rounded mb-3" style="max-width: 200px;">
                 @else
                     <div class="bg-light rounded d-flex align-items-center justify-content-center" style="width: 200px; height: 200px; margin: 0 auto;">
                         <i class="bi bi-person-circle" style="font-size: 5rem; color: #6c757d;"></i>
@@ -45,10 +45,10 @@
                     <dd class="col-sm-9">{{ $anggota->kontak }}</dd>
 
                     <dt class="col-sm-3">Dibuat</dt>
-                    <dd class="col-sm-9">{{ $anggota->created_at ? $anggota->created_at->format('d M Y, H:i') : 'Tidak tersedia' }}</dd>
+                    <dd class="col-sm-9">{{ $anggota->created_at->format('d M Y, H:i') }}</dd>
 
                     <dt class="col-sm-3">Diupdate</dt>
-                    <dd class="col-sm-9">{{ $anggota->updated_at ? $anggota->updated_at->format('d M Y, H:i') : 'Tidak tersedia' }}</dd>
+                    <dd class="col-sm-9">{{ $anggota->updated_at->format('d M Y, H:i') }}</dd>
                 </dl>
             </div>
         </div>

@@ -49,7 +49,7 @@
                             <td>{{ $item->kontak }}</td>
                             <td>
                                 @if($item->foto)
-                                    <img src="{{ asset('uploads/anggota/' . $item->foto) }}" alt="Foto {{ $item->nama }}" class="img-thumbnail" style="width: 50px; height: 50px;">
+                                    <img src="{{ asset('storage/anggota/' . $item->foto) }}" alt="Foto {{ $item->nama }}" class="img-thumbnail" style="width: 50px; height: 50px;">
                                 @else
                                     <span class="text-muted">Tidak ada</span>
                                 @endif

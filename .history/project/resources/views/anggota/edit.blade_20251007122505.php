@@ -73,13 +73,4 @@
         </form>
     </div>
 </div>
-
-<script>
-document.getElementById('foto').addEventListener('change', function(e) {
-    if (this.files[0] && this.files[0].size > 2097152) { // 2MB
-        alert('File terlalu besar. Maksimal ukuran file 2MB.');
-        this.value = '';
-    }
-});
-</script>
 @endsection

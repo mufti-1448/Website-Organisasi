@@ -39,13 +39,8 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'kelas' => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'kontak' => 'required|string|max:255',
-            'foto' => 'nullable|image|max:2048', // max 2MB
-        ]);
+        // Validasi data bisa ditambahkan di sini
+        // $request->validate([...]);
 
         $file = $request->file('foto');
         $namaFile = null;
@@ -99,14 +94,6 @@ class AnggotaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'kelas' => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'kontak' => 'required|string|max:255',
-            'foto' => 'nullable|image|max:2048', // max 2MB
-        ]);
-
         $anggota = DB::table('anggota')->where('id', $id)->first();
 
         $file = $request->file('foto');

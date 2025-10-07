@@ -60,7 +60,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
                 <div class="form-text">
-                    Upload foto baru untuk mengganti yang lama (opsional). Maksimal ukuran file 2MB.
+                    Upload foto baru untuk mengganti yang lama (opsional).
                     @if($anggota->foto)
                         <br>Foto saat ini: <img src="{{ asset('uploads/anggota/' . $anggota->foto) }}" alt="Foto {{ $anggota->nama }}" class="img-thumbnail mt-2" style="width: 100px; height: 100px;">
                     @endif
@@ -73,13 +73,4 @@
         </form>
     </div>
 </div>
-
-<script>
-document.getElementById('foto').addEventListener('change', function(e) {
-    if (this.files[0] && this.files[0].size > 2097152) { // 2MB
-        alert('File terlalu besar. Maksimal ukuran file 2MB.');
-        this.value = '';
-    }
-});
-</script>
 @endsection
