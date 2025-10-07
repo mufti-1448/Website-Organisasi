@@ -11,7 +11,7 @@ class Dokumentasi extends Model
 
     protected $table = 'dokumentasi';
 
-    protected $fillable = ['judul' , 'deskripsi', 'foto', 'tanggal', 'kategori'];
+    protected $fillable = ['judul'  'foto', 'kategori', 'rapat_id', 'program_id'];
 
     /**
      * Relasi opsional ke Rapat

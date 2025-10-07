@@ -38,20 +38,18 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi data bisa ditambahkan di sini
+        // Validasi data di sini dulu (opsional)
         // $request->validate([...]);
 
+        // Proses upload file foto
         $file = $request->file('foto');
         $namaFile = null;
-
         if ($file) {
-            // Membuat nama file dari nama anggota (lowercase, spasi jadi underscore) + timestamp + ekstensi
-            $namaOrang = str_replace(' ', '_', strtolower($request->nama));
-            $ekstensi  = $file->getClientOriginalExtension();
-            $namaFile = time() . '_' . $namaOrang . '.' . $ekstensi;
+            $namaFile = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('public/anggota', $namaFile);
         }
 
+        // Simpan data ke database, kolom 'foto' diisi $namaFile
         DB::table('anggota')->insert([
             'id' => $request->id,
             'nama' => $request->nama,
@@ -93,13 +91,11 @@ class AnggotaController extends Controller
     {
         $anggota = DB::table('anggota')->where('id', $id)->first();
 
+        // Proses upload file baru jika diupdate
+        $namaFile = $anggota->foto; // pakai foto lama jika tidak upload baru
         $file = $request->file('foto');
-        $namaFile = $anggota->foto; // Default: tetap pakai foto lama
-
         if ($file) {
-            $namaOrang = str_replace(' ', '_', strtolower($request->nama));
-            $ekstensi  = $file->getClientOriginalExtension();
-            $namaFile = time() . '_' . $namaOrang . '.' . $ekstensi;
+            $namaFile = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('public/anggota', $namaFile);
         }
 
@@ -110,7 +106,6 @@ class AnggotaController extends Controller
             'kontak' => $request->kontak,
             'foto' => $namaFile
         ]);
-
 
         return redirect()->route('anggota.index')->with('success', 'Anggota berhasil diperbarui.');
     }

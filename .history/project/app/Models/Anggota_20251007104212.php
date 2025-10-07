@@ -12,6 +12,7 @@ class Anggota extends Model
     protected $primaryKey = 'id';
     public $incrementing = false;        // Supaya Eloquent tahu id bukan auto-increment
     protected $keyType = 'string';       // Karena id bertipe string [web:97]
+
     protected $fillable = ['nama', 'kelas', 'jabatan', 'kontak', 'foto'];
 
     public function notulen()

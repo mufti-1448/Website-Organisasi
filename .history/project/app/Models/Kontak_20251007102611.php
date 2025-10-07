@@ -11,5 +11,5 @@ class Kontak extends Model
 
     protected $table = 'kontak';
 
-    protected $fillable = ['nama', 'email', 'pesan', 'tanggal', 'status'];
+    protected $fillable = ['nama', 'email', 'pesan', 'tanggal'];
 }

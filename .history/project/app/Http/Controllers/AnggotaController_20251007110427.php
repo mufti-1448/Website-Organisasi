@@ -38,20 +38,18 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi data bisa ditambahkan di sini
+        // Validasi data di sini dulu (opsional)
         // $request->validate([...]);
 
+        // Proses upload file foto
         $file = $request->file('foto');
         $namaFile = null;
-
         if ($file) {
-            // Membuat nama file dari nama anggota (lowercase, spasi jadi underscore) + timestamp + ekstensi
-            $namaOrang = str_replace(' ', '_', strtolower($request->nama));
-            $ekstensi  = $file->getClientOriginalExtension();
-            $namaFile = time() . '_' . $namaOrang . '.' . $ekstensi;
+            $namaFile = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('public/anggota', $namaFile);
         }
-
+        
+        // Simpan data ke database, kolom 'foto' diisi $namaFile
         DB::table('anggota')->insert([
             'id' => $request->id,
             'nama' => $request->nama,
@@ -91,26 +89,13 @@ class AnggotaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $anggota = DB::table('anggota')->where('id', $id)->first();
-
-        $file = $request->file('foto');
-        $namaFile = $anggota->foto; // Default: tetap pakai foto lama
-
-        if ($file) {
-            $namaOrang = str_replace(' ', '_', strtolower($request->nama));
-            $ekstensi  = $file->getClientOriginalExtension();
-            $namaFile = time() . '_' . $namaOrang . '.' . $ekstensi;
-            $file->storeAs('public/anggota', $namaFile);
-        }
-
         DB::table('anggota')->where('id', $id)->update([
             'nama' => $request->nama,
             'kelas' => $request->kelas,
             'jabatan' => $request->jabatan,
             'kontak' => $request->kontak,
-            'foto' => $namaFile
+            'foto' => $request->foto
         ]);
-
 
         return redirect()->route('anggota.index')->with('success', 'Anggota berhasil diperbarui.');
     }

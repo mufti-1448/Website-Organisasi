@@ -10,8 +10,8 @@ class Anggota extends Model
     use HasFactory;
     protected $table = 'anggota';
     protected $primaryKey = 'id';
-    public $incrementing = false;        // Supaya Eloquent tahu id bukan auto-increment
-    protected $keyType = 'string';       // Karena id bertipe string [web:97]
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $fillable = ['nama', 'kelas', 'jabatan', 'kontak', 'foto'];
 
     public function notulen()
