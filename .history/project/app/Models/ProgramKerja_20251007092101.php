@@ -11,7 +11,7 @@ class ProgramKerja extends Model
 
     protected $table = 'program_kerja';
 
-    protected $fillable = ['nama', 'deskripsi', 'penanggung_jawab_id', 'status'];
+    protected $fillable = ['nama', 'deskripsi', 'penanggung_jawab_id_id', 'status'];
 
     /**
      * Relasi ke Anggota (penanggung jawab)

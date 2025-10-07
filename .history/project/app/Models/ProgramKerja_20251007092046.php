@@ -11,14 +11,14 @@ class ProgramKerja extends Model
 
     protected $table = 'program_kerja';
 
-    protected $fillable = ['nama', 'deskripsi', 'penanggung_jawab_id', 'status'];
+    protected $fillable = ['nama', 'deskripsi', 'penanggung_jawab_', 'status'];
 
     /**
      * Relasi ke Anggota (penanggung jawab)
      */
     public function penanggungJawab()
     {
-        return $this->belongsTo(Anggota::class, 'penanggung_jawab_id');
+        return $this->belongsTo(Anggota::class, 'penanggung_jawab');
     }
 
     /**

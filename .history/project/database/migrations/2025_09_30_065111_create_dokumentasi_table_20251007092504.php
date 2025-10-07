@@ -13,19 +13,13 @@ return new class extends Migration
     {
         Schema::create('dokumentasi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('rapat_id'); // 👈 Tambahkan ini SEBELUM foreign key
             $table->string('judul');
             $table->text('deskripsi')->nullable();
             $table->string('foto');
             $table->date('tanggal');
             $table->string('kategori')->nullable();
+            $table->foreign('rapat_id')->references('id')->on('rapat')->onDelete('cascade');
             $table->timestamps();
-
-            // 👇 Baru kemudian definisikan foreign key-nya
-            $table->foreign('rapat_id')
-                ->references('id')
-                ->on('rapat')
-                ->onDelete('cascade');
         });
     }
 

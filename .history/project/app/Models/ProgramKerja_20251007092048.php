@@ -18,7 +18,7 @@ class ProgramKerja extends Model
      */
     public function penanggungJawab()
     {
-        return $this->belongsTo(Anggota::class, 'penanggung_jawab_id');
+        return $this->belongsTo(Anggota::class, 'penanggung_jawab');
     }
 
     /**
