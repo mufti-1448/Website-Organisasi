@@ -9,9 +9,9 @@ use App\Http\Controllers\EvaluasiController;
 use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\KontakController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-Route::resource('dashboard', DashboardController::class);
+Dashboard
 Route::resource('anggota', AnggotaController::class);
 Route::resource('rapat', RapatController::class);
 Route::resource('program_kerja', ProgramKerjaController::class);

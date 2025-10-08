@@ -8,10 +8,7 @@ use App\Http\Controllers\NotulenController;
 use App\Http\Controllers\EvaluasiController;
 use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\KontakController;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\DashboardController;
 
-Route::resource('dashboard', DashboardController::class);
 Route::resource('anggota', AnggotaController::class);
 Route::resource('rapat', RapatController::class);
 Route::resource('program_kerja', ProgramKerjaController::class);
@@ -20,8 +17,4 @@ Route::resource('evaluasi', EvaluasiController::class);
 Route::resource('dokumentasi', DokumentasiController::class);
 Route::resource('kontak', KontakController::class);
 
-
-Route::get('/logout', function () {
-    Auth::logout();
-    return redirect('/login');
-})->name('logout');
+Route [logout] not defined.

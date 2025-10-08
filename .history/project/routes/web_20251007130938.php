@@ -9,7 +9,6 @@ use App\Http\Controllers\EvaluasiController;
 use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\KontakController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\DashboardController;
 
 Route::resource('dashboard', DashboardController::class);
 Route::resource('anggota', AnggotaController::class);
