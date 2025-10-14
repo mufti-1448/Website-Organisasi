@@ -182,4 +182,3 @@ class ProgramKerjaController extends Controller
         return redirect()->route('program_kerja.index')->with('success', 'Program kerja berhasil dihapus.');
     }
 }
-    

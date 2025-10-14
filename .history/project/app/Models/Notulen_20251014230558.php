@@ -21,9 +21,5 @@ class Notulen extends Model
     {
         return $this->belongsTo(Anggota::class, 'penulis_id');
     }
-
-    public function programKerja()
-    {
-        return $this->belongsTo(ProgramKerja::class, 'program_id'); // ✅ relasi baru
-    }
+    
 }

@@ -6,18 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('program_kerja', function (Blueprint $table) {
-            $table->string('id')->primary(); // ID custom seperti PRK001
+            $table->string('id')->primary(); // ✅ ID custom, misalnya PK001
             $table->string('nama');
             $table->text('deskripsi')->nullable();
-            $table->foreignId('penanggung_jawab_id')->constrained('anggota')->onDelete('cascade');
-            $table->enum('status', ['belum', 'berlangsung', 'selesai'])->default('belum');
+            $table->foreignId('penanggung_jawab_id')
+                ->constrained('anggota')
+                ->onDelete('cascade');
+            $table->string('status')->default('pending'); // pending | berlangsung | selesai
             $table->timestamps();
         });
     }
 
+
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('program_kerja');

@@ -28,13 +28,8 @@ class ProgramKerjaController extends Controller
     {
         $last = ProgramKerja::orderBy('id', 'desc')->first();
         $nextCode = $last ? 'PRK' . str_pad((int) substr($last->id, 3) + 1, 3, '0', STR_PAD_LEFT) : 'PRK001';
-
         $anggota = Anggota::all();
-        $notulenList = Notulen::all();
-        $dokumentasiList = Dokumentasi::all();
-        $evaluasiList = Evaluasi::all();
-
-        return view('program_kerja.create', compact('nextCode', 'anggota', 'notulenList', 'dokumentasiList', 'evaluasiList'));
+        return view('program_kerja.create', compact('nextCode', 'anggota'));
     }
 
     /**
@@ -47,10 +42,6 @@ class ProgramKerjaController extends Controller
             'deskripsi' => 'nullable|string',
             'penanggung_jawab_id' => 'required|exists:anggota,id',
             'status' => 'required|in:belum,berlangsung,selesai',
-            'notulen_id' => 'nullable|exists:notulen,id',
-            'dokumentasi_ids' => 'nullable|array',
-            'dokumentasi_ids.*' => 'exists:dokumentasi,id',
-            'evaluasi_id' => 'nullable|exists:evaluasi,id',
         ]);
 
         $last = ProgramKerja::orderBy('id', 'desc')->first();
@@ -58,30 +49,13 @@ class ProgramKerjaController extends Controller
 
         DB::beginTransaction();
         try {
-            $program = ProgramKerja::create([
+            ProgramKerja::create([
                 'id' => $nextCode,
                 'nama' => $request->nama,
                 'deskripsi' => $request->deskripsi,
                 'penanggung_jawab_id' => $request->penanggung_jawab_id,
                 'status' => $request->status,
             ]);
-
-            // Hubungkan jika sudah ada
-            if ($request->filled('notulen_id')) {
-                $notulen = Notulen::find($request->notulen_id);
-                $notulen->program_id = $program->id;
-                $notulen->save();
-            }
-
-            if ($request->filled('evaluasi_id')) {
-                $evaluasi = Evaluasi::find($request->evaluasi_id);
-                $evaluasi->program_id = $program->id;
-                $evaluasi->save();
-            }
-
-            if ($request->filled('dokumentasi_ids')) {
-                Dokumentasi::whereIn('id', $request->dokumentasi_ids)->update(['program_id' => $program->id]);
-            }
 
             DB::commit();
             return redirect()->route('program_kerja.index')->with('success', 'Program kerja berhasil ditambahkan!');
@@ -107,11 +81,7 @@ class ProgramKerjaController extends Controller
     {
         $program = ProgramKerja::findOrFail($id);
         $anggota = Anggota::all();
-        $notulenList = Notulen::all();
-        $dokumentasiList = Dokumentasi::all();
-        $evaluasiList = Evaluasi::all();
-
-        return view('program_kerja.edit', compact('program', 'anggota', 'notulenList', 'dokumentasiList', 'evaluasiList'));
+        return view('program_kerja.edit', compact('program', 'anggota'));
     }
 
     /**
@@ -124,44 +94,17 @@ class ProgramKerjaController extends Controller
             'deskripsi' => 'nullable|string',
             'penanggung_jawab_id' => 'required|exists:anggota,id',
             'status' => 'required|in:belum,berlangsung,selesai',
-            'notulen_id' => 'nullable|exists:notulen,id',
-            'dokumentasi_ids' => 'nullable|array',
-            'dokumentasi_ids.*' => 'exists:dokumentasi,id',
-            'evaluasi_id' => 'nullable|exists:evaluasi,id',
         ]);
 
         DB::beginTransaction();
         try {
             $program = ProgramKerja::findOrFail($id);
-
             $program->update([
                 'nama' => $request->nama,
                 'deskripsi' => $request->deskripsi,
                 'penanggung_jawab_id' => $request->penanggung_jawab_id,
                 'status' => $request->status,
             ]);
-
-            // Reset semua relasi dulu
-            Notulen::where('program_id', $program->id)->update(['program_id' => null]);
-            Dokumentasi::where('program_id', $program->id)->update(['program_id' => null]);
-            Evaluasi::where('program_id', $program->id)->update(['program_id' => null]);
-
-            // Hubungkan ulang jika ada input
-            if ($request->filled('notulen_id')) {
-                $notulen = Notulen::find($request->notulen_id);
-                $notulen->program_id = $program->id;
-                $notulen->save();
-            }
-
-            if ($request->filled('evaluasi_id')) {
-                $evaluasi = Evaluasi::find($request->evaluasi_id);
-                $evaluasi->program_id = $program->id;
-                $evaluasi->save();
-            }
-
-            if ($request->filled('dokumentasi_ids')) {
-                Dokumentasi::whereIn('id', $request->dokumentasi_ids)->update(['program_id' => $program->id]);
-            }
 
             DB::commit();
             return redirect()->route('program_kerja.index')->with('success', 'Data program kerja berhasil diperbarui.');
@@ -182,4 +125,3 @@ class ProgramKerjaController extends Controller
         return redirect()->route('program_kerja.index')->with('success', 'Program kerja berhasil dihapus.');
     }
 }
-    

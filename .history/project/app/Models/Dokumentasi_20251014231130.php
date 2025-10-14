@@ -23,9 +23,4 @@ class Dokumentasi extends Model
     {
         return $this->belongsTo(Rapat::class, 'rapat_id', 'id');
     }
-
-    public function programKerja()
-    {
-        return $this->belongsTo(ProgramKerja::class, 'program_id');
-    }
 }
