@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container mt-4">
     <h3><i class="bi bi-eye"></i> Detail Rapat</h3>

@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Rapat;
-use App\Models\Notulen;
-use App\Models\Dokumentasi;
-use Illuminate\Support\Facades\DB;
 
 class RapatController extends Controller
 {
@@ -86,22 +83,17 @@ class RapatController extends Controller
     /**
      * Form edit rapat
      */
-    public function edit($id)
+    public function edit(string $id)
     {
-        $rapat = Rapat::with(['notulen', 'dokumentasi'])->findOrFail($id);
-        $notulenList = Notulen::whereNull('rapat_id')->orWhere('rapat_id', $id)->get();
-        $dokumentasiList = Dokumentasi::whereNull('rapat_id')->orWhere('rapat_id', $id)->get();
-
-        return view('rapat.edit', compact('rapat', 'notulenList', 'dokumentasiList'));
+        $rapat = Rapat::findOrFail($id);
+        return view('rapat.edit', compact('rapat'));
     }
 
     /**
      * Update rapat
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        $rapat = Rapat::findOrFail($id);
-
         $request->validate([
             'judul' => 'required|string|max:255',
             'tanggal' => 'required|date',
@@ -109,28 +101,13 @@ class RapatController extends Controller
             'status' => 'required|in:belum,berlangsung,selesai',
         ]);
 
+        $rapat = Rapat::findOrFail($id);
         $rapat->update([
             'judul' => $request->judul,
             'tanggal' => $request->tanggal,
             'tempat' => $request->tempat,
             'status' => $request->status,
         ]);
-
-        // Update relasi Notulen
-        Notulen::where('rapat_id', $rapat->id)->update(['rapat_id' => null]);
-        if ($request->notulen_id) {
-            $notulen = Notulen::find($request->notulen_id);
-            if ($notulen) {
-                $notulen->rapat_id = $rapat->id;
-                $notulen->save();
-            }
-        }
-
-        // Update relasi Dokumentasi
-        Dokumentasi::where('rapat_id', $rapat->id)->update(['rapat_id' => null]);
-        if ($request->dokumentasi_ids) {
-            Dokumentasi::whereIn('id', $request->dokumentasi_ids)->update(['rapat_id' => $rapat->id]);
-        }
 
         return redirect()->route('rapat.index')->with('success', 'Rapat berhasil diperbarui.');
     }

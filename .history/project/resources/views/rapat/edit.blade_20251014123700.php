@@ -9,13 +9,13 @@
         @method('PUT')
         <ul class="nav nav-tabs" id="rapatTab" role="tablist">
             <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#detail" type="button">Detail Rapat</button>
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#detail">Detail Rapat</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#notulen" type="button">Notulen</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#notulen">Notulen</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#dokumentasi" type="button">Dokumentasi</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#dokumentasi">Dokumentasi</button>
             </li>
         </ul>
 

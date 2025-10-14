@@ -2,20 +2,19 @@
 
 @section('content')
 <div class="container mt-4">
-    <h3><i class="bi bi-pencil-square"></i> Edit Rapat</h3>
+    <h3><i class="bi bi-plus-circle"></i> Tambah Rapat</h3>
 
-    <form action="{{ route('rapat.update', $rapat->id) }}" method="POST">
+    <form action="{{ route('rapat.store') }}" method="POST">
         @csrf
-        @method('PUT')
         <ul class="nav nav-tabs" id="rapatTab" role="tablist">
             <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#detail" type="button">Detail Rapat</button>
+                <button class="nav-link active" id="detail-tab" data-bs-toggle="tab" data-bs-target="#detail">Detail Rapat</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#notulen" type="button">Notulen</button>
+                <button class="nav-link" id="notulen-tab" data-bs-toggle="tab" data-bs-target="#notulen">Notulen</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#dokumentasi" type="button">Dokumentasi</button>
+                <button class="nav-link" id="dokumentasi-tab" data-bs-toggle="tab" data-bs-target="#dokumentasi">Dokumentasi</button>
             </li>
         </ul>
 
@@ -24,26 +23,26 @@
             <div class="tab-pane fade show active" id="detail">
                 <div class="mb-3">
                     <label class="form-label">ID Rapat</label>
-                    <input type="text" class="form-control" value="{{ $rapat->id }}" readonly>
+                    <input type="text" class="form-control" value="{{ $nextCode }}" readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Judul</label>
-                    <input type="text" name="judul" class="form-control" value="{{ $rapat->judul }}" required>
+                    <input type="text" name="judul" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tanggal</label>
-                    <input type="date" name="tanggal" class="form-control" value="{{ $rapat->tanggal }}" required>
+                    <input type="date" name="tanggal" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tempat</label>
-                    <input type="text" name="tempat" class="form-control" value="{{ $rapat->tempat }}" required>
+                    <input type="text" name="tempat" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Status</label>
                     <select name="status" class="form-select" required>
-                        <option value="belum" {{ $rapat->status == 'belum' ? 'selected' : '' }}>Belum</option>
-                        <option value="berlangsung" {{ $rapat->status == 'berlangsung' ? 'selected' : '' }}>Berlangsung</option>
-                        <option value="selesai" {{ $rapat->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                        <option value="belum">Belum</option>
+                        <option value="berlangsung">Berlangsung</option>
+                        <option value="selesai">Selesai</option>
                     </select>
                 </div>
             </div>
@@ -55,9 +54,7 @@
                     <select name="notulen_id" class="form-select">
                         <option value="">-- Pilih Notulen --</option>
                         @foreach($notulenList as $notulen)
-                            <option value="{{ $notulen->id }}" {{ $rapat->notulen && $rapat->notulen->id == $notulen->id ? 'selected' : '' }}>
-                                {{ $notulen->isi }} ({{ \Carbon\Carbon::parse($notulen->tanggal)->format('d-m-Y') }})
-                            </option>
+                            <option value="{{ $notulen->id }}">{{ $notulen->isi }} ({{ \Carbon\Carbon::parse($notulen->tanggal)->format('d-m-Y') }})</option>
                         @endforeach
                     </select>
                 </div>
@@ -69,9 +66,7 @@
                     <label class="form-label">Pilih Dokumentasi</label>
                     <select name="dokumentasi_ids[]" class="form-select" multiple>
                         @foreach($dokumentasiList as $doc)
-                            <option value="{{ $doc->id }}" {{ $rapat->dokumentasi->contains('id', $doc->id) ? 'selected' : '' }}>
-                                {{ $doc->judul }} - {{ \Carbon\Carbon::parse($doc->tanggal)->format('d-m-Y') }}
-                            </option>
+                            <option value="{{ $doc->id }}">{{ $doc->judul }} - {{ \Carbon\Carbon::parse($doc->tanggal)->format('d-m-Y') }}</option>
                         @endforeach
                     </select>
                     <small class="text-muted">Tekan Ctrl/Cmd untuk memilih beberapa dokumentasi.</small>
@@ -79,7 +74,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-success mt-3"><i class="bi bi-save"></i> Update</button>
+        <button type="submit" class="btn btn-success mt-3"><i class="bi bi-save"></i> Simpan</button>
         <a href="{{ route('rapat.index') }}" class="btn btn-secondary mt-3"><i class="bi bi-arrow-left"></i> Kembali</a>
     </form>
 </div>

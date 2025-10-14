@@ -9,7 +9,6 @@ class Dokumentasi extends Model
 {
     use HasFactory;
 
-    protected $table = 'dokumentasi';
     protected $fillable = ['rapat_id', 'judul', 'deskripsi', 'foto', 'tanggal', 'kategori'];
 
     public function rapat()

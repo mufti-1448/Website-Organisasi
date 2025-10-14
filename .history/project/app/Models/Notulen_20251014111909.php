@@ -5,15 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Dokumentasi extends Model
+class Notulen extends Model
 {
     use HasFactory;
 
-    protected $table = 'dokumentasi';
-    protected $fillable = ['rapat_id', 'judul', 'deskripsi', 'foto', 'tanggal', 'kategori'];
+    protected $fillable = ['rapat_id', 'isi', 'tanggal', 'penulis_id'];
 
     public function rapat()
     {
         return $this->belongsTo(Rapat::class, 'rapat_id', 'id');
+    }
+
+    public function penulis()
+    {
+        return $this->belongsTo(Anggota::class, 'penulis_id');
     }
 }
