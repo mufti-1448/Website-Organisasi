@@ -22,7 +22,7 @@ Route::resource('dokumentasi', DokumentasiController::class);
 Route::resource('kontak', KontakController::class);
 Route::get('kontak/{id}/reply', [KontakController::class, 'reply'])->name('kontak.reply');
 Route::post('kontak/{id}/send-reply', [KontakController::class, 'sendReply'])->name('kontak.sendReply');
-Route::post('kontak/update-sosial', [KontakController::class, 'updateSosial'])->name('kontak.updateSosial');
+Route::resource('media_sosial', MediaSosialController::class);
 
 
 Route::get('/logout', function () {

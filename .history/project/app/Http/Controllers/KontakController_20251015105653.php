@@ -14,8 +14,8 @@ class KontakController extends Controller
     public function index()
     {
         $kontak = Kontak::orderBy('created_at', 'desc')->get();
-        $sosialMedia = \App\Models\SosialMedia::all()->keyBy('platform');
-        return view('kontak.index', compact('kontak', 'sosialMedia'));
+        $mediaSosial = \App\Models\MediaSosial::all();
+        return view('kontak.index', compact('kontak', 'mediaSosial'));
     }
 
     /**

@@ -8,7 +8,6 @@ use App\Http\Controllers\NotulenController;
 use App\Http\Controllers\EvaluasiController;
 use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\KontakController;
-use App\Http\Controllers\MediaSosialController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
 
@@ -22,7 +21,6 @@ Route::resource('dokumentasi', DokumentasiController::class);
 Route::resource('kontak', KontakController::class);
 Route::get('kontak/{id}/reply', [KontakController::class, 'reply'])->name('kontak.reply');
 Route::post('kontak/{id}/send-reply', [KontakController::class, 'sendReply'])->name('kontak.sendReply');
-Route::post('kontak/update-sosial', [KontakController::class, 'updateSosial'])->name('kontak.updateSosial');
 
 
 Route::get('/logout', function () {
