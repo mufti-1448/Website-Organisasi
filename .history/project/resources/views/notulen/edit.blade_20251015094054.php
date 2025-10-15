@@ -10,7 +10,7 @@
 
         <div class="mb-3">
             <label>Rapat</label>
-            <input type="text" class="form-control" value="{{ $notulen->rapat->judul ?? '-' }}" readonly>
+            <input type="text" class="form-control" value="{{ $notulen->rapat->nama ?? '-' }}" readonly>
         </div>
 
         <div class="mb-3">

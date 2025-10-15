@@ -32,7 +32,7 @@
                     @forelse($notulen as $n)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $n->rapat->judul ?? '-' }}</td>
+                            <td>{{ $n->rapat->nama ?? '-' }}</td>
                             <td>{{ $n->programKerja->nama ?? '-' }}</td>
                             <td>{{ $n->penulis->nama ?? '-' }}</td>
                             <td>{{ $n->tanggal }}</td>

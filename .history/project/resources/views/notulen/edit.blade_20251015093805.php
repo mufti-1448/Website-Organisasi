@@ -2,17 +2,19 @@
 
 @section('content')
 <div class="container mt-4">
-    <h3><i class="bi bi-journal-text"></i> Tambah Notulen</h3>
+    <h3><i class="bi bi-pencil-square"></i> Edit Notulen</h3>
 
-    <form action="{{ route('notulen.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('notulen.update', $notulen->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
 
         <div class="mb-3">
             <label for="rapat_id" class="form-label">Pilih Rapat</label>
             <select name="rapat_id" id="rapat_id" class="form-select" required>
-                <option value="">-- Pilih Rapat --</option>
                 @foreach ($rapats as $rapat)
-                    <option value="{{ $rapat->id }}">{{ $rapat->nama ?? $rapat->judul ?? 'Rapat #' . $rapat->id }}</option>
+                    <option value="{{ $rapat->id }}" {{ $rapat->id == $notulen->rapat_id ? 'selected' : '' }}>
+                        {{ $rapat->judul ?? $rapat->nama ?? $rapat->id }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -22,7 +24,9 @@
             <select name="program_id" id="program_id" class="form-select">
                 <option value="">-- Pilih Program (Opsional) --</option>
                 @foreach ($programs as $program)
-                    <option value="{{ $program->id }}">{{ $program->nama ?? $program->id }}</option>
+                    <option value="{{ $program->id }}" {{ $program->id == $notulen->program_id ? 'selected' : '' }}>
+                        {{ $program->nama_program ?? $program->judul_program ?? $program->id }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -30,29 +34,35 @@
         <div class="mb-3">
             <label for="penulis_id" class="form-label">Penulis</label>
             <select name="penulis_id" id="penulis_id" class="form-select" required>
-                <option value="">-- Pilih Penulis --</option>
-                @foreach ($penulis as $a)
-                    <option value="{{ $a->id }}">{{ $a->nama ?? $a->id }}</option>
+                @foreach ($penulis as $p)
+                    <option value="{{ $p->id }}" {{ $p->id == $notulen->penulis_id ? 'selected' : '' }}>
+                        {{ $p->nama ?? $p->id }}
+                    </option>
                 @endforeach
             </select>
         </div>
 
         <div class="mb-3">
             <label for="tanggal" class="form-label">Tanggal Notulen</label>
-            <input type="date" name="tanggal" id="tanggal" class="form-control" required>
+            <input type="date" name="tanggal" id="tanggal" class="form-control" value="{{ $notulen->tanggal }}" required>
         </div>
 
         <div class="mb-3">
             <label for="isi" class="form-label">Isi Notulen</label>
-            <textarea name="isi" id="isi" rows="5" class="form-control" required></textarea>
+            <textarea name="isi" id="isi" rows="5" class="form-control" required>{{ $notulen->isi }}</textarea>
         </div>
 
         <div class="mb-3">
             <label for="file_path" class="form-label">Upload File (Opsional)</label>
             <input type="file" name="file_path" id="file_path" class="form-control">
+            @if ($notulen->file_path)
+                <p class="mt-2">File saat ini:
+                    <a href="{{ asset('storage/' . $notulen->file_path) }}" target="_blank">📄 Lihat File</a>
+                </p>
+            @endif
         </div>
 
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-success">Perbarui</button>
         <a href="{{ route('notulen.index') }}" class="btn btn-secondary">Batal</a>
     </form>
 </div>

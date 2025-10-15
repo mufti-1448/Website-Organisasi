@@ -30,6 +30,6 @@ class Notulen extends Model
 
     public function programKerja()
     {
-        return $this->belongsTo(ProgramKerja::class, 'program_id', 'id'); // ✅ relasi baru
+        return $this->belongsTo(ProgramKerja::class, 'program_id'); // ✅ relasi baru
     }
 }

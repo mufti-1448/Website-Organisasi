@@ -83,6 +83,7 @@
                                     {{ \Carbon\Carbon::parse($not->tanggal)->format('d-m-Y') }}
                                 </option>
                             @endforeach
+
                         </select>
                     </div>
                 </div>

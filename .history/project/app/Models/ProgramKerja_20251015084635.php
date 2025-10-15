@@ -40,13 +40,9 @@ class ProgramKerja extends Model
         return $this->hasMany(Dokumentasi::class, 'program_id');
     }
 
+    // Relasi ke Notulen (jika suatu program punya catatan)
     public function notulen()
     {
         return $this->hasMany(Notulen::class, 'program_id', 'id');
-    }
-
-    public function notulenUtama()
-    {
-        return $this->hasOne(Notulen::class, 'program_id', 'id')->latestOfMany();
     }
 }

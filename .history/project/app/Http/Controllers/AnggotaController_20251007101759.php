@@ -20,7 +20,7 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        $last
+    
     }
 
     /**

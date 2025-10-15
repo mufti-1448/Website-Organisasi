@@ -20,12 +20,10 @@ class NotulenController extends Controller
 
     public function create()
     {
-        // ✅ Ambil semua rapat & program kerja
-        $rapats = Rapat::all();
-        $programs = ProgramKerja::all();
-        $penulis = Anggota::all();
-
-        return view('notulen.create', compact('rapats', 'programs', 'penulis'));
+        $rapat = Rapat::all();
+        $anggota = Anggota::all();
+        $programKerja = ProgramKerja::all();
+        return view('notulen.create', compact('rapat', 'anggota', 'programKerja'));
     }
 
     public function store(Request $request)
@@ -33,27 +31,34 @@ class NotulenController extends Controller
         $request->validate([
             'rapat_id' => 'required|exists:rapat,id|unique:notulen,rapat_id',
             'tanggal' => 'required|date',
-            'isi' => 'required',
             'penulis_id' => 'required|exists:anggota,id',
             'program_id' => 'nullable|exists:program_kerja,id',
-            'file_path' => 'nullable|file|mimes:pdf,doc,docx',
+            'isi' => 'nullable|string',
+            'file' => 'nullable|mimes:pdf,doc,docx,xls,xlsx|max:2048',
         ]);
 
-        $filePath = null;
-        if ($request->hasFile('file_path')) {
-            $filePath = $request->file('file_path')->store('notulen_files', 'public');
+        DB::beginTransaction();
+        try {
+            $filePath = null;
+            if ($request->hasFile('file')) {
+                $filePath = $request->file('file')->store('notulen', 'public');
+            }
+
+            Notulen::create([
+                'rapat_id' => $request->rapat_id,
+                'tanggal' => $request->tanggal,
+                'penulis_id' => $request->penulis_id,
+                'program_id' => $request->program_id,
+                'isi' => $request->isi,
+                'file_path' => $filePath,
+            ]);
+
+            DB::commit();
+            return redirect()->route('notulen.index')->with('success', 'Notulen berhasil ditambahkan.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Gagal menambah notulen: ' . $e->getMessage());
         }
-
-        Notulen::create([
-            'rapat_id' => $request->rapat_id,
-            'isi' => $request->isi,
-            'tanggal' => $request->tanggal,
-            'penulis_id' => $request->penulis_id,
-            'program_id' => $request->program_id,
-            'file_path' => $filePath,
-        ]);
-
-        return redirect()->route('notulen.index')->with('success', 'Notulen berhasil ditambahkan.');
     }
 
     public function show(string $id)

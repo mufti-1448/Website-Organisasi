@@ -10,18 +10,13 @@ return new class extends Migration
     {
         Schema::create('notulen', function (Blueprint $table) {
             $table->id();
-            $table->string('rapat_id')->unique()->nullable();
+            $table->string('rapat_id')->unique(); // 1 rapat 1 notulen
             $table->text('isi')->nullable();
             $table->date('tanggal');
             $table->foreignId('penulis_id')->constrained('anggota')->onDelete('cascade');
-
-            // karena program_kerja.id adalah string, kita tidak pakai foreignId()
+            
             $table->string('program_id')->nullable();
-            $table->foreign('program_id')->references('id')->on('program_kerja')->onDelete('cascade');
-
-            // file notulen
-            $table->string('file_path')->nullable();
-
+            $table->foreignId('program_id')->nullable()->constrained('program_kerja')->onDelete('cascade'); // 🔥 tambahkan ini
             $table->timestamps();
 
             $table->foreign('rapat_id')->references('id')->on('rapat')->onDelete('cascade');

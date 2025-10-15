@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('notulen', function (Blueprint $table) {
             $table->id();
-            $table->string('rapat_id')->unique()->nullable();
+            $table->string('rapat_id')->unique(); // 1 rapat 1 notulen
             $table->text('isi')->nullable();
             $table->date('tanggal');
             $table->foreignId('penulis_id')->constrained('anggota')->onDelete('cascade');

@@ -6,7 +6,7 @@
 
     <div class="card">
         <div class="card-body">
-            <p><strong>Rapat:</strong> {{ $notulen->rapat->judul ?? '-' }}</p>
+            <p><strong>Rapat:</strong> {{ $notulen->rapat->nama ?? '-' }}</p>
             <p><strong>Program Kerja:</strong> {{ $notulen->programKerja->nama ?? '-' }}</p>
             <p><strong>Penulis:</strong> {{ $notulen->penulis->nama ?? '-' }}</p>
             <p><strong>Tanggal:</strong> {{ $notulen->tanggal }}</p>
