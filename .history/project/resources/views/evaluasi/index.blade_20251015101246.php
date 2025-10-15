@@ -32,15 +32,6 @@
                         <td>{{ ucfirst($item->status) }}</td>
                         <td>{{ $item->catatan ?? '-' }}</td>
                         <td>
-                            @if($item->file_path)
-                                <a href="{{ asset('storage/'.$item->file_path) }}" target="_blank" class="btn btn-sm btn-outline-success">
-                                    <i class="bi bi-file-earmark-arrow-down"></i> Lihat
-                                </a>
-                            @else
-                                <span class="text-muted">Tidak ada</span>
-                            @endif
-                        </td>
-                        <td>
                             <a href="{{ route('evaluasi.show', $item->id) }}" class="btn btn-info btn-sm">
                                 <i class="bi bi-eye"></i>
                             </a>

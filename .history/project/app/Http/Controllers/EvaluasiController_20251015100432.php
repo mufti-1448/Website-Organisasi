@@ -91,12 +91,7 @@ class EvaluasiController extends Controller
 
     public function destroy(Evaluasi $evaluasi)
     {
-        if ($evaluasi->file_path) {
-            Storage::disk('public')->delete($evaluasi->file_path);
-        }
-
         $evaluasi->delete();
-
         return redirect()->route('evaluasi.index')->with('success', 'Evaluasi berhasil dihapus.');
     }
 }

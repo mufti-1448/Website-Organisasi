@@ -22,15 +22,6 @@
                 {{ $evaluasi->catatan ?? 'Tidak ada catatan.' }}
             </p>
 
-            <p><strong>File:</strong></p>
-            @if($evaluasi->file_path)
-                <a href="{{ asset('storage/'.$evaluasi->file_path) }}" target="_blank" class="btn btn-outline-primary">
-                    <i class="bi bi-download"></i> Lihat File
-                </a>
-            @else
-                <span class="text-muted">Tidak ada file</span>
-            @endif
-
             <hr>
             <a href="{{ route('evaluasi.edit', $evaluasi->id) }}" class="btn btn-warning">
                 <i class="bi bi-pencil"></i> Edit

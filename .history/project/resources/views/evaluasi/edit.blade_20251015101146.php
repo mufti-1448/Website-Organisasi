@@ -43,15 +43,6 @@
             <textarea name="catatan" class="form-control" rows="4">{{ $evaluasi->catatan }}</textarea>
         </div>
 
-        {{-- File Upload --}}
-        <div class="mb-3">
-            <label for="file_path" class="form-label">Upload File (Opsional)</label>
-            @if($evaluasi->file_path)
-                <p>File saat ini: <a href="{{ asset('storage/'.$evaluasi->file_path) }}" target="_blank">Lihat File</a></p>
-            @endif
-            <input type="file" name="file_path" id="file_path" class="form-control" accept=".pdf,.doc,.docx">
-        </div>
-
         <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Simpan Perubahan</button>
         <a href="{{ route('evaluasi.index') }}" class="btn btn-secondary">Kembali</a>
     </form>

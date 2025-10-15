@@ -11,7 +11,7 @@ class Evaluasi extends Model
 
     protected $table = 'evaluasi';
 
-    protected $fillable = ['program_id', 'catatan', 'status', 'tanggal', 'file_path'];
+    protected $fillable = ['program_id', 'catatan', 'status', 'tanggal'];
 
     /**
      * Relasi ke Program Kerja

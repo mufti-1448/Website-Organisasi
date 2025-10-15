@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <h3><i class="bi bi-plus-circle"></i> Tambah Evaluasi</h3>
-    <form action="{{ route('evaluasi.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('evaluasi.store') }}" method="POST">
         @csrf
 
         <div class="mb-3">
@@ -33,11 +33,6 @@
         <div class="mb-3">
             <label for="catatan" class="form-label">Catatan</label>
             <textarea name="catatan" class="form-control" rows="4"></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label for="file_path" class="form-label">Upload File (Opsional)</label>
-            <input type="file" name="file_path" id="file_path" class="form-control">
         </div>
 
         <button type="submit" class="btn btn-success">Simpan</button>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <h3><i class="bi bi-plus-circle"></i> Tambah Evaluasi</h3>
-    <form action="{{ route('evaluasi.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('evaluasi.store') }}" method="POST">
         @csrf
 
         <div class="mb-3">

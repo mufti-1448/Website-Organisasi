@@ -66,37 +66,16 @@ class EvaluasiController extends Controller
             'catatan' => 'nullable|string',
             'status' => 'required|string',
             'tanggal' => 'required|date',
-            'file_path' => 'nullable|file|mimes:pdf,doc,docx',
         ]);
 
-        if ($request->hasFile('file_path')) {
-            if ($evaluasi->file_path) {
-                Storage::disk('public')->delete($evaluasi->file_path);
-            }
-            $filePath = $request->file('file_path')->store('evaluasi_files', 'public');
-            $evaluasi->file_path = $filePath;
-        }
-
-        $evaluasi->update([
-            'program_id' => $request->program_id,
-            'catatan' => $request->catatan,
-            'status' => $request->status,
-            'tanggal' => $request->tanggal,
-        ]);
-
-        $evaluasi->save();
+        $evaluasi->update($request->all());
 
         return redirect()->route('evaluasi.index')->with('success', 'Evaluasi berhasil diperbarui.');
     }
 
     public function destroy(Evaluasi $evaluasi)
     {
-        if ($evaluasi->file_path) {
-            Storage::disk('public')->delete($evaluasi->file_path);
-        }
-
         $evaluasi->delete();
-
         return redirect()->route('evaluasi.index')->with('success', 'Evaluasi berhasil dihapus.');
     }
 }

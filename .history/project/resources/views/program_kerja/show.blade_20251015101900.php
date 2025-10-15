@@ -33,7 +33,9 @@
 
         <h5>Evaluasi:</h5>
         @forelse ($program->evaluasi as $e)
-            <p><a href="{{ asset('storage/' . $e->file_path) }}" target="_blank">📄 Lihat File Evaluasi</a></p>
+                <p><a href="{{ asset('storage/' . $e->file_path) }}" target="_blank">📄 Lihat File Evaluasi</a></p>
+            @if($e->file_path)
+            @endif
         @empty
             <p>- Belum ada evaluasi -</p>
         @endforelse

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Evaluasi;
 use App\Models\ProgramKerja;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class EvaluasiController extends Controller
 {
@@ -28,21 +27,9 @@ class EvaluasiController extends Controller
             'catatan' => 'nullable|string',
             'status' => 'required|string',
             'tanggal' => 'required|date',
-            'file_path' => 'nullable|file|mimes:pdf,doc,docx',
         ]);
 
-        $filePath = null;
-        if ($request->hasFile('file_path')) {
-            $filePath = $request->file('file_path')->store('evaluasi_files', 'public');
-        }
-
-        Evaluasi::create([
-            'program_id' => $request->program_id,
-            'catatan' => $request->catatan,
-            'status' => $request->status,
-            'tanggal' => $request->tanggal,
-            'file_path' => $filePath,
-        ]);
+        Evaluasi::create($request->all());
 
         return redirect()->route('evaluasi.index')->with('success', 'Evaluasi berhasil ditambahkan.');
     }
@@ -53,12 +40,6 @@ class EvaluasiController extends Controller
         return view('evaluasi.edit', compact('evaluasi', 'programs'));
     }
 
-    public function show(Evaluasi $evaluasi)
-    {
-        return view('evaluasi.show', compact('evaluasi'));
-    }
-
-
     public function update(Request $request, Evaluasi $evaluasi)
     {
         $request->validate([
@@ -66,37 +47,16 @@ class EvaluasiController extends Controller
             'catatan' => 'nullable|string',
             'status' => 'required|string',
             'tanggal' => 'required|date',
-            'file_path' => 'nullable|file|mimes:pdf,doc,docx',
         ]);
 
-        if ($request->hasFile('file_path')) {
-            if ($evaluasi->file_path) {
-                Storage::disk('public')->delete($evaluasi->file_path);
-            }
-            $filePath = $request->file('file_path')->store('evaluasi_files', 'public');
-            $evaluasi->file_path = $filePath;
-        }
-
-        $evaluasi->update([
-            'program_id' => $request->program_id,
-            'catatan' => $request->catatan,
-            'status' => $request->status,
-            'tanggal' => $request->tanggal,
-        ]);
-
-        $evaluasi->save();
+        $evaluasi->update($request->all());
 
         return redirect()->route('evaluasi.index')->with('success', 'Evaluasi berhasil diperbarui.');
     }
 
     public function destroy(Evaluasi $evaluasi)
     {
-        if ($evaluasi->file_path) {
-            Storage::disk('public')->delete($evaluasi->file_path);
-        }
-
         $evaluasi->delete();
-
         return redirect()->route('evaluasi.index')->with('success', 'Evaluasi berhasil dihapus.');
     }
 }
