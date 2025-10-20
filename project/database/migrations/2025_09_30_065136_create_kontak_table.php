@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('pesan');
             $table->date('tanggal');
             $table->string('status')->default('baru'); // bisa: baru, dibaca
+            $table->text('reply')->nullable();
+            $table->timestamp('replied_at')->nullable();
             $table->timestamps();
         });
     }

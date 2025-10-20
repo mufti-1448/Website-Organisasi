@@ -11,9 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('kontak', function (Blueprint $table) {
+        Schema::create('kontak', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
+            $table->string('email');
+            $table->text('pesan');
+            $table->date('tanggal');
+            $table->string('status')->default('baru'); // bisa: baru, dibaca
             $table->text('reply')->nullable();
             $table->timestamp('replied_at')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -22,8 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('kontak', function (Blueprint $table) {
-            $table->dropColumn(['reply', 'replied_at']);
-        });
+        Schema::dropIfExists('kontak');
     }
 };

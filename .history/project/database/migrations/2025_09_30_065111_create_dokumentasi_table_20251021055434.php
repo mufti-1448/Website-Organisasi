@@ -6,29 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::table('dokumentasi', function (Blueprint $table) {
+        Schema::create('dokumentasi', function (Blueprint $table) {
+            $table->string('id')->primary();
             $table->string('rapat_id')->nullable()->after('id');
             $table->foreign('rapat_id')->references('id')->on('rapat')->onDelete('set null');
             $table->string('program_id')->nullable()->after('rapat_id');
             $table->foreign('program_id')->references('id')->on('program_kerja')->onDelete('set null');
+            $table->string('judul');
+            $table->text('deskripsi')->nullable();
+            $table->date('tanggal');
+            $table->string('kategori')->nullable();
+            $table->string('foto')->nullable();
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::table('dokumentasi', function (Blueprint $table) {
-            $table->dropForeign(['rapat_id']);
-            $table->dropColumn('rapat_id');
-            $table->dropForeign(['program_id']);
-            $table->dropColumn('program_id');
-        });
+        Schema::dropIfExists('dokumentasi');
     }
 };
