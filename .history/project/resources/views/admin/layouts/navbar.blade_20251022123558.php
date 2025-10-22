@@ -23,9 +23,7 @@
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-small shadow"
                 aria-labelledby="userDropdown">
                 <li>
-                    <a class="dropdown-item" href="#">
-                        <i class="bi bi-person-circle me-2"></i> Profil
-                    </a>
+                    
                 </li>
                 <li>
                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
