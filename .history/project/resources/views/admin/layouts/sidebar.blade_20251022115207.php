@@ -54,5 +54,10 @@
             </li>
         </ul>
 
+        {{-- Footer Sidebar --}}
+        <div class="mt-auto p-3 border-top border-secondary">
+            <small class="text-light">Logged in as:</small><br>
+            <span class="text-light fw-semibold">{{ Auth::user()->name ?? 'Admin' }}</span>
+        </div>
     </div>
 </nav>

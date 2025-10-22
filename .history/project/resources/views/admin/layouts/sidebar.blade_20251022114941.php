@@ -3,7 +3,7 @@
     <div class="pt-3 h-100 d-flex flex-column">
 
         {{-- Menu Utama --}}
-        <ul class="nav flex-column flex-grow-1 overflow-y-auto">
+        <ul class="nav flex-column mb-auto">
             <li class="nav-item">
                 <a href="{{ route('dashboard.index') }}"
                     class="nav-link d-flex align-items-center {{ request()->routeIs('dashboard.*') ? 'active text-light bg-secondary bg-opacity-50' : 'text-light' }}">
@@ -54,5 +54,10 @@
             </li>
         </ul>
 
+        {{-- Footer Sidebar --}}
+        <div class="mt-auto p-3 border-top border-secondary">
+            <small class="text-light">Logged in as:</small><br>
+            <span class="text-light fw-semibold">{{ Auth::user()->name ?? 'Admin' }}</span>
+        </div>
     </div>
 </nav>

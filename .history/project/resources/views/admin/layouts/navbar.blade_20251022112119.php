@@ -4,7 +4,7 @@
         <div class="d-flex align-items-center">
             <button class="btn btn-outline-light me-3 d-md-none" type="button" data-bs-toggle="collapse"
                 data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-                aria-label="Toggle navigation" onclick="toggleSidebar()">
+                aria-label="Toggle navigation">
                 <i class="bi bi-list"></i>
             </button>
             <a class="navbar-brand d-flex align-items-center m-0" href="{{ route('dashboard.index') }}">

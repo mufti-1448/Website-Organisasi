@@ -1,9 +1,8 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse position-fixed"
-    style="top: 56px; height: calc(100vh - 56px); z-index: 1030;">
-    <div class="pt-3 h-100 d-flex flex-column">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+    <div class="position-sticky pt-3 vh-100 d-flex flex-column">
 
         {{-- Menu Utama --}}
-        <ul class="nav flex-column flex-grow-1 overflow-y-auto">
+        <ul class="nav flex-column mb-auto">
             <li class="nav-item">
                 <a href="{{ route('dashboard.index') }}"
                     class="nav-link d-flex align-items-center {{ request()->routeIs('dashboard.*') ? 'active text-light bg-secondary bg-opacity-50' : 'text-light' }}">
@@ -54,5 +53,36 @@
             </li>
         </ul>
 
+        {{-- Footer Sidebar --}}
+        <div class="mt-auto p-3 border-top border-secondary">
+            <small class="text-secondary">Logged in as:</small><br>
+            <span class="text-light fw-semibold">{{ Auth::user()->name ?? 'Admin' }}</span>
+        </div>
     </div>
 </nav>
+
+{{-- Tambahkan sedikit CSS khusus agar tampil lebih halus --}}
+@push('styles')
+<style>
+    .sidebar {
+        min-height: 0vh;
+    }
+
+    .sidebar .nav-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+
+    .sidebar .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+
+    .sidebar .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        font-weight: 600;
+    }
+</style>
+@endpush
