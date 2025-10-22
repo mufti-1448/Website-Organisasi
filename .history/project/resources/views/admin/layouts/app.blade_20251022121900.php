@@ -43,20 +43,20 @@
 
         #sidebarMenu .nav-link {
             color: #ccc;
-            padding: 10px 16px;
+            /* padding: 10px 16px; */
             border-radius: 0.375rem;
             transition: all 0.2s;
         }
 
         #sidebarMenu .nav-link:hover,
         #sidebarMenu .nav-link.active {
-            background-color: #2b2b2bdd;
+            background-color: #2b2b2b;
             color: #fff;
         }
 
         /* Navbar brand */
         .navbar-brand {
-            font-size: 1.25rem;
+            font-size: 1.05rem;
             font-weight: 600;
         }
 

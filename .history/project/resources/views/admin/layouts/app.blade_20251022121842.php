@@ -27,7 +27,7 @@
         .navbar {
             font-family: "Segoe UI Semibold", "Segoe UI", Roboto, sans-serif;
             font-weight: 600;
-            letter-spacing: 0.3px;
+            /* letter-spacing: 0.3px; */
         }
 
         /* Sidebar style */
@@ -50,13 +50,13 @@
 
         #sidebarMenu .nav-link:hover,
         #sidebarMenu .nav-link.active {
-            background-color: #2b2b2bdd;
+            background-color: #2b2b2b;
             color: #fff;
         }
 
         /* Navbar brand */
         .navbar-brand {
-            font-size: 1.25rem;
+            font-size: 1.05rem;
             font-weight: 600;
         }
 

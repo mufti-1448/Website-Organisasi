@@ -17,10 +17,10 @@
         body {
             font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             font-size: 0.95rem;
-            color: #212529;
-            /* Warna teks normal */
-            background-color: #f8f9fa;
-            /* Background seperti semula */
+            color: #f8f9fa;
+            /* Warna teks di dark mode */
+            background-color: #121212;
+            /* Dark mode background */
         }
 
         /* Navbar style */
@@ -50,13 +50,13 @@
 
         #sidebarMenu .nav-link:hover,
         #sidebarMenu .nav-link.active {
-            background-color: #2b2b2bdd;
+            background-color: #2b2b2b;
             color: #fff;
         }
 
         /* Navbar brand */
         .navbar-brand {
-            font-size: 1.25rem;
+            font-size: 1.05rem;
             font-weight: 600;
         }
 

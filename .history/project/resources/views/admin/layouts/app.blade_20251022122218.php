@@ -50,7 +50,7 @@
 
         #sidebarMenu .nav-link:hover,
         #sidebarMenu .nav-link.active {
-            background-color: #2b2b2bdd;
+            background-color: #383838c1;
             color: #fff;
         }
 

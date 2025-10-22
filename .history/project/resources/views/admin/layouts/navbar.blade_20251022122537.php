@@ -5,9 +5,9 @@
             <button class="btn btn-outline-light me-3 d-md-none" type="button" data-bs-toggle="collapse"
                 data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
                 aria-label="Toggle navigation" onclick="toggleSidebar()">
-                <i class="bi bi-list"></i>
             </button>
-            <a class="navbar-brand d-flex align-items-center m-0 p-2" href="{{ route('dashboard.index') }}">
+            <a class="navbar-brand d-flex align-items-center m-0" href="{{ route('dashboard.index') }}">
+                <i class="bi bi-mortarboard me-2"></i>
                 <span class="fw-semibold">Sistem Organisasi Sekolah</span>
             </a>
         </div>

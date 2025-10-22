@@ -50,13 +50,13 @@
 
         #sidebarMenu .nav-link:hover,
         #sidebarMenu .nav-link.active {
-            background-color: #2b2b2bdd;
+            background-color: #2b2b2b;
             color: #fff;
         }
 
         /* Navbar brand */
         .navbar-brand {
-            font-size: 1.25rem;
+            font-size: 1.05rem;
             font-weight: 600;
         }
 
@@ -65,9 +65,9 @@
             background-color: #1e1e1e;
         }
 
-        .content-wrapper {
+        /* .content-wrapper {
             padding: 20px;
-        }
+        } */
     </style>
 </head>
 
