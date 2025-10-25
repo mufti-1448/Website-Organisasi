@@ -129,6 +129,19 @@
             font-size: 0.85rem;
             color: #6b7280;
         }
+
+        .lihat-data-link {
+            margin-left: 130px;
+            color: #696969;
+        }
+
+        @media (max-width: 767px) {
+            .lihat-data-link {
+                margin-left: 340px;
+                text-align: center;
+                display: block;
+            }
+        }
     </style>
 
     <div class="container-fluid">
@@ -150,7 +163,7 @@
                         </div>
                         <i class="bi bi-people-fill fs-2 text-secondary opacity-25"></i>
                     </div>
-                        <a class="icon-link icon-link-hover text-decoration-none mb-1" style="margin-left: 130px; color: #696969" href="{{ route('anggota.index') }}">
+                        <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link" href="{{ route('anggota.index') }}">
                             Lihat data
                             <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
                                 <path
@@ -169,7 +182,7 @@
                         </div>
                         <i class="bi bi-calendar-event-fill fs-2 text-secondary opacity-25"></i>
                     </div>
-                        <a class="icon-link icon-link-hover text-decoration-none mb-1" style="margin-left: 130px; color: #696969" href="{{ route('rapat.index') }}">
+                        <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link" href="{{ route('rapat.index') }}">
                             Lihat data
                             <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
                                 <path
@@ -188,7 +201,7 @@
                         </div>
                         <i class="bi bi-list-task fs-2 text-secondary opacity-25"></i>
                     </div>
-                        <a class="icon-link icon-link-hover text-decoration-none mb-1" style="margin-left: 130px; color: #696969" href="{{ route('program_kerja.index') }}">
+                        <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link" href="{{ route('program_kerja.index') }}">
                             Lihat data
                             <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
                                 <path
@@ -207,7 +220,7 @@
                         </div>
                         <i class="bi bi-graph-up-arrow fs-2 text-secondary opacity-25"></i>
                     </div>
-                        <a class="icon-link icon-link-hover text-decoration-none mb-1" style="margin-left: 130px; color: #696969" href="{{ route('evaluasi.index') }}">
+                        <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link" href="{{ route('evaluasi.index') }}">
                             Lihat data
                             <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
                                 <path
