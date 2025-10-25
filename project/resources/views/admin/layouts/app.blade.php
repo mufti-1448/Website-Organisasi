@@ -84,6 +84,13 @@
             {{-- Konten Halaman --}}
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content-wrapper">
                 @yield('content')
+
+                <footer class="main-footer mt-4">
+                    <div class="container text-center py-3">
+                        <span class="text-muted">&copy; {{ date('Y') }} <code>MuftiAli404</code>. All rights
+                            reserved.</span>
+                    </div>
+                </footer>
             </main>
         </div>
     </div>
@@ -93,13 +100,6 @@
 
     {{-- Additional Scripts --}}
     @yield('scripts')
-
-    <footer class="main-footer mt-4" style="margin-left: 150px">
-        <div class="container text-center py-3 ">
-            <span class="text-muted">&copy; {{ date('Y') }} <code>MuftiAli404</code>. All rights
-                reserved.</span>
-        </div>
-    </footer>
 </body>
 
 </html>
