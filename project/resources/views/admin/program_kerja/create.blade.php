@@ -56,6 +56,11 @@
                     </div>
 
                     <div class="mb-3">
+                        <label class="form-label">Target Date</label>
+                        <input type="date" name="target_date" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
                         <label class="form-label">Status</label>
                         <select name="status" class="form-select" required>
                             <option value="belum">Belum</option>

@@ -14,6 +14,8 @@ return new class extends Migration
             $table->text('deskripsi')->nullable();
             $table->foreignId('penanggung_jawab_id')->constrained('anggota')->onDelete('cascade');
             $table->enum('status', ['belum', 'berlangsung', 'selesai'])->default('belum');
+            $table->date('target_date')->nullable();
+            $table->integer('progress')->default(0);
             $table->timestamps();
         });
     }

@@ -38,6 +38,10 @@
                         <input type="date" name="tanggal" class="form-control" required>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Waktu</label>
+                        <input type="time" name="waktu" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Tempat</label>
                         <input type="text" name="tempat" class="form-control" required>
                     </div>
@@ -59,7 +63,8 @@
                             <option value="">-- Pilih Notulen --</option>
                             @foreach ($notulenList as $notulen)
                                 <option value="{{ $notulen->id }}">{{ $notulen->isi }}
-                                    ({{ \Carbon\Carbon::parse($notulen->tanggal)->format('d-m-Y') }})</option>
+                                    ({{ \Carbon\Carbon::parse($notulen->tanggal)->format('d-m-Y') }})
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -73,7 +78,8 @@
                             <option value="">-- Pilih Dokumentasi --</option>
                             @foreach ($dokumentasiList as $dokumentasi)
                                 <option value="{{ $dokumentasi->id }}">{{ $dokumentasi->judul }}
-                                    ({{ \Carbon\Carbon::parse($dokumentasi->tanggal)->format('d-m-Y') }})</option>
+                                    ({{ \Carbon\Carbon::parse($dokumentasi->tanggal)->format('d-m-Y') }})
+                                </option>
                             @endforeach
                         </select>
                     </div>

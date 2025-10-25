@@ -19,6 +19,7 @@ class Notulen extends Model
         'judul',
         'isi',
         'tanggal',
+        'waktu',
         'penulis_id',
         'file_path',
         'program_id',

@@ -8,6 +8,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $rapat->judul }}</h5>
                 <p><strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($rapat->tanggal)->format('d M Y') }}</p>
+                <p><strong>Waktu:</strong> {{ \Carbon\Carbon::parse($rapat->waktu)->format('H:i') }}</p>
                 <p><strong>Tempat:</strong> {{ $rapat->tempat }}</p>
                 <p><strong>Status:</strong> {{ $rapat->status }}</p>
             </div>
@@ -35,6 +36,7 @@
                                 <th>No</th>
                                 <th>Isi Notulen</th>
                                 <th>Tanggal</th>
+                                <th>Waktu</th>
                                 <th>Penulis</th>
                             </tr>
                         </thead>
@@ -43,6 +45,7 @@
                                 <td>1</td>
                                 <td>{{ $rapat->notulen->isi }}</td>
                                 <td>{{ \Carbon\Carbon::parse($rapat->notulen->tanggal)->format('d-m-Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($rapat->notulen->waktu)->format('H:i') }}</td>
                                 <td>{{ $rapat->notulen->penulis->nama ?? '-' }}</td>
                             </tr>
                         </tbody>

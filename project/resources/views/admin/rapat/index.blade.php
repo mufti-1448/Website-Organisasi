@@ -17,6 +17,7 @@
                     <th>ID</th>
                     <th>Judul</th>
                     <th>Tanggal</th>
+                    <th>Waktu</th>
                     <th>Tempat</th>
                     <th>Status</th>
                     <th>Aksi</th>
@@ -29,6 +30,7 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->judul }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->waktu)->format('H:i') }}</td>
                         <td>{{ $item->tempat }}</td>
                         <td>{{ $item->status }}</td>
                         <td>
@@ -46,7 +48,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center text-muted">Belum ada rapat.</td>
+                        <td colspan="8" class="text-center text-muted">Belum ada rapat.</td>
                     </tr>
                 @endforelse
             </tbody>

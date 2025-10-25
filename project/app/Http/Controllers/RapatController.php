@@ -45,6 +45,7 @@ class RapatController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'tanggal' => 'required|date',
+            'waktu' => 'nullable|date_format:H:i',
             'tempat' => 'required|string|max:255',
             'status' => 'required|in:belum,berlangsung,selesai',
             'notulen_id' => 'nullable|exists:notulen,id',
@@ -74,6 +75,7 @@ class RapatController extends Controller
             'id' => $nextCode,
             'judul' => $request->judul,
             'tanggal' => $request->tanggal,
+            'waktu' => $request->waktu,
             'tempat' => $request->tempat,
             'status' => $request->status,
         ]);
@@ -132,6 +134,7 @@ class RapatController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'tanggal' => 'required|date',
+            'waktu' => 'nullable|date_format:H:i',
             'tempat' => 'required|string|max:255',
             'status' => 'required|in:belum,berlangsung,selesai',
             'notulen_id' => 'nullable|exists:notulen,id',
@@ -163,6 +166,7 @@ class RapatController extends Controller
         $rapat->update([
             'judul' => $request->judul,
             'tanggal' => $request->tanggal,
+            'waktu' => $request->waktu,
             'tempat' => $request->tempat,
             'status' => $request->status,
         ]);

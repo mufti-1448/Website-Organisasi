@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('judul');
             $table->text('isi');
             $table->date('tanggal');
+            $table->time('waktu')->nullable();
             $table->foreignId('penulis_id')->constrained('anggota')->onDelete('cascade');
             $table->string('program_id')->nullable()->after('penulis_id');
             $table->foreign('program_id')->references('id')->on('program_kerja')->onDelete('set null');

@@ -18,6 +18,9 @@
                             <p><strong>Nama:</strong> {{ $program->nama }}</p>
                             <p><strong>Deskripsi:</strong> {{ $program->deskripsi ?? '-' }}</p>
                             <p><strong>Penanggung Jawab:</strong> {{ $program->penanggungJawab->nama ?? '-' }}</p>
+                            <p><strong>Target Date:</strong>
+                                {{ $program->target_date ? \Carbon\Carbon::parse($program->target_date)->format('d-m-Y') : '-' }}
+                            </p>
                             <p><strong>Status:</strong> <span
                                     class="badge bg-info text-dark">{{ ucfirst($program->status) }}</span></p>
                         </div>

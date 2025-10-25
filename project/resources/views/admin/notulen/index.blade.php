@@ -25,6 +25,7 @@
                             <th>Rapat</th>
                             <th>Penulis</th>
                             <th>Tanggal</th>
+                            <th>Waktu</th>
                             <th>File</th>
                             <th width="15%">Aksi</th>
                         </tr>
@@ -38,6 +39,7 @@
                                 <td>{{ $n->rapat->judul ?? '-' }}</td>
                                 <td>{{ $n->penulis->nama ?? '-' }}</td>
                                 <td>{{ $n->tanggal }}</td>
+                                <td>{{ \Carbon\Carbon::parse($n->waktu)->format('H:i') }}</td>
                                 <td>
                                     @if ($n->file_path)
                                         <a href="{{ asset('storage/' . $n->file_path) }}" target="_blank"
@@ -71,7 +73,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center text-muted">Belum ada data notulen.</td>
+                                <td colspan="9" class="text-center text-muted">Belum ada data notulen.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -107,6 +109,9 @@
 
                                         <dt class="col-sm-3">Tanggal</dt>
                                         <dd class="col-sm-9">{{ $n->tanggal }}</dd>
+
+                                        <dt class="col-sm-3">Waktu</dt>
+                                        <dd class="col-sm-9">{{ \Carbon\Carbon::parse($n->waktu)->format('H:i') }}</dd>
 
                                         <dt class="col-sm-3">Isi Notulen</dt>
                                         <dd class="col-sm-9">

@@ -34,6 +34,11 @@
             </div>
 
             <div class="mb-3">
+                <label for="waktu" class="form-label">Waktu Notulen</label>
+                <input type="time" name="waktu" id="waktu" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
                 <label for="penulis_id" class="form-label">Penulis</label>
                 <select name="penulis_id" id="penulis_id" class="form-select" required>
                     <option value="">-- Pilih Penulis --</option>

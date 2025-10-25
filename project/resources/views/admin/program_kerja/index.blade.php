@@ -12,6 +12,7 @@
                     <th>ID</th>
                     <th>Nama</th>
                     <th>Penanggung Jawab</th>
+                    <th>Target Date</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </tr>
@@ -22,6 +23,7 @@
                         <td>{{ $p->id }}</td>
                         <td>{{ $p->nama }}</td>
                         <td>{{ $p->penanggungJawab->nama ?? '-' }}</td>
+                        <td>{{ $p->target_date ? \Carbon\Carbon::parse($p->target_date)->format('d-m-Y') : '-' }}</td>
                         <td><span class="badge bg-info text-dark">{{ ucfirst($p->status) }}</span></td>
                         <td>
                             <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal"
@@ -55,6 +57,9 @@
                                 <p><strong>Nama:</strong> {{ $p->nama }}</p>
                                 <p><strong>Deskripsi:</strong> {{ $p->deskripsi ?? '-' }}</p>
                                 <p><strong>Penanggung Jawab:</strong> {{ $p->penanggungJawab->nama ?? '-' }}</p>
+                                <p><strong>Target Date:</strong>
+                                    {{ $p->target_date ? \Carbon\Carbon::parse($p->target_date)->format('d-m-Y') : '-' }}
+                                </p>
                                 <p><strong>Status:</strong> <span
                                         class="badge bg-info text-dark">{{ ucfirst($p->status) }}</span></p>
                             </div>

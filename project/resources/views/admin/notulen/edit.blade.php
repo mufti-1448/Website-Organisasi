@@ -32,6 +32,12 @@
             </div>
 
             <div class="mb-3">
+                <label for="waktu" class="form-label">Waktu Notulen</label>
+                <input type="time" name="waktu" id="waktu" class="form-control" value="{{ $notulen->waktu }}"
+                    required>
+            </div>
+
+            <div class="mb-3">
                 <label for="penulis_id" class="form-label">Penulis</label>
                 <select name="penulis_id" id="penulis_id" class="form-select" required>
                     <option value="">-- Pilih Penulis --</option>
@@ -56,7 +62,8 @@
             <div class="mb-3">
                 <label for="file" class="form-label">Upload File Baru (Opsional)</label>
                 @if ($notulen->file_path)
-                    <p>File saat ini: <a href="{{ asset('storage/' . $notulen->file_path) }}" target="_blank">Lihat File</a>
+                    <p>File saat ini: <a href="{{ asset('storage/' . $notulen->file_path) }}" target="_blank">Lihat
+                            File</a>
                     </p>
                 @endif
                 <input type="file" name="file" id="file" class="form-control" accept=".pdf,.docx,.txt">

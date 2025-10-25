@@ -38,6 +38,10 @@
                         <input type="date" name="tanggal" class="form-control" value="{{ $rapat->tanggal }}" required>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Waktu</label>
+                        <input type="time" name="waktu" class="form-control" value="{{ $rapat->waktu }}" required>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Tempat</label>
                         <input type="text" name="tempat" class="form-control" value="{{ $rapat->tempat }}" required>
                     </div>

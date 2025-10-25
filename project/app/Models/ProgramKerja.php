@@ -20,6 +20,8 @@ class ProgramKerja extends Model
         'deskripsi',
         'penanggung_jawab_id',
         'status',
+        'target_date',
+        'progress',
     ];
 
     // Relasi ke Anggota (penanggung jawab)

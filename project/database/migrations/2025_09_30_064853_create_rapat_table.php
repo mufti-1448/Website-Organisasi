@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('nama')->nullable(); // Tambahkan kolom nama
             $table->date('tanggal');
+            $table->time('waktu')->nullable();
             $table->string('tempat');
             $table->enum('status', ['belum', 'berlangsung', 'selesai'])->default('belum');
             $table->timestamps();

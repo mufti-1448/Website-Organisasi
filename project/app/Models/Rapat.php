@@ -14,7 +14,7 @@ class Rapat extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $fillable = ['id', 'judul', 'nama', 'tanggal', 'tempat', 'status'];
+    protected $fillable = ['id', 'judul', 'nama', 'tanggal', 'waktu', 'tempat', 'status'];
 
     public function notulen()
     {
@@ -25,6 +25,4 @@ class Rapat extends Model
     {
         return $this->hasOne(Dokumentasi::class, 'rapat_id', 'id');
     }
-
-
 }

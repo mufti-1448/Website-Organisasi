@@ -46,6 +46,7 @@ class ProgramKerjaController extends Controller
             'nama' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
             'penanggung_jawab_id' => 'required|exists:anggota,id',
+            'target_date' => 'nullable|date',
             'status' => 'required|in:belum,berlangsung,selesai',
             'notulen_id' => 'nullable|exists:notulen,id',
             'evaluasi_id' => 'nullable|exists:evaluasi,id',
@@ -62,6 +63,7 @@ class ProgramKerjaController extends Controller
                 'nama' => $request->nama,
                 'deskripsi' => $request->deskripsi,
                 'penanggung_jawab_id' => $request->penanggung_jawab_id,
+                'target_date' => $request->target_date,
                 'status' => $request->status,
             ]);
 
@@ -124,6 +126,7 @@ class ProgramKerjaController extends Controller
             'nama' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
             'penanggung_jawab_id' => 'required|exists:anggota,id',
+            'target_date' => 'nullable|date',
             'status' => 'required|in:belum,berlangsung,selesai',
             'notulen_id' => 'nullable|exists:notulen,id',
             'evaluasi_id' => 'nullable|exists:evaluasi,id',
@@ -138,6 +141,7 @@ class ProgramKerjaController extends Controller
                 'nama' => $request->nama,
                 'deskripsi' => $request->deskripsi,
                 'penanggung_jawab_id' => $request->penanggung_jawab_id,
+                'target_date' => $request->target_date,
                 'status' => $request->status,
             ]);
 

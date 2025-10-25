@@ -61,6 +61,12 @@
                     </div>
 
                     <div class="mb-3">
+                        <label class="form-label">Target Date</label>
+                        <input type="date" name="target_date" class="form-control"
+                            value="{{ old('target_date', $program->target_date) }}">
+                    </div>
+
+                    <div class="mb-3">
                         <label class="form-label">Status</label>
                         <select name="status" class="form-select" required>
                             <option value="belum" {{ $program->status == 'belum' ? 'selected' : '' }}>Belum</option>
