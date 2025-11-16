@@ -60,7 +60,7 @@
                             <option value="">-- Pilih Penulis --</option>
                             @foreach ($anggota as $a)
                                 <option value="{{ $a->id }}" {{ $evaluasi->penulis == $a->id ? 'selected' : '' }}>
-                                    {{ $a->nama }} ({{ $a->jabatan }})
+                                    {{ $a->nama }}
                                 </option>
                             @endforeach
                         </select>

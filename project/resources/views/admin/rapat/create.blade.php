@@ -4,7 +4,7 @@
     <div class="container mt-4">
         <h3><i class="bi bi-plus-circle"></i> Tambah Rapat</h3>
 
-        <form action="{{ route('rapat.store') }}" method="POST">
+        <form action="{{ route('admin.rapat.store') }}" method="POST">
             @csrf
             <ul class="nav nav-tabs" id="rapatTab" role="tablist">
                 <li class="nav-item">

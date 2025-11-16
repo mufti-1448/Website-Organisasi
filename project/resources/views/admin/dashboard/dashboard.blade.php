@@ -83,13 +83,14 @@
                         </div>
                         <i class="bi bi-people-fill fs-2 text-secondary opacity-25"></i>
                     </div>
-                        <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link" href="{{ route('admin.anggota.index') }}">
-                            Lihat data
-                            <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
-                                <path
-                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                            </svg>
-                        </a>
+                    <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link"
+                        href="{{ route('admin.anggota.index') }}">
+                        Lihat data
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                        </svg>
+                    </a>
                 </div>
             </div>
 
@@ -102,13 +103,14 @@
                         </div>
                         <i class="bi bi-calendar-event-fill fs-2 text-secondary opacity-25"></i>
                     </div>
-                        <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link" href="{{ route('admin.rapat.index') }}">
-                            Lihat data
-                            <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
-                                <path
-                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                            </svg>
-                        </a>
+                    <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link"
+                        href="{{ route('admin.rapat.index') }}">
+                        Lihat data
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                        </svg>
+                    </a>
                 </div>
             </div>
 
@@ -121,13 +123,14 @@
                         </div>
                         <i class="bi bi-list-task fs-2 text-secondary opacity-25"></i>
                     </div>
-                        <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link" href="{{ route('admin.program_kerja.index') }}">
-                            Lihat data
-                            <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
-                                <path
-                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                            </svg>
-                        </a>
+                    <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link"
+                        href="{{ route('admin.program_kerja.index') }}">
+                        Lihat data
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                        </svg>
+                    </a>
                 </div>
             </div>
 
@@ -140,13 +143,14 @@
                         </div>
                         <i class="bi bi-graph-up-arrow fs-2 text-secondary opacity-25"></i>
                     </div>
-                        <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link" href="{{ route('admin.evaluasi.index') }}">
-                            Lihat data
-                            <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
-                                <path
-                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                            </svg>
-                        </a>
+                    <a class="icon-link icon-link-hover text-decoration-none mb-1 lihat-data-link"
+                        href="{{ route('admin.evaluasi.index') }}">
+                        Lihat data
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -172,7 +176,12 @@
                         <h6 class="m-0 font-weight-bold text-primary">Aktivitas Terbaru</h6>
                     </div>
                     <div class="card-body">
-                        @forelse($rapatTerbaru->take(3) as $rapat)
+
+                        @if ($rapatTerbaru->isEmpty() && $programTerbaru->isEmpty())
+                            <div class="alert alert-info">Belum Ada Aktivitas Terbaru</div>
+                        @endif
+
+                        @foreach($rapatTerbaru->take(3) as $rapat)
                             <a href="#" class="list-group-item list-group-item-action">
                                 <div class="w-100">
                                     <h5 class="mb-1">{{ $rapat->judul }}</h5>
@@ -197,10 +206,8 @@
                                     @endif
                                 </p>
                             </a>
-                        @empty
-                            <div class="alert alert-info">Belum Ada Aktivitas Terbaru</div>
-                        @endforelse
-                        @forelse($programTerbaru->take(2) as $program)
+                        @endforeach
+                        @foreach($programTerbaru->take(2) as $program)
                             <a href="#" class="list-group-item list-group-item-action">
                                 <div class="w-100">
                                     <h5 class="mb-1">{{ $program->nama }}</h5>
@@ -228,10 +235,7 @@
                                         </small>
                                     @endif
                                 </p>
-                            </a>
-                        @empty
-
-                        @endforelse
+                        @endforeach
                     </div>
                 </div>
             </div>

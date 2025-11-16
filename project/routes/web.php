@@ -33,15 +33,14 @@ Route::name('user.')->group(function () {
 });
 
 
-
-
+Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.post');
 
 // ✅ Admin routes
 Route::prefix('admin')->group(function () {
 
     // 🔹 Form login admin
-    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
-    Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.post');
+    
 
     // 🔹 Area admin (hanya untuk user dengan is_admin = true)
     Route::middleware(['isAdmin'])->group(function () {

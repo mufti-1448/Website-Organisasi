@@ -55,7 +55,7 @@
                         <select name="penulis" class="form-select" required>
                             <option value="">-- Pilih Penulis --</option>
                             @foreach ($anggota as $a)
-                                <option value="{{ $a->id }}">{{ $a->nama }} ({{ $a->jabatan }})</option>
+                                <option value="{{ $a->id }}">{{ $a->nama }}</option>
                             @endforeach
                         </select>
                     </div>
