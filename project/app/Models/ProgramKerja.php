@@ -36,11 +36,7 @@ class ProgramKerja extends Model
         return $this->hasOne(Evaluasi::class, 'program_id');
     }
 
-    // Relasi ke Dokumentasi
-    public function dokumentasi()
-    {
-        return $this->hasOne(Dokumentasi::class, 'program_id');
-    }
+
 
     public function notulen()
     {

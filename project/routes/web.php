@@ -6,13 +6,13 @@ use App\Http\Controllers\RapatController;
 use App\Http\Controllers\ProgramKerjaController;
 use App\Http\Controllers\NotulenController;
 use App\Http\Controllers\EvaluasiController;
-use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\TentangKamiController;
+
 
 // ✅ Rute untuk user biasa (public)
 Route::name('user.')->group(function () {
@@ -24,7 +24,6 @@ Route::name('user.')->group(function () {
     Route::resource('program_kerja', ProgramKerjaController::class);
     Route::resource('notulen', NotulenController::class);
     Route::resource('evaluasi', EvaluasiController::class);
-    Route::resource('dokumentasi', DokumentasiController::class);
     Route::resource('kontak', KontakController::class);
 
     Route::get('kontak/{id}/reply', [KontakController::class, 'reply'])->name('kontak.reply');
@@ -40,7 +39,7 @@ Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.
 Route::prefix('admin')->group(function () {
 
     // 🔹 Form login admin
-    
+
 
     // 🔹 Area admin (hanya untuk user dengan is_admin = true)
     Route::middleware(['isAdmin'])->group(function () {
@@ -93,15 +92,6 @@ Route::prefix('admin')->group(function () {
             'edit' => 'admin.evaluasi.edit',
             'update' => 'admin.evaluasi.update',
             'destroy' => 'admin.evaluasi.destroy',
-        ]);
-        Route::resource('dokumentasi', DokumentasiController::class)->names([
-            'index' => 'admin.dokumentasi.index',
-            'create' => 'admin.dokumentasi.create',
-            'store' => 'admin.dokumentasi.store',
-            'show' => 'admin.dokumentasi.show',
-            'edit' => 'admin.dokumentasi.edit',
-            'update' => 'admin.dokumentasi.update',
-            'destroy' => 'admin.dokumentasi.destroy',
         ]);
         Route::resource('kontak', KontakController::class)->names([
             'index' => 'admin.kontak.index',

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProgramKerja;
 use App\Models\Anggota;
 use App\Models\Notulen;
-use App\Models\Dokumentasi;
+
 use App\Models\Evaluasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +18,7 @@ class ProgramKerjaController extends Controller
     public function index()
     {
         $sosialMedia = \App\Models\SosialMedia::all()->keyBy('platform');
-        $programKerja = ProgramKerja::with(['penanggungJawab', 'notulen', 'evaluasi', 'dokumentasi'])->get();
+        $programKerja = ProgramKerja::with(['penanggungJawab', 'notulen', 'evaluasi'])->get();
         // Check if request is from admin or user
         if (request()->is('admin/*')) {
             return view('admin.program_kerja.index', compact('programKerja'));
@@ -37,9 +37,8 @@ class ProgramKerjaController extends Controller
         $anggota = Anggota::all();
         $notulenList = Notulen::whereNull('program_id')->get();
         $evaluasiList = Evaluasi::whereNull('program_id')->get();
-        $dokumentasiList = Dokumentasi::whereNull('program_id')->get();
 
-        return view('admin.program_kerja.create', compact('nextCode', 'anggota', 'notulenList', 'evaluasiList', 'dokumentasiList'));
+        return view('admin.program_kerja.create', compact('nextCode', 'anggota', 'notulenList', 'evaluasiList'));
     }
 
     /**
@@ -55,7 +54,6 @@ class ProgramKerjaController extends Controller
             'status' => 'required|in:belum,berlangsung,selesai',
             'notulen_id' => 'nullable|exists:notulen,id',
             'evaluasi_id' => 'nullable|exists:evaluasi,id',
-            'dokumentasi_id' => 'nullable|exists:dokumentasi,id',
         ]);
 
         $last = ProgramKerja::orderBy('id', 'desc')->first();
@@ -85,12 +83,6 @@ class ProgramKerjaController extends Controller
                 $evaluasi->save();
             }
 
-            if ($request->filled('dokumentasi_id')) {
-                $dokumentasi = Dokumentasi::find($request->dokumentasi_id);
-                $dokumentasi->program_id = $program->id;
-                $dokumentasi->save();
-            }
-
             DB::commit();
             return redirect()->route('admin.program_kerja.index')->with('success', 'Program kerja berhasil ditambahkan!');
         } catch (\Exception $e) {
@@ -104,7 +96,7 @@ class ProgramKerjaController extends Controller
      */
     public function show(string $id)
     {
-        $program = ProgramKerja::with(['penanggungJawab', 'notulen.penulisRelation', 'evaluasi.penulisRelation', 'dokumentasi'])->findOrFail($id);
+        $program = ProgramKerja::with(['penanggungJawab', 'notulen.penulisRelation', 'evaluasi.penulisRelation'])->findOrFail($id);
         // Check if request is from admin or user
         if (request()->is('admin/*')) {
             return view('admin.program_kerja.show', compact('program'));
@@ -117,13 +109,12 @@ class ProgramKerjaController extends Controller
      */
     public function edit(string $id)
     {
-        $program = ProgramKerja::with(['notulen', 'evaluasi', 'dokumentasi'])->findOrFail($id);
+        $program = ProgramKerja::with(['notulen', 'evaluasi'])->findOrFail($id);
         $anggota = Anggota::all();
         $notulenList = Notulen::whereNull('program_id')->orWhere('program_id', $id)->get();
         $evaluasiList = Evaluasi::whereNull('program_id')->orWhere('program_id', $id)->get();
-        $dokumentasiList = Dokumentasi::whereNull('program_id')->orWhere('program_id', $id)->get();
 
-        return view('admin.program_kerja.edit', compact('program', 'anggota', 'notulenList', 'evaluasiList', 'dokumentasiList'));
+        return view('admin.program_kerja.edit', compact('program', 'anggota', 'notulenList', 'evaluasiList'));
     }
 
     /**
@@ -139,7 +130,6 @@ class ProgramKerjaController extends Controller
             'status' => 'required|in:belum,berlangsung,selesai',
             'notulen_id' => 'nullable|exists:notulen,id',
             'evaluasi_id' => 'nullable|exists:evaluasi,id',
-            'dokumentasi_id' => 'nullable|exists:dokumentasi,id',
         ]);
 
         DB::beginTransaction();
@@ -157,7 +147,6 @@ class ProgramKerjaController extends Controller
             // Reset semua relasi dulu
             Notulen::where('program_id', $program->id)->update(['program_id' => null]);
             Evaluasi::where('program_id', $program->id)->update(['program_id' => null]);
-            Dokumentasi::where('program_id', $program->id)->update(['program_id' => null]);
 
             // Hubungkan ulang jika ada input
             if ($request->filled('notulen_id')) {
@@ -170,12 +159,6 @@ class ProgramKerjaController extends Controller
                 $evaluasi = Evaluasi::find($request->evaluasi_id);
                 $evaluasi->program_id = $program->id;
                 $evaluasi->save();
-            }
-
-            if ($request->filled('dokumentasi_id')) {
-                $dokumentasi = Dokumentasi::find($request->dokumentasi_id);
-                $dokumentasi->program_id = $program->id;
-                $dokumentasi->save();
             }
 
             DB::commit();
@@ -213,7 +196,6 @@ class ProgramKerjaController extends Controller
         // Set null relasi sebelum hapus
         Notulen::where('program_id', $program->id)->update(['program_id' => null]);
         Evaluasi::where('program_id', $program->id)->update(['program_id' => null]);
-        Dokumentasi::where('program_id', $program->id)->update(['program_id' => null]);
         $program->delete();
 
         return redirect()->route('admin.program_kerja.index')->with('success', 'Program kerja berhasil dihapus.');

@@ -41,12 +41,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.dokumentasi.index') }}"
-                    class="nav-link d-flex align-items-center {{ request()->routeIs('admin.dokumentasi.*') ? 'active text-light bg-secondary bg-opacity-50' : 'text-light' }}">
-                    <i class="bi bi-image-fill me-2"></i> Dokumentasi
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{{ route('admin.kontak.index') }}"
                     class="nav-link d-flex align-items-center {{ request()->routeIs('admin.kontak.*') ? 'active text-light bg-secondary bg-opacity-50' : 'text-light' }}">
                     <i class="bi bi-chat-dots-fill me-2"></i> Kontak

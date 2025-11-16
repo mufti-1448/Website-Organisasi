@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Rapat;
 use App\Models\Notulen;
-use App\Models\Dokumentasi;
+
 use Illuminate\Support\Facades\DB;
 
 class RapatController extends Controller
@@ -36,10 +36,8 @@ class RapatController extends Controller
         // Hanya tampilkan notulen yang belum terhubung dengan rapat
         $notulenList = Notulen::whereNull('rapat_id')->get();
 
-        // Hanya tampilkan dokumentasi yang belum terhubung dengan rapat
-        $dokumentasiList = Dokumentasi::whereNull('rapat_id')->get();
 
-        return view('admin.rapat.create', compact('nextCode', 'notulenList', 'dokumentasiList'));
+        return view('admin.rapat.create', compact('nextCode', 'notulenList'));
     }
 
 
@@ -55,7 +53,6 @@ class RapatController extends Controller
             'tempat' => 'required|string|max:255',
             'status' => 'required|in:belum,berlangsung,selesai',
             'notulen_id' => 'nullable|exists:notulen,id',
-            'dokumentasi_id' => 'nullable|exists:dokumentasi,id',
         ]);
 
         // Validasi bahwa notulen belum digunakan oleh rapat lain
@@ -66,13 +63,7 @@ class RapatController extends Controller
             }
         }
 
-        // Validasi bahwa dokumentasi belum digunakan oleh rapat lain
-        if ($request->dokumentasi_id) {
-            $existingRapat = Dokumentasi::where('id', $request->dokumentasi_id)->whereNotNull('rapat_id')->first();
-            if ($existingRapat) {
-                return redirect()->back()->withErrors(['dokumentasi_id' => 'Dokumentasi ini sudah digunakan oleh rapat lain.'])->withInput();
-            }
-        }
+
 
         $lastRapat = DB::table('rapat')->orderByDesc('id')->first();
         $nextCode = $lastRapat ? 'RPT' . str_pad((int) substr($lastRapat->id, 3) + 1, 3, '0', STR_PAD_LEFT) : 'RPT001';
@@ -95,14 +86,7 @@ class RapatController extends Controller
             }
         }
 
-        // Hubungkan Dokumentasi jika dipilih
-        if ($request->dokumentasi_id) {
-            $dokumentasi = Dokumentasi::find($request->dokumentasi_id);
-            if ($dokumentasi) {
-                $dokumentasi->rapat_id = $rapat->id;
-                $dokumentasi->save();
-            }
-        }
+
 
         return redirect()->route('admin.rapat.index')->with('success', 'Rapat berhasil dibuat.');
     }
@@ -112,7 +96,7 @@ class RapatController extends Controller
      */
     public function show(string $id)
     {
-        $rapat = Rapat::with(['notulen.penulis', 'dokumentasi'])->findOrFail($id);
+        $rapat = Rapat::with(['notulen.penulis'])->findOrFail($id);
         // Check if request is from admin or user
         if (request()->is('admin/*')) {
             return view('admin.rapat.show', compact('rapat'));
@@ -125,13 +109,11 @@ class RapatController extends Controller
      */
     public function edit($id)
     {
-        $rapat = Rapat::with(['notulen', 'dokumentasi'])->findOrFail($id);
+        $rapat = Rapat::with(['notulen'])->findOrFail($id);
         // Tampilkan notulen yang belum terhubung dengan rapat lain atau yang sudah terhubung dengan rapat ini
         $notulenList = Notulen::whereNull('rapat_id')->orWhere('rapat_id', $id)->get();
-        // Tampilkan dokumentasi yang belum terhubung dengan rapat lain atau yang sudah terhubung dengan rapat ini
-        $dokumentasiList = Dokumentasi::whereNull('rapat_id')->orWhere('rapat_id', $id)->get();
 
-        return view('admin.rapat.edit', compact('rapat', 'notulenList', 'dokumentasiList'));
+        return view('admin.rapat.edit', compact('rapat', 'notulenList'));
     }
 
     /**
@@ -148,7 +130,6 @@ class RapatController extends Controller
             'tempat' => 'required|string|max:255',
             'status' => 'required|in:belum,berlangsung,selesai',
             'notulen_id' => 'nullable|exists:notulen,id',
-            'dokumentasi_id' => 'nullable|exists:dokumentasi,id',
         ]);
 
         // Validasi bahwa notulen belum digunakan oleh rapat lain (kecuali rapat ini sendiri)
@@ -162,16 +143,7 @@ class RapatController extends Controller
             }
         }
 
-        // Validasi bahwa dokumentasi belum digunakan oleh rapat lain (kecuali rapat ini sendiri)
-        if ($request->dokumentasi_id) {
-            $existingRapat = Dokumentasi::where('id', $request->dokumentasi_id)
-                ->whereNotNull('rapat_id')
-                ->where('rapat_id', '!=', $rapat->id)
-                ->first();
-            if ($existingRapat) {
-                return redirect()->back()->withErrors(['dokumentasi_id' => 'Dokumentasi ini sudah digunakan oleh rapat lain.'])->withInput();
-            }
-        }
+
 
         $rapat->update([
             'judul' => $request->judul,
@@ -194,18 +166,7 @@ class RapatController extends Controller
             }
         }
 
-        // Update relasi Dokumentasi
-        // Lepaskan dokumentasi lama dari rapat ini
-        Dokumentasi::where('rapat_id', $rapat->id)->update(['rapat_id' => null]);
 
-        // Hubungkan dokumentasi baru jika dipilih
-        if ($request->dokumentasi_id) {
-            $dokumentasi = Dokumentasi::find($request->dokumentasi_id);
-            if ($dokumentasi) {
-                $dokumentasi->rapat_id = $rapat->id;
-                $dokumentasi->save();
-            }
-        }
 
         return redirect()->route('admin.rapat.index')->with('success', 'Rapat berhasil diperbarui.');
     }
@@ -222,10 +183,7 @@ class RapatController extends Controller
             $rapat->notulen->update(['rapat_id' => null]);
         }
 
-        // Lepaskan relasi dokumentasi (file dokumentasi TIDAK dihapus sesuai spesifikasi)
-        if ($rapat->dokumentasi) {
-            $rapat->dokumentasi->update(['rapat_id' => null]);
-        }
+
 
         $rapat->delete();
 

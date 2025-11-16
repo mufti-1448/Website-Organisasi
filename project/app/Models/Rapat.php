@@ -20,9 +20,4 @@ class Rapat extends Model
     {
         return $this->hasOne(Notulen::class, 'rapat_id', 'id');
     }
-
-    public function dokumentasi()
-    {
-        return $this->hasOne(Dokumentasi::class, 'rapat_id', 'id');
-    }
 }
