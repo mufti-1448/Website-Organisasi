@@ -191,10 +191,10 @@ Laravel + SQLite + Bootstrap + HTML + CSS + JS
 
 ## 🔹 Tahap 5 – Autentikasi & Middleware (75–85%)
 
-- [ ] Install Laravel Breeze (atau Jetstream/Laravel UI).
-- [ ] Buat login page dengan Bootstrap styling.
-- [ ] Tambahkan middleware `auth` untuk halaman CRUD.
-- [ ] Tambahkan role sederhana (Admin/User) jika perlu.
+- [✅] Install Laravel Breeze (atau Jetstream/Laravel UI).
+- [✅] Buat login page dengan Bootstrap styling.
+- [✅] Tambahkan middleware `auth` untuk halaman CRUD.
+- [✅] Tambahkan role sederhana (Admin/User) jika perlu.
 
 ---
 
