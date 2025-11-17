@@ -94,3 +94,4 @@ Route::prefix('admin')->group(function () {
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
     });
 });
+"Route::get('/kontak', function () { return view('user.kontak.index'); })->name('kontak');" 
