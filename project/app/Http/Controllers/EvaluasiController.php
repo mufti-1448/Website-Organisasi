@@ -12,12 +12,11 @@ class EvaluasiController extends Controller
     public function index()
     {
         $evaluasi = Evaluasi::with('programKerja', 'penulisRelation')->latest()->get();
-        $sosialMedia = \App\Models\SosialMedia::all()->keyBy('platform');
         // Check if request is from admin or user
         if (request()->is('admin/*')) {
             return view('admin.evaluasi.index', compact('evaluasi'));
         }
-        return view('user.evaluasi.index', compact('evaluasi', 'sosialMedia'));
+        return view('user.evaluasi.index', compact('evaluasi'));
     }
 
     public function create()

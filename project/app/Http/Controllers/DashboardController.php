@@ -12,7 +12,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $sosialMedia = \App\Models\SosialMedia::all()->keyBy('platform');
         // Hitungan ringkasan
         $totalAnggota = Anggota::count();
         $totalRapat = Rapat::count();
@@ -44,8 +43,7 @@ class DashboardController extends Controller
             'totalEvaluasi',
             'monthlyData',
             'rapatTerbaru',
-            'programTerbaru',
-            'sosialMedia'
+            'programTerbaru'
         ));
     }
 

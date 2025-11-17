@@ -17,13 +17,12 @@ class ProgramKerjaController extends Controller
      */
     public function index()
     {
-        $sosialMedia = \App\Models\SosialMedia::all()->keyBy('platform');
         $programKerja = ProgramKerja::with(['penanggungJawab', 'notulen', 'evaluasi'])->get();
         // Check if request is from admin or user
         if (request()->is('admin/*')) {
             return view('admin.program_kerja.index', compact('programKerja'));
         }
-        return view('user.program_kerja.index', compact('programKerja', 'sosialMedia'));
+        return view('user.program_kerja.index', compact('programKerja'));
     }
 
     /**

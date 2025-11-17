@@ -40,12 +40,7 @@
                     <i class="bi bi-graph-up-arrow me-2"></i> Evaluasi
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('admin.kontak.index') }}"
-                    class="nav-link d-flex align-items-center {{ request()->routeIs('admin.kontak.*') ? 'active text-light bg-secondary bg-opacity-50' : 'text-light' }}">
-                    <i class="bi bi-chat-dots-fill me-2"></i> Kontak
-                </a>
-            </li>
+
         </ul>
 
     </div>

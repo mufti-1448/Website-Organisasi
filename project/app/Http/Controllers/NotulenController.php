@@ -15,12 +15,11 @@ class NotulenController extends Controller
     public function index()
     {
         $notulen = Notulen::with(['rapat', 'penulis'])->get();
-        $sosialMedia = \App\Models\SosialMedia::all()->keyBy('platform');
         // Check if request is from admin or user
         if (request()->is('admin/*')) {
             return view('admin.notulen.index', compact('notulen'));
         }
-        return view('user.notulen.index', compact('notulen', 'sosialMedia'));
+        return view('user.notulen.index', compact('notulen'));
     }
 
     public function create()

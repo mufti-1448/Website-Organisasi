@@ -16,12 +16,11 @@ class RapatController extends Controller
     public function index()
     {
         $rapat = Rapat::all();
-        $sosialMedia = \App\Models\SosialMedia::all()->keyBy('platform');
         // Check if request is from admin or user
         if (request()->is('admin/*')) {
             return view('admin.rapat.index', compact('rapat'));
         }
-        return view('user.rapat.index', compact('rapat', 'sosialMedia'));
+        return view('user.rapat.index', compact('rapat'));
     }
 
 

@@ -8,7 +8,6 @@ class BerandaController extends Controller
 {
   public function index()
   {
-    $sosialMedia = \App\Models\SosialMedia::all()->keyBy('platform');
-    return view('user.beranda.index', compact('sosialMedia'));
+    return view('user.beranda.index');
   }
 }

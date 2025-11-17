@@ -15,10 +15,7 @@
                     <button class="nav-link" id="notulen-tab" data-bs-toggle="tab" data-bs-target="#notulen"
                         type="button">Notulen</button>
                 </li>
-                <li class="nav-item">
-                    <button class="nav-link" id="dokumentasi-tab" data-bs-toggle="tab" data-bs-target="#dokumentasi"
-                        type="button">Dokumentasi</button>
-                </li>
+
 
             </ul>
 
@@ -70,25 +67,13 @@
                     </div>
                 </div>
 
-                <!-- Dokumentasi -->
-                <div class="tab-pane fade" id="dokumentasi">
-                    <div class="mb-3">
-                        <label class="form-label">Pilih Dokumentasi</label>
-                        <select name="dokumentasi_id" class="form-select">
-                            <option value="">-- Pilih Dokumentasi --</option>
-                            @foreach ($dokumentasiList as $dokumentasi)
-                                <option value="{{ $dokumentasi->id }}">{{ $dokumentasi->judul }}
-                                    ({{ \Carbon\Carbon::parse($dokumentasi->tanggal)->format('d-m-Y') }})
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+
 
             </div>
 
             <button type="submit" class="btn btn-success mt-3"><i class="bi bi-save"></i> Simpan</button>
-            <a href="{{ route('admin.rapat.index') }}" class="btn btn-secondary mt-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+            <a href="{{ route('admin.rapat.index') }}" class="btn btn-secondary mt-3"><i class="bi bi-arrow-left"></i>
+                Kembali</a>
         </form>
     </div>
 @endsection

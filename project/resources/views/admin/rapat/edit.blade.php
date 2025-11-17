@@ -15,10 +15,7 @@
                 <li class="nav-item">
                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#notulen" type="button">Notulen</button>
                 </li>
-                <li class="nav-item">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#dokumentasi"
-                        type="button">Dokumentasi</button>
-                </li>
+
 
             </ul>
 
@@ -65,29 +62,15 @@
                             @foreach ($notulenList as $notulen)
                                 <option value="{{ $notulen->id }}"
                                     {{ $rapat->notulen && $rapat->notulen->id == $notulen->id ? 'selected' : '' }}>
-                                    {{ $notulen->judul }} ({{ \Carbon\Carbon::parse($notulen->tanggal)->format('d-m-Y') }})
+                                    {{ $notulen->judul }}
+                                    ({{ \Carbon\Carbon::parse($notulen->tanggal)->format('d-m-Y') }})
                                 </option>
                             @endforeach
                         </select>
                     </div>
                 </div>
 
-                <!-- Dokumentasi -->
-                <div class="tab-pane fade" id="dokumentasi">
-                    <div class="mb-3">
-                        <label class="form-label">Pilih Dokumentasi</label>
-                        <select name="dokumentasi_id" class="form-select">
-                            <option value="">-- Pilih Dokumentasi --</option>
-                            @foreach ($dokumentasiList as $dokumentasi)
-                                <option value="{{ $dokumentasi->id }}"
-                                    {{ $rapat->dokumentasi && $rapat->dokumentasi->id == $dokumentasi->id ? 'selected' : '' }}>
-                                    {{ $dokumentasi->judul }}
-                                    ({{ \Carbon\Carbon::parse($dokumentasi->tanggal)->format('d-m-Y') }})
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+
 
             </div>
 

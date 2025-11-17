@@ -90,10 +90,7 @@
                         <button class="nav-link" id="notulen-tab" data-bs-toggle="tab" data-bs-target="#notulen"
                             type="button">Notulen</button>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link" id="dokumentasi-tab" data-bs-toggle="tab" data-bs-target="#dokumentasi"
-                            type="button">Dokumentasi</button>
-                    </li>
+
                 </ul>
 
                 <div class="tab-content mt-3">
@@ -163,47 +160,11 @@
                         @endif
                     </div>
 
-                    {{-- Dokumentasi --}}
-                    <div class="tab-pane fade" id="dokumentasi">
-                        @if ($rapat->dokumentasi)
-                            <div class="mb-3">
-                                <label class="form-label">Judul Dokumentasi</label>
-                                <input type="text" class="form-control" value="{{ $rapat->dokumentasi->judul }}"
-                                    readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Deskripsi</label>
-                                <textarea class="form-control" rows="3" readonly>{{ $rapat->dokumentasi->deskripsi ?? '-' }}</textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Tanggal</label>
-                                <input type="date" class="form-control" value="{{ $rapat->dokumentasi->tanggal }}"
-                                    readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Kategori</label>
-                                <input type="text" class="form-control"
-                                    value="{{ $rapat->dokumentasi->kategori ?? '-' }}" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Foto</label>
-                                @if ($rapat->dokumentasi->foto)
-                                    <br>
-                                    <img src="{{ asset('storage/' . $rapat->dokumentasi->foto) }}" class="img-thumbnail"
-                                        style="max-width: 250px;">
-                                @else
-                                    <input type="text" class="form-control" value="Tidak ada foto" readonly>
-                                @endif
-                            </div>
-                        @else
-                            <p class="text-muted">Belum ada dokumentasi untuk rapat ini.</p>
-                        @endif
-                    </div>
+
                 </div>
             </form>
             <div class="gap-3">
-                <a href="{{ route('admin.rapat.index') }}" class="btn btn-secondary mt-3"><i
-                        class="bi bi-arrow-left"></i>
+                <a href="{{ route('admin.rapat.index') }}" class="btn btn-secondary mt-3"><i class="bi bi-arrow-left"></i>
                     Kembali</a>
                 <a href="{{ route('admin.rapat.edit', $rapat->id) }}" class="btn btn-warning mt-3"><i
                         class="bi bi-pencil"></i>

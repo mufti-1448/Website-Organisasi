@@ -6,7 +6,7 @@ use App\Http\Controllers\RapatController;
 use App\Http\Controllers\ProgramKerjaController;
 use App\Http\Controllers\NotulenController;
 use App\Http\Controllers\EvaluasiController;
-use App\Http\Controllers\KontakController;
+
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\AdminAuthController;
@@ -24,11 +24,6 @@ Route::name('user.')->group(function () {
     Route::resource('program_kerja', ProgramKerjaController::class);
     Route::resource('notulen', NotulenController::class);
     Route::resource('evaluasi', EvaluasiController::class);
-    Route::resource('kontak', KontakController::class);
-
-    Route::get('kontak/{id}/reply', [KontakController::class, 'reply'])->name('kontak.reply');
-    Route::post('kontak/{id}/send-reply', [KontakController::class, 'sendReply'])->name('kontak.sendReply');
-    Route::post('kontak/update-sosial', [KontakController::class, 'updateSosial'])->name('kontak.updateSosial');
 });
 
 
@@ -93,19 +88,7 @@ Route::prefix('admin')->group(function () {
             'update' => 'admin.evaluasi.update',
             'destroy' => 'admin.evaluasi.destroy',
         ]);
-        Route::resource('kontak', KontakController::class)->names([
-            'index' => 'admin.kontak.index',
-            'create' => 'admin.kontak.create',
-            'store' => 'admin.kontak.store',
-            'show' => 'admin.kontak.show',
-            'edit' => 'admin.kontak.edit',
-            'update' => 'admin.kontak.update',
-            'destroy' => 'admin.kontak.destroy',
-        ]);
 
-        Route::get('kontak/{id}/reply', [KontakController::class, 'reply'])->name('admin.kontak.reply');
-        Route::post('kontak/{id}/send-reply', [KontakController::class, 'sendReply'])->name('admin.kontak.sendReply');
-        Route::post('kontak/update-sosial', [KontakController::class, 'updateSosial'])->name('admin.kontak.updateSosial');
 
         // Logout admin
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');

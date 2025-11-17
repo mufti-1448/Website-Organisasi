@@ -20,10 +20,7 @@
                     <button class="nav-link" id="evaluasi-tab" data-bs-toggle="tab" data-bs-target="#evaluasi"
                         type="button">Evaluasi</button>
                 </li>
-                <li class="nav-item">
-                    <button class="nav-link" id="dokumentasi-tab" data-bs-toggle="tab" data-bs-target="#dokumentasi"
-                        type="button">Dokumentasi</button>
-                </li>
+
             </ul>
 
             <div class="tab-content mt-3">
@@ -94,30 +91,20 @@
                         <select name="evaluasi_id" class="form-select">
                             <option value="">-- Pilih Evaluasi --</option>
                             @foreach ($evaluasiList as $eval)
-                                <option value="{{ $eval->id }}">{{ $eval->judul ?? 'Evaluasi' }} 
-                                    ({{ \Carbon\Carbon::parse($eval->tanggal)->format('d-m-Y') }})</option>
+                                <option value="{{ $eval->id }}">{{ $eval->judul ?? 'Evaluasi' }}
+                                    ({{ \Carbon\Carbon::parse($eval->tanggal)->format('d-m-Y') }})
+                                </option>
                             @endforeach
                         </select>
                     </div>
                 </div>
 
-                <!-- Dokumentasi -->
-                <div class="tab-pane fade" id="dokumentasi">
-                    <div class="mb-3">
-                        <label class="form-label">Pilih Dokumentasi</label>
-                        <select name="dokumentasi_id" class="form-select">
-                            <option value="">-- Pilih Dokumentasi --</option>
-                            @foreach ($dokumentasiList as $dok)
-                                <option value="{{ $dok->id }}">{{ $dok->judul ?? 'Dokumentasi' }} 
-                                    ({{ \Carbon\Carbon::parse($dok->tanggal)->format('d-m-Y') }})</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+
             </div>
 
             <button type="submit" class="btn btn-success mt-3"><i class="bi bi-save"></i> Simpan</button>
-            <a href="{{ route('admin.program_kerja.index') }}" class="btn btn-secondary mt-3"><i class="bi bi-arrow-left"></i>
+            <a href="{{ route('admin.program_kerja.index') }}" class="btn btn-secondary mt-3"><i
+                    class="bi bi-arrow-left"></i>
                 Kembali</a>
         </form>
     </div>

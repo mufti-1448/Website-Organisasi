@@ -14,12 +14,11 @@ class AnggotaController extends Controller
     public function index()
     {
         $anggota = Anggota::all();
-        $sosialMedia = \App\Models\SosialMedia::all()->keyBy('platform');
         // Check if request is from admin or user
         if (request()->is('admin/*')) {
             return view('admin.anggota.index', compact('anggota'));
         }
-        return view('user.anggota.index', compact('anggota', 'sosialMedia'));
+        return view('user.anggota.index', compact('anggota'));
     }
 
     /**

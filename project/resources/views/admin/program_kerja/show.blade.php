@@ -90,10 +90,7 @@
                         <button class="nav-link" id="notulen-tab" data-bs-toggle="tab" data-bs-target="#notulen"
                             type="button">Notulen</button>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link" id="dokumentasi-tab" data-bs-toggle="tab" data-bs-target="#dokumentasi"
-                            type="button">Dokumentasi</button>
-                    </li>
+
                     <li class="nav-item">
                         <button class="nav-link" id="evaluasi-tab" data-bs-toggle="tab" data-bs-target="#evaluasi"
                             type="button">Evaluasi</button>
@@ -168,42 +165,7 @@
                         @endif
                     </div>
 
-                    {{-- Dokumentasi --}}
-                    <div class="tab-pane fade" id="dokumentasi">
-                        @if ($program->dokumentasi)
-                            <div class="mb-3">
-                                <label class="form-label">Judul Dokumentasi</label>
-                                <input type="text" class="form-control" value="{{ $program->dokumentasi->judul }}"
-                                    readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Deskripsi</label>
-                                <textarea class="form-control" rows="3" readonly>{{ $program->dokumentasi->deskripsi ?? '-' }}</textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Tanggal</label>
-                                <input type="date" class="form-control" value="{{ $program->dokumentasi->tanggal }}"
-                                    readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Kategori</label>
-                                <input type="text" class="form-control"
-                                    value="{{ $program->dokumentasi->kategori ?? '-' }}" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Foto</label>
-                                @if ($program->dokumentasi->foto)
-                                    <br>
-                                    <img src="{{ asset('storage/' . $program->dokumentasi->foto) }}"
-                                        class="img-thumbnail" style="max-width: 230px;">
-                                @else
-                                    <input type="text" class="form-control" value="Tidak ada foto" readonly>
-                                @endif
-                            </div>
-                        @else
-                            <p class="text-muted">Belum ada dokumentasi untuk program kerja ini.</p>
-                        @endif
-                    </div>
+
 
 
                     {{-- Evaluasi --}}
@@ -227,7 +189,8 @@
                                 <div class="col-md-4">
                                     <label class="form-label">Penulis</label>
                                     <input type="text" class="form-control"
-                                        value="{{ $program->evaluasi->penulisRelation->nama ?? $program->evaluasi->penulis }}" readonly>
+                                        value="{{ $program->evaluasi->penulisRelation->nama ?? $program->evaluasi->penulis }}"
+                                        readonly>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">File</label>
@@ -246,7 +209,7 @@
                             <p class="text-muted">Belum ada evaluasi untuk program kerja ini.</p>
                         @endif
                     </div>
-                
+
             </form>
 
             <div class="gap-3">
@@ -261,3 +224,4 @@
         </div>
     </div>
 @endsection
+ 
