@@ -16,6 +16,8 @@
                         href="{{ route('user.beranda') }}">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs('user.tentang_kami') ? 'active' : '' }}"
                         href="{{ route('user.tentang_kami') }}">Tentang</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->routeIs('user.kontak') ? 'active' : '' }}"
+                        href="{{ route('user.kontak') }}">Kontak</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs('user.anggota.*') ? 'active' : '' }}"
                         href="{{ route('user.anggota.index') }}">Anggota</a></li>
                 <li class="nav-item"><a
