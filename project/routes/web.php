@@ -6,6 +6,7 @@ use App\Http\Controllers\RapatController;
 use App\Http\Controllers\ProgramKerjaController;
 use App\Http\Controllers\NotulenController;
 use App\Http\Controllers\EvaluasiController;
+use App\Http\Controllers\KontakController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -18,9 +19,7 @@ use App\Http\Controllers\TentangKamiController;
 Route::name('user.')->group(function () {
     Route::get('/', [BerandaController::class, 'index'])->name('beranda');
     Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang_kami');
-    Route::get('/kontak', function () {
-        return view('user.kontak.index');
-    })->name('kontak');
+    Route::resource('kontak', KontakController::class);
 
     Route::resource('anggota', AnggotaController::class)->except(['show']);
     Route::resource('rapat', RapatController::class);
