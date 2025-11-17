@@ -23,7 +23,7 @@
                 <ul class="list-unstyled small">
                     <li class="mb-2"><a href="{{ route('user.beranda') }}"
                             class="text-light text-decoration-none">Beranda</a></li>
-                    <li class="mb-2"><a href="{{ route('user.tentang_kami') }}"
+                    <li class="mb-2"><a href="{{ route('user.tentang_kami.index') }}"
                             class="text-light text-decoration-none">Tentang Kami</a></li>
                     <li class="mb-2"><a href="{{ route('user.anggota.index') }}"
                             class="text-light text-decoration-none">Anggota</a></li>
