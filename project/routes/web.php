@@ -18,6 +18,9 @@ use App\Http\Controllers\TentangKamiController;
 Route::name('user.')->group(function () {
     Route::get('/', [BerandaController::class, 'index'])->name('beranda');
     Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang_kami');
+    Route::get('/kontak', function () {
+        return view('user.kontak.index');
+    })->name('kontak');
 
     Route::resource('anggota', AnggotaController::class)->except(['show']);
     Route::resource('rapat', RapatController::class);
@@ -94,4 +97,3 @@ Route::prefix('admin')->group(function () {
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
     });
 });
-"Route::get('/kontak', function () { return view('user.kontak.index'); })->name('kontak');" 
