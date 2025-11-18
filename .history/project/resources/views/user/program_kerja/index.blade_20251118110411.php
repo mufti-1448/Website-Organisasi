@@ -38,13 +38,30 @@
             transform: translateY(-50%);
             color: #6c757d;
             text-decoration: none;
-            padding: 4px;
+            padding: 8px;
             border-radius: 50%;
-            transition: color 0.2s;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(108, 117, 125, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .clear-search-btn:hover {
-            color: #495057;
+            color: #dc3545;
+            background: rgba(220, 53, 69, 0.1);
+            border-color: rgba(220, 53, 69, 0.3);
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .clear-search-btn:active {
+            transform: translateY(-50%) scale(0.95);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .program-card {
@@ -92,7 +109,7 @@
             color: #6c757d;
             /* Clamp to 4 lines for WebKit/Blink browsers */
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 3   ;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -133,7 +150,7 @@
                     <i class="bi bi-search"></i>
                     <input type="text" name="search" class="form-control" placeholder="Cari program kerja..."
                         value="{{ request('search') }}">
-                    @if (request('search'))
+                    @if(request('search'))
                         <a href="{{ route('user.program_kerja.index') }}" class="clear-search-btn" title="Clear search">
                             <i class="bi bi-x-circle-fill"></i>
                         </a>

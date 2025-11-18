@@ -33,18 +33,18 @@
 
         .clear-search-btn {
             position: absolute;
-            right: 8px;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            color: #6c757d;
-            text-decoration: none;
-            padding: 4px;
-            border-radius: 50%;
-            transition: color 0.2s;
-        }
+            width: 32px;
+            height: 32px;
 
-        .clear-search-btn:hover {
-            color: #495057;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+
         }
 
         .program-card {

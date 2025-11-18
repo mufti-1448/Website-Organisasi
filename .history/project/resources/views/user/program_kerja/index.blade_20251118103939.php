@@ -16,7 +16,6 @@
             height: 48px;
             border-radius: 8px;
             padding-left: 40px;
-            padding-right: 40px;
         }
 
         .search-wrapper {
@@ -31,90 +30,87 @@
             color: #6c757d;
         }
 
-        .clear-search-btn {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6c757d;
-            text-decoration: none;
-            padding: 4px;
-            border-radius: 50%;
-            transition: color 0.2s;
-        }
-
-        .clear-search-btn:hover {
-            color: #495057;
-        }
-
         .program-card {
-            background: white;
-            border: 1px solid #e7e9ee;
+            background: #fff;
             border-radius: 14px;
-            padding: 15px;
-            transition: .25s;
-            height: 100%;
+            padding: 20px;
+            border: 1px solid #ececec;
+            transition: 0.2s;
         }
 
         .program-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
 
+        /* Title */
+        .program-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1c1d1f;
+            max-width: 75%;
+        }
+
+        /* Badges */
         .badge-status {
-            font-size: 0.75rem;
-            padding: 4px 8px;
-            border-radius: 30px;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            white-space: nowrap;
         }
 
         .badge-berjalan {
-            background: #d1f7d6;
-            color: #0f8f2f;
+            background: #d8ffe7;
+            color: #008f4a;
         }
 
         .badge-direncanakan {
-            background: #dce8ff;
-            color: #0d42ff;
+            background: #fff3cd;
+            color: #b37d00;
         }
 
         .badge-selesai {
-            background: #e8e8e8;
-            color: #555;
+            background: #dce4ff;
+            color: #3457d5;
         }
 
-        .program-title {
-            font-weight: 700;
-            font-size: 1.05rem;
-        }
-
+        /* Description (3 lines max) */
         .program-desc {
-            font-size: 0.9rem;
             color: #6c757d;
-            /* Clamp to 4 lines for WebKit/Blink browsers */
+            margin-top: 8px;
+            margin-bottom: 14px;
+
             display: -webkit-box;
             -webkit-line-clamp: 3;
+            /* batasi 3 baris */
             -webkit-box-orient: vertical;
             overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.4;
-            /* Use em-based max-height so it scales with font-size */
-            max-height: calc(1.4em * 4);
-            white-space: normal;
-            /* ensure wrapping */
-            word-break: break-word;
         }
 
+        /* Author */
         .program-author {
-            font-size: 0.85rem;
             color: #6c757d;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+            font-size: 0.9rem;
+            margin: 0;
         }
 
-        .program-author i {
-            font-size: 0.9rem;
-        }
+        .desc-box {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; /* BATAS 4 BARIS */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    white-space: normal !important;
+    line-height: 1.4rem;
+    max-height: calc(1.4rem * 4); /* antisipasi browser yang tidak support line-clamp */
+}
+
     </style>
 
     <!-- HERO -->
@@ -133,11 +129,6 @@
                     <i class="bi bi-search"></i>
                     <input type="text" name="search" class="form-control" placeholder="Cari program kerja..."
                         value="{{ request('search') }}">
-                    @if (request('search'))
-                        <a href="{{ route('user.program_kerja.index') }}" class="clear-search-btn" title="Clear search">
-                            <i class="bi bi-x-circle-fill"></i>
-                        </a>
-                    @endif
                 </div>
             </form>
         </div>
@@ -147,13 +138,14 @@
     <section class="py-4">
         <div class="container text-center">
             <h4 class="fw-bold mb-1">Daftar Program</h4>
-            <p class="text-muted mb-5">Program kerja yang sedang berjalan dan telah selesai dilaksanakan</p>
+            <p class="text-muted mb-4">Program kerja yang sedang berjalan dan telah selesai dilaksanakan</p>
 
             <div class="row g-4">
 
                 @forelse ($programKerja as $data)
-                    <div class="col-md-6 col-lg-4">
-                        <div class="program-card">
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="program-card shadow-sm">
+
                             <!-- TITLE & STATUS -->
                             <div class="d-flex justify-content-between align-items-start mb-2">
                                 <h5 class="program-title">{{ $data->nama }}</h5>
@@ -177,12 +169,16 @@
                                 <span class="badge-status {{ $statusClass }}">{{ $statusText }}</span>
                             </div>
 
-                            <!-- DESC -->
-                            <p class="program-desc">{{ $data->deskripsi }}</p>
+                            <!-- DESCRIPTION -->
+                            <div class="desc-box">
+                                {{ strip_tags($data->deskripsi) }}
+                            </div>
+
 
                             <!-- AUTHOR -->
-                            <p class="program-author mb-0">
-                                <i class="bi bi-person-fill"></i> {{ $data->penanggungJawab->nama ?? 'Tidak ada' }}
+                            <p class="program-author">
+                                <i class="bi bi-person-fill"></i>
+                                {{ $data->penanggungJawab->nama ?? 'Tidak ada' }}
                             </p>
                         </div>
                     </div>
@@ -195,6 +191,7 @@
                         </div>
                     </div>
                 @endforelse
+
 
                 @if ($programKerja->hasPages())
                     <div class="d-flex justify-content-center mt-4">

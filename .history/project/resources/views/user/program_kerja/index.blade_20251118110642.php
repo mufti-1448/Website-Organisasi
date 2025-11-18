@@ -33,19 +33,42 @@
 
         .clear-search-btn {
             position: absolute;
-            right: 8px;
+            right: 12px;
             top: 50%;
             transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(6px);
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+
             color: #6c757d;
             text-decoration: none;
-            padding: 4px;
-            border-radius: 50%;
-            transition: color 0.2s;
+            font-size: 1rem;
+
+            transition: all .25s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.10);
         }
 
         .clear-search-btn:hover {
-            color: #495057;
+            background: rgba(255, 0, 0, 0.15);
+            color: #dc3545;
+            border-color: rgba(220, 53, 69, 0.3);
+            box-shadow: 0 6px 14px rgba(220, 53, 69, 0.20);
+            transform: translateY(-50%) scale(1.12);
         }
+
+        .clear-search-btn:active {
+            transform: translateY(-50%) scale(0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
 
         .program-card {
             background: white;

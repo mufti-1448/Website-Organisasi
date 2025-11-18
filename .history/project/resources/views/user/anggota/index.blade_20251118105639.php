@@ -45,7 +45,6 @@
         }
 
         .search-wrapper .btn-outline-secondary {
-            border-radius: 50%;
             padding: 10px;
         }
 

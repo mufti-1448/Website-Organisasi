@@ -84,6 +84,9 @@
                         <div class="input-group shadow-sm">
                             <input type="text" name="search" class="form-control search-input"
                                 placeholder="Cari nama, jabatan, atau kelas..." value="{{ request('search') }}">
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="bi bi-search"></i>
+                            </button>
                             @if (request('search'))
                                 <a href="{{ route('user.anggota.index') }}" class="btn btn-outline-secondary px-3">
                                     <i class="bi bi-x-lg"></i>

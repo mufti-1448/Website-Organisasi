@@ -92,7 +92,7 @@
             color: #6c757d;
             /* Clamp to 4 lines for WebKit/Blink browsers */
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 3   ;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -133,7 +133,7 @@
                     <i class="bi bi-search"></i>
                     <input type="text" name="search" class="form-control" placeholder="Cari program kerja..."
                         value="{{ request('search') }}">
-                    @if (request('search'))
+                    @if(request('search'))
                         <a href="{{ route('user.program_kerja.index') }}" class="clear-search-btn" title="Clear search">
                             <i class="bi bi-x-circle-fill"></i>
                         </a>

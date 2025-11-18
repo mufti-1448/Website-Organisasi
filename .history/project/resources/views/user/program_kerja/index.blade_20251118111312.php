@@ -32,20 +32,25 @@
         }
 
         .clear-search-btn {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6c757d;
-            text-decoration: none;
-            padding: 4px;
-            border-radius: 50%;
-            transition: color 0.2s;
-        }
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
 
-        .clear-search-btn:hover {
-            color: #495057;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    color: #6c757d;
+    font-size: 0.9rem;
+
+    transition: .2s;
+}
 
         .program-card {
             background: white;

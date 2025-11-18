@@ -16,7 +16,6 @@
             height: 48px;
             border-radius: 8px;
             padding-left: 40px;
-            padding-right: 40px;
         }
 
         .search-wrapper {
@@ -29,22 +28,6 @@
             top: 50%;
             transform: translateY(-50%);
             color: #6c757d;
-        }
-
-        .clear-search-btn {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6c757d;
-            text-decoration: none;
-            padding: 4px;
-            border-radius: 50%;
-            transition: color 0.2s;
-        }
-
-        .clear-search-btn:hover {
-            color: #495057;
         }
 
         .program-card {
@@ -92,7 +75,7 @@
             color: #6c757d;
             /* Clamp to 4 lines for WebKit/Blink browsers */
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 3   ;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -133,11 +116,6 @@
                     <i class="bi bi-search"></i>
                     <input type="text" name="search" class="form-control" placeholder="Cari program kerja..."
                         value="{{ request('search') }}">
-                    @if (request('search'))
-                        <a href="{{ route('user.program_kerja.index') }}" class="clear-search-btn" title="Clear search">
-                            <i class="bi bi-x-circle-fill"></i>
-                        </a>
-                    @endif
                 </div>
             </form>
         </div>

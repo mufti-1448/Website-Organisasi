@@ -128,20 +128,6 @@ class ProgramKerjaController extends Controller
         $evaluasiList = Evaluasi::whereNull('program_id')->orWhere('program_id', $id)->get();
 
         return view('admin.program_kerja.edit', compact('program', 'anggota', 'notulenList', 'evaluasiList'));
-    }
-
-    /**
-     * Update data program kerja
-     */
-    public function update(Request $request, string $id)
-    {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'penanggung_jawab_id' => 'required|exists:anggota,id',
-            'target_date' => 'nullable|date',
-            'status' => 'required|in:belum,berlangsung,selesai',
-            'notulen_id' => 'nullable|exists:notulen,id',
             'evaluasi_id' => 'nullable|exists:evaluasi,id',
         ]);
 

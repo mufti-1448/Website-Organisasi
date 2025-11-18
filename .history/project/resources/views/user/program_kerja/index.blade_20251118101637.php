@@ -16,7 +16,6 @@
             height: 48px;
             border-radius: 8px;
             padding-left: 40px;
-            padding-right: 40px;
         }
 
         .search-wrapper {
@@ -31,27 +30,11 @@
             color: #6c757d;
         }
 
-        .clear-search-btn {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6c757d;
-            text-decoration: none;
-            padding: 4px;
-            border-radius: 50%;
-            transition: color 0.2s;
-        }
-
-        .clear-search-btn:hover {
-            color: #495057;
-        }
-
         .program-card {
             background: white;
             border: 1px solid #e7e9ee;
             border-radius: 14px;
-            padding: 15px;
+            padding: 20px;
             transition: .25s;
             height: 100%;
         }
@@ -90,18 +73,6 @@
         .program-desc {
             font-size: 0.9rem;
             color: #6c757d;
-            /* Clamp to 4 lines for WebKit/Blink browsers */
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.4;
-            /* Use em-based max-height so it scales with font-size */
-            max-height: calc(1.4em * 4);
-            white-space: normal;
-            /* ensure wrapping */
-            word-break: break-word;
         }
 
         .program-author {
@@ -133,11 +104,6 @@
                     <i class="bi bi-search"></i>
                     <input type="text" name="search" class="form-control" placeholder="Cari program kerja..."
                         value="{{ request('search') }}">
-                    @if (request('search'))
-                        <a href="{{ route('user.program_kerja.index') }}" class="clear-search-btn" title="Clear search">
-                            <i class="bi bi-x-circle-fill"></i>
-                        </a>
-                    @endif
                 </div>
             </form>
         </div>
@@ -147,13 +113,14 @@
     <section class="py-4">
         <div class="container text-center">
             <h4 class="fw-bold mb-1">Daftar Program</h4>
-            <p class="text-muted mb-5">Program kerja yang sedang berjalan dan telah selesai dilaksanakan</p>
+            <p class="text-muted mb-4">Program kerja yang sedang berjalan dan telah selesai dilaksanakan</p>
 
             <div class="row g-4">
 
                 @forelse ($programKerja as $data)
                     <div class="col-md-6 col-lg-4">
                         <div class="program-card">
+
                             <!-- TITLE & STATUS -->
                             <div class="d-flex justify-content-between align-items-start mb-2">
                                 <h5 class="program-title">{{ $data->nama }}</h5>
@@ -174,34 +141,25 @@
                                     };
                                 @endphp
 
-                                <span class="badge-status {{ $statusClass }}">{{ $statusText }}</span>
+                                <span class="badge-status {{ $statusClass }}">{{ $data->status }}</span>
                             </div>
 
                             <!-- DESC -->
                             <p class="program-desc">{{ $data->deskripsi }}</p>
 
                             <!-- AUTHOR -->
-                            <p class="program-author mb-0">
-                                <i class="bi bi-person-fill"></i> {{ $data->penanggungJawab->nama ?? 'Tidak ada' }}
+                            <p class="program-author">
+                                <i class="bi bi-person-fill"></i> {{ $data->penanggungJa }}
                             </p>
+
                         </div>
                     </div>
+
                 @empty
-                    <div class="col-12">
-                        <div class="text-center py-5">
-                            <i class="bi bi-folder-x display-1 text-muted"></i>
-                            <h5 class="text-muted mt-3">Belum ada program kerja</h5>
-                            <p class="text-muted">Program kerja akan muncul di sini setelah ditambahkan oleh admin.</p>
-                        </div>
+                    <div class="col-12 mt-4">
+                        <p class="text-muted">Belum ada program kerja.</p>
                     </div>
                 @endforelse
-
-                @if ($programKerja->hasPages())
-                    <div class="d-flex justify-content-center mt-4">
-                        {{ $programKerja->appends(request()->query())->links() }}
-                    </div>
-                @endif
-
             </div>
         </div>
     </section>

@@ -17,21 +17,7 @@ class ProgramKerjaController extends Controller
      */
     public function index()
     {
-        $query = ProgramKerja::with(['penanggungJawab', 'notulen', 'evaluasi']);
-
-        // Handle search
-        if (request()->has('search') && !empty(request('search'))) {
-            $search = request('search');
-            $query->where(function($q) use ($search) {
-                $q->where('nama', 'like', '%' . $search . '%')
-                  ->orWhere('deskripsi', 'like', '%' . $search . '%')
-                  ->orWhereHas('penanggungJawab', function($q) use ($search) {
-                      $q->where('nama', 'like', '%' . $search . '%');
-                  });
-            });
-        }
-
-        $programKerja = $query->paginate(6)->appends(request()->query());
+        $programKerja = ProgramKerja::with(['penanggungJawab', 'notulen', 'evaluasi'])->paginate(6);
         // Check if request is from admin or user
         if (request()->is('admin/*')) {
             return view('admin.program_kerja.index', compact('programKerja'));

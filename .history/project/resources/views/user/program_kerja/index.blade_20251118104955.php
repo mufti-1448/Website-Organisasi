@@ -16,7 +16,6 @@
             height: 48px;
             border-radius: 8px;
             padding-left: 40px;
-            padding-right: 40px;
         }
 
         .search-wrapper {
@@ -31,27 +30,11 @@
             color: #6c757d;
         }
 
-        .clear-search-btn {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6c757d;
-            text-decoration: none;
-            padding: 4px;
-            border-radius: 50%;
-            transition: color 0.2s;
-        }
-
-        .clear-search-btn:hover {
-            color: #495057;
-        }
-
         .program-card {
             background: white;
             border: 1px solid #e7e9ee;
             border-radius: 14px;
-            padding: 15px;
+            padding: 20px;
             transition: .25s;
             height: 100%;
         }
@@ -92,7 +75,7 @@
             color: #6c757d;
             /* Clamp to 4 lines for WebKit/Blink browsers */
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: ;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -133,11 +116,6 @@
                     <i class="bi bi-search"></i>
                     <input type="text" name="search" class="form-control" placeholder="Cari program kerja..."
                         value="{{ request('search') }}">
-                    @if (request('search'))
-                        <a href="{{ route('user.program_kerja.index') }}" class="clear-search-btn" title="Clear search">
-                            <i class="bi bi-x-circle-fill"></i>
-                        </a>
-                    @endif
                 </div>
             </form>
         </div>
@@ -147,7 +125,7 @@
     <section class="py-4">
         <div class="container text-center">
             <h4 class="fw-bold mb-1">Daftar Program</h4>
-            <p class="text-muted mb-5">Program kerja yang sedang berjalan dan telah selesai dilaksanakan</p>
+            <p class="text-muted mb-4">Program kerja yang sedang berjalan dan telah selesai dilaksanakan</p>
 
             <div class="row g-4">
 
@@ -181,7 +159,7 @@
                             <p class="program-desc">{{ $data->deskripsi }}</p>
 
                             <!-- AUTHOR -->
-                            <p class="program-author mb-0">
+                            <p class="program-author">
                                 <i class="bi bi-person-fill"></i> {{ $data->penanggungJawab->nama ?? 'Tidak ada' }}
                             </p>
                         </div>
