@@ -24,8 +24,8 @@
 
             {{-- Kolom 3: Media Sosial --}}
             <div class="col-md-4">
-                <h6 class="fw-bold mb-3 ps-2">Media Sosial</h6>
-                <div class="d-flex">
+                <h6 class="fw-bold mb-3">Media Sosial</h6>
+                <div class="d-flex gap-0 p-0">
                     <a href="#" class="btn text-danger btn-md"><i class="bi bi-instagram"></i></a>
                     <a href="#" class="btn text-success btn-md"><i class="bi bi-whatsapp"></i></a>
                     <a href="#" class="btn text-primary btn-md"><i class="bi bi-facebook"></i></a>

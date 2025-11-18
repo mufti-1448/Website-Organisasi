@@ -68,7 +68,7 @@
 
                 {{-- Kolom kanan (gambar) --}}
                 <div class="col-md-6 text-center">
-                    <img src="{{ asset('images/herosection/hero1.png') }}" alt="Profil Organisasi"
+                    <img src="{{ asset('images/her.jpg') }}" alt="Profil Organisasi"
                         class="img-fluid rounded-4 shadow-sm" style="max-width: 90%; height: auto;">
                 </div>
             </div>

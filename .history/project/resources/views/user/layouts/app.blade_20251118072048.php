@@ -48,7 +48,7 @@
     @include('user.layouts.navbar')
 
     {{-- Main Content --}}
-    <main class="mt-4 flex-grow-1">
+    <main class=" mt-4 flex-grow-1">
         @yield('content')
     </main>
 
