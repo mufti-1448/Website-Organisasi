@@ -15,7 +15,7 @@
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="{{ asset('data-tabels/datatables.min.css') }}">
 
-    <link rel="icon" type="image/png" href="{{ asset('images/icon/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/icon/g.png') }}">
 
     <!-- jQuery (diperlukan untuk DataTables) -->
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>

@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bootstrap-icons/bootstrap-icons.css') }}">
-    <link rel="icon" type="image/png" href="{{ asset('images/icon/favicon2.jpg') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <style>
         * {
@@ -154,29 +152,6 @@
             opacity: 0.8;
         }
 
-        .password-wrapper {
-            position: relative;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: #6b7280;
-            cursor: pointer;
-            padding: 4px 8px;
-            font-size: 18px;
-            line-height: 1;
-            transition: color 0.2s;
-        }
-
-        .toggle-password:hover {
-            color: #374151;
-        }
-
         @media (max-width: 480px) {
             .login-card {
                 padding: 32px 24px;
@@ -187,7 +162,7 @@
 
 <body>
     <div class="login-container">
-        <div class="login-card shadow-lg">
+        <div class="login-card">
             <div class="login-header">
                 <h1>Login Admin</h1>
                 <p>Masuk ke panel administrasi</p>
@@ -205,19 +180,12 @@
                 @csrf
                 <div class="form-group">
                     <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="admin@example.com" required
-                        autofocus>
+                    <input type="email" name="email" class="form-control" placeholder="admin@example.com" required autofocus>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Password</label>
-                    <div class="password-wrapper">
-                        <input type="password" name="password" id="password" class="form-control"
-                            placeholder="Masukkan password" required>
-                        <button type="button" class="toggle-password" id="togglePassword">
-                            <i class="bi bi-eye"></i>
-                        </button>
-                    </div>
+                    <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
                 </div>
 
                 <button type="submit" class="btn-login" id="loginBtn">
@@ -232,25 +200,9 @@
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             const btn = document.getElementById('loginBtn');
             const btnText = document.getElementById('btnText');
-
+            
             btn.disabled = true;
             btnText.textContent = 'Memproses...';
-        });
-
-        // Toggle password visibility
-        document.getElementById('togglePassword').addEventListener('click', function() {
-            const passwordInput = document.getElementById('password');
-            const toggleIcon = this.querySelector('i');
-
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                toggleIcon.classList.remove('bi-eye');
-                toggleIcon.classList.add('bi-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                toggleIcon.classList.remove('bi-eye-slash');
-                toggleIcon.classList.add('bi-eye');
-            }
         });
     </script>
 </body>

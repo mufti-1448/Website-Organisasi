@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="icon" type="image/png" href="{{ asset('images/icon/favicon2.jpg') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <style>

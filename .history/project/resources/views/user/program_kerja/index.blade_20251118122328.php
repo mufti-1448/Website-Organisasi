@@ -146,7 +146,7 @@
     @if (request('search'))
         <div class="text-center mb-3">
             <small class="text-muted">
-                Menampilkan {{ $programKerja->count() }} dari {{ $programKerja->total() }} hasil untuk
+                Menampilkan {{ $anggota->count() }} dari {{ $anggota->total() }} hasil untuk
                 "{{ request('search') }}"
             </small>
         </div>

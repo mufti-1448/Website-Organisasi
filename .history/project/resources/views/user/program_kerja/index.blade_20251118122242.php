@@ -142,16 +142,6 @@
         </div>
     </section>
 
-    <!-- Results Info -->
-    @if (request('search'))
-        <div class="text-center mb-3">
-            <small class="text-muted">
-                Menampilkan {{ $programKerja->count() }} dari {{ $programKerja->total() }} hasil untuk
-                "{{ request('search') }}"
-            </small>
-        </div>
-    @endif
-
     <!-- CONTENT -->
     <section class="py-4">
         <div class="container text-center">

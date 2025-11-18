@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="icon" type="image/png" href="{{ asset('images/icon/favicon2.jpg') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <style>
@@ -187,7 +186,7 @@
 
 <body>
     <div class="login-container">
-        <div class="login-card shadow-lg">
+        <div class="login-card">
             <div class="login-header">
                 <h1>Login Admin</h1>
                 <p>Masuk ke panel administrasi</p>
@@ -235,22 +234,6 @@
 
             btn.disabled = true;
             btnText.textContent = 'Memproses...';
-        });
-
-        // Toggle password visibility
-        document.getElementById('togglePassword').addEventListener('click', function() {
-            const passwordInput = document.getElementById('password');
-            const toggleIcon = this.querySelector('i');
-
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                toggleIcon.classList.remove('bi-eye');
-                toggleIcon.classList.add('bi-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                toggleIcon.classList.remove('bi-eye-slash');
-                toggleIcon.classList.add('bi-eye');
-            }
         });
     </script>
 </body>
