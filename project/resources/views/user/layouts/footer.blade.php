@@ -21,7 +21,7 @@
             <div class="col-lg-2 col-md-6">
                 <h6 class="fw-bold mb-3">Link Cepat</h6>
                 <ul class="list-unstyled small">
-                    <li class="mb-2"><a href="{{ route('user.beranda') }}"
+                    <li class="mb-2"><a href="{{ route('user.beranda.index') }}"
                             class="text-light text-decoration-none">Beranda</a></li>
                     <li class="mb-2"><a href="{{ route('user.tentang_kami.index') }}"
                             class="text-light text-decoration-none">Tentang Kami</a></li>

@@ -17,7 +17,7 @@ use App\Http\Controllers\TentangKamiController;
 
 // ✅ Rute untuk user biasa (public)
 Route::name('user.')->group(function () {
-    Route::get('/', [BerandaController::class, 'index'])->name('beranda');
+    Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
     Route::resource('tentang_kami', TentangKamiController::class);
     Route::resource('kontak', KontakController::class);
 
