@@ -124,18 +124,31 @@
                             @endif
                             <h5 class="mt-3 mb-1">{{ $item->nama }}</h5>
                             <p class="text-muted small mb-1">{{ $item->kelas }}</p>
-                            <p class="text-muted small mb-1 badge @php
-                                $jabatanClass = match (strtolower($item->jabatan)) {
-                                    'ketua' => 'bg-danger',
-                                    'wakil ketua' => 'bg-warning',
-                                    'sekretaris' => 'bg-success',
-                                    'bendahara' => 'bg-primary',
-                                    'koordinator' => 'bg-info',
-                                    'anggota' => 'bg-secondary',
-                                    default => 'bg-secondary',
-                                };
-                                echo $jabatanClass;
-                            @endphp">{{ $item->jabatan }}</p>
+                            <p
+                                class="text-muted small mb-1 badge badge-jabatan @php
+$jabatanClass = 'badge-anggota'; // default
+                                switch (strtolower($item->jabatan)) {
+                                    case 'ketua':
+                                        $jabatanClass = 'badge-ketua';
+                                        break;
+                                    case 'wakil ketua':
+                                        $jabatanClass = 'badge-wakil-ketua';
+                                        break;
+                                    case 'sekretaris':
+                                        $jabatanClass = 'badge-sekretaris';
+                                        break;
+                                    case 'bendahara':
+                                        $jabatanClass = 'badge-bendahara';
+                                        break;
+                                    case 'koordinator':
+                                        $jabatanClass = 'badge-koordinator';
+                                        break;
+                                    case 'anggota':
+                                        $jabatanClass = 'badge-anggota';
+                                        break;
+                                }
+                                echo $jabatanClass; @endphp">
+                                {{ $item->jabatan }}</p>
                             <p class="text-muted small mb-1">{{ $item->kontak }}</p>
                             <p class="text-muted small mb-1">{{ $item->email }}</p>
                         </div>

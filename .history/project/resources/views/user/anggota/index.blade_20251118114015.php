@@ -68,7 +68,42 @@
             text-decoration: none;
         }
 
+        .badge-jabatan {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
 
+        .badge-ketua {
+            background: #d63031;
+            text-color: #ffffff;
+        }
+
+        .badge-wakil-ketua {
+            background: #fdcb6e;
+            color: #e17055;
+        }
+
+        .badge-sekretaris {
+            background: #e17055;
+            color: #ffffff;
+        }
+
+        .badge-bendahara {
+            background: #6c5ce7;
+            color: #ffffff;
+        }
+
+        .badge-koordinator {
+            background: #a29bfe;
+            color: #2d3436;
+        }
+
+        .badge-anggota {
+            background: #b2bec3;
+            color: #2d3436;
+        }
     </style>
 
     <section class="hero-section text-white py-5">
@@ -124,18 +159,31 @@
                             @endif
                             <h5 class="mt-3 mb-1">{{ $item->nama }}</h5>
                             <p class="text-muted small mb-1">{{ $item->kelas }}</p>
-                            <p class="text-muted small mb-1 badge @php
-                                $jabatanClass = match (strtolower($item->jabatan)) {
-                                    'ketua' => 'bg-danger',
-                                    'wakil ketua' => 'bg-warning',
-                                    'sekretaris' => 'bg-success',
-                                    'bendahara' => 'bg-primary',
-                                    'koordinator' => 'bg-info',
-                                    'anggota' => 'bg-secondary',
-                                    default => 'bg-secondary',
-                                };
-                                echo $jabatanClass;
-                            @endphp">{{ $item->jabatan }}</p>
+                            <p
+                                class="text-muted small mb-1 badge badge-jabatan @php
+$jabatanClass = 'badge-anggota'; // default
+                                switch (strtolower($item->jabatan)) {
+                                    case 'ketua':
+                                        $jabatanClass = 'badge-ketua';
+                                        break;
+                                    case 'wakil ketua':
+                                        $jabatanClass = 'badge-wakil-ketua';
+                                        break;
+                                    case 'sekretaris':
+                                        $jabatanClass = 'badge-sekretaris';
+                                        break;
+                                    case 'bendahara':
+                                        $jabatanClass = 'badge-bendahara';
+                                        break;
+                                    case 'koordinator':
+                                        $jabatanClass = 'badge-koordinator';
+                                        break;
+                                    case 'anggota':
+                                        $jabatanClass = 'badge-anggota';
+                                        break;
+                                }
+                                echo $jabatanClass; @endphp">
+                                {{ $item->jabatan }}</p>
                             <p class="text-muted small mb-1">{{ $item->kontak }}</p>
                             <p class="text-muted small mb-1">{{ $item->email }}</p>
                         </div>

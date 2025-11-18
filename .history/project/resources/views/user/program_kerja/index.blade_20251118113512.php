@@ -152,8 +152,7 @@
 
                 @forelse ($programKerja as $data)
                     <div class="col-md-6 col-lg-4">
-                        <div class="program-card shadow-lg" style="cursor: pointer;"
-                            onclick="window.location='{{ route('user.program_kerja.show', $data->id) }}'">
+                        <div class="program-card shadow">
                             <!-- TITLE & STATUS -->
                             <div class="d-flex justify-content-between align-items-start mb-2">
                                 <h5 class="program-title">{{ $data->nama }}</h5>

@@ -34,41 +34,34 @@
             object-fit: cover;
         }
 
-        .search-wrapper input {
+        .search-wrapper .form-control {
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+        }
+
+        .search-wrapper .btn-primary {
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .search-wrapper .btn-outline-secondary {
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, .25);
+        }
+
+        .input-group .form-control {
+            padding-left: 20px;
             height: 48px;
-            border-radius: 8px;
-            padding-left: 40px;
-            padding-right: 40px;
+            font-size: 0.95rem;
         }
 
-        .search-wrapper {
-            position: relative;
+        .input-group .btn {
+            height: 48px;
         }
-
-        .search-wrapper i {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6c757d;
-        }
-
-        .clear-search-btn {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c757d;
-            font-size: 15px;
-            text-decoration: none;
-        }
-
-
     </style>
 
     <section class="hero-section text-white py-5">
@@ -84,15 +77,36 @@
             <h3 class="text-center fw-bold mb-4">Daftar Anggota</h3>
             <div class="section-line mx-auto mb-5"></div>
 
+            <!-- Search Bar -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-6">
+                    <form method="GET" action="{{ route('user.anggota.index') }}" class="search-wrapper d-flex">
+                        <div class="input-group shadow-sm">
+                            <input type="text" name="search" class="form-control search-input"
+                                placeholder="Cari nama, jabatan, atau kelas..." value="{{ request('search') }}">
+                            @if (request('search'))
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            @else
+                                <button type="submit" class="btn btn-outline-secondary">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            @endif
+                        </div>
+                    </form>
+                </div>
+            </div>
             <section class="py-4">
                 <div class="container d-flex justify-content-center">
-                    <form action="{{ route('user.anggota.index') }}" method="GET" class="col-md-5">
+                    <form action="{{ route('user.program_kerja.index') }}" method="GET" class="col-md-5">
                         <div class="search-wrapper">
                             <i class="bi bi-search"></i>
-                            <input type="text" name="search" class="form-control" placeholder="Cari anggota..."
+                            <input type="text" name="search" class="form-control" placeholder="Cari program kerja..."
                                 value="{{ request('search') }}">
                             @if (request('search'))
-                                <a href="{{ route('user.anggota.index') }}" class="clear-search-btn" title="Clear search">
+                                <a href="{{ route('user.program_kerja.index') }}" class="clear-search-btn"
+                                    title="Clear search">
                                     <i class="bi bi-x-circle-fill"></i>
                                 </a>
                             @endif
@@ -124,18 +138,7 @@
                             @endif
                             <h5 class="mt-3 mb-1">{{ $item->nama }}</h5>
                             <p class="text-muted small mb-1">{{ $item->kelas }}</p>
-                            <p class="text-muted small mb-1 badge @php
-                                $jabatanClass = match (strtolower($item->jabatan)) {
-                                    'ketua' => 'bg-danger',
-                                    'wakil ketua' => 'bg-warning',
-                                    'sekretaris' => 'bg-success',
-                                    'bendahara' => 'bg-primary',
-                                    'koordinator' => 'bg-info',
-                                    'anggota' => 'bg-secondary',
-                                    default => 'bg-secondary',
-                                };
-                                echo $jabatanClass;
-                            @endphp">{{ $item->jabatan }}</p>
+                            <p class="text-muted small mb-1 badge bg-primary">{{ $item->jabatan }}</p>
                             <p class="text-muted small mb-1">{{ $item->kontak }}</p>
                             <p class="text-muted small mb-1">{{ $item->email }}</p>
                         </div>

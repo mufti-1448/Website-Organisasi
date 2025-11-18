@@ -128,7 +128,7 @@
                                 $jabatanClass = match (strtolower($item->jabatan)) {
                                     'ketua' => 'bg-danger',
                                     'wakil ketua' => 'bg-warning',
-                                    'sekretaris' => 'bg-success',
+                                    'sekretaris' => 'bg-danger',
                                     'bendahara' => 'bg-primary',
                                     'koordinator' => 'bg-info',
                                     'anggota' => 'bg-secondary',

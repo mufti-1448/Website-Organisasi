@@ -128,6 +128,23 @@
     <section class="py-4">
         <div class="container d-flex justify-content-center">
             <form action="{{ route('user.program_kerja.index') }}" method="GET" class="col-md-5">
+                <div class="search-wrapper d-flex">
+                    <div class="input-group shadow-sm">
+                        <input type="text" name="search" class="form-control search-input"
+                            placeholder="Cari program kerja..." value="{{ request('search') }}">
+                        @if (request('search'))
+                            <a href="{{ route('user.program_kerja.index') }}" class="btn btn-outline-secondary px-3">
+                                <i class="bi bi-x-lg"></i>
+                            </a>
+                        @endif
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="py-4">
+        <div class="container d-flex justify-content-center">
+            <form action="{{ route('user.program_kerja.index') }}" method="GET" class="col-md-5">
                 <div class="search-wrapper">
                     <i class="bi bi-search"></i>
                     <input type="text" name="search" class="form-control" placeholder="Cari program kerja..."
@@ -142,6 +159,8 @@
         </div>
     </section>
 
+
+
     <!-- CONTENT -->
     <section class="py-4">
         <div class="container text-center">
@@ -152,8 +171,7 @@
 
                 @forelse ($programKerja as $data)
                     <div class="col-md-6 col-lg-4">
-                        <div class="program-card shadow-lg" style="cursor: pointer;"
-                            onclick="window.location='{{ route('user.program_kerja.show', $data->id) }}'">
+                        <div class="program-card">
                             <!-- TITLE & STATUS -->
                             <div class="d-flex justify-content-between align-items-start mb-2">
                                 <h5 class="program-title">{{ $data->nama }}</h5>

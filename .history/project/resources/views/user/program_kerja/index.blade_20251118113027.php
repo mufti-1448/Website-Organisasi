@@ -12,38 +12,28 @@
             text-align: center;
         }
 
-        .search-wrapper input {
+        .search-wrapper .form-control {
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+        }
+
+        .search-wrapper .btn-outline-secondary {
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, .25);
+        }
+
+        .input-group .form-control {
+            padding-left: 20px;
             height: 48px;
-            border-radius: 8px;
-            padding-left: 40px;
-            padding-right: 40px;
+            font-size: 0.95rem;
         }
 
-        .search-wrapper {
-            position: relative;
-        }
-
-        .search-wrapper i {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6c757d;
-        }
-
-        .clear-search-btn {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c757d;
-            font-size: 15px;
-
+        .input-group .btn {
+            height: 48px;
         }
 
         .program-card {
@@ -128,19 +118,70 @@
     <section class="py-4">
         <div class="container d-flex justify-content-center">
             <form action="{{ route('user.program_kerja.index') }}" method="GET" class="col-md-5">
-                <div class="search-wrapper">
-                    <i class="bi bi-search"></i>
-                    <input type="text" name="search" class="form-control" placeholder="Cari program kerja..."
-                        value="{{ request('search') }}">
-                    @if (request('search'))
-                        <a href="{{ route('user.program_kerja.index') }}" class="clear-search-btn" title="Clear search">
-                            <i class="bi bi-x-circle-fill"></i>
-                        </a>
-                    @endif
+                <div class="search-wrapper d-flex">
+                    <div class="input-group shadow-sm">
+                        <input type="text" name="search" class="form-control search-input" placeholder="Cari program kerja..."
+                            value="{{ request('search') }}">
+                        @if (request('search'))
+                            <a href="{{ route('user.program_kerja.index') }}" class="btn btn-outline-secondary px-3">
+                                <i class="bi bi-x-lg"></i>
+                            </a>
+                        @endif
+                    </div>
                 </div>
             </form>
         </div>
     </section>
+    <section class="py-4">
+<div class="container d-flex justify-content-center">
+<form action="{{ route('user.program_kerja.index') }}" method="GET" class="col-md-5">
+<div class="search-wrapper">
+<i class="bi bi-search"></i>
+<input type="text" name="search" class="form-control" placeholder="Cari program kerja..."
+value="{{ request('search') }}">
+@if (request('search'))
+<a href="{{ route('user.program_kerja.index') }}" class="clear-search-btn" title="Clear search">
+<i class="bi bi-x-circle-fill"></i>
+</a>
+@endif
+</div>
+</form>
+</div>
+</section>
+.search-wrapper input {
+height: 48px;
+border-radius: 8px;
+padding-left: 40px;
+padding-right: 40px;
+}
+
+.search-wrapper {
+position: relative;
+}
+
+.search-wrapper i {
+position: absolute;
+left: 12px;
+top: 50%;
+transform: translateY(-50%);
+color: #6c757d;
+}
+
+.clear-search-btn {
+position: absolute;
+right: 10px;
+top: 50%;
+transform: translateY(-50%);
+width: 32px;
+height: 32px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #6c757d;
+font-size: 15px;
+
+}
+
 
     <!-- CONTENT -->
     <section class="py-4">
@@ -152,8 +193,7 @@
 
                 @forelse ($programKerja as $data)
                     <div class="col-md-6 col-lg-4">
-                        <div class="program-card shadow-lg" style="cursor: pointer;"
-                            onclick="window.location='{{ route('user.program_kerja.show', $data->id) }}'">
+                        <div class="program-card">
                             <!-- TITLE & STATUS -->
                             <div class="d-flex justify-content-between align-items-start mb-2">
                                 <h5 class="program-title">{{ $data->nama }}</h5>

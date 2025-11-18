@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+ram kerja@extends('user.layouts.app')
 
 @section('title', 'Program Kerja')
 
@@ -33,17 +33,18 @@
 
         .clear-search-btn {
             position: absolute;
-            right: 10px;
+            right: 8px;
             top: 50%;
             transform: translateY(-50%);
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: #6c757d;
-            font-size: 15px;
+            text-decoration: none;
+            padding: 4px;
+            border-radius: 50%;
+            transition: color 0.2s;
+        }
 
+        .clear-search-btn:hover {
+            color: #495057;
         }
 
         .program-card {
@@ -152,8 +153,7 @@
 
                 @forelse ($programKerja as $data)
                     <div class="col-md-6 col-lg-4">
-                        <div class="program-card shadow-lg" style="cursor: pointer;"
-                            onclick="window.location='{{ route('user.program_kerja.show', $data->id) }}'">
+                        <div class="program-card">
                             <!-- TITLE & STATUS -->
                             <div class="d-flex justify-content-between align-items-start mb-2">
                                 <h5 class="program-title">{{ $data->nama }}</h5>
