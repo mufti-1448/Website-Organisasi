@@ -67,6 +67,8 @@
             font-size: 15px;
             text-decoration: none;
         }
+
+
     </style>
 
     <section class="hero-section text-white py-5">
@@ -118,13 +120,10 @@
                             @else
                                 <i class="bi bi-person-circle text-secondary fs-2"></i>
                             @endif
-                            <h5 class="mt-3 mb-1 text-truncate" style="max-width: 250px;">
-                                {{ $item->nama }}
-                            </h5>
+                            <h5 class="mt-3 mb-1" style="">{{ $item->nama }}</h5>
                             <p class="text-muted small mb-1">{{ $item->kelas }}</p>
-                            <p
-                                class="text-muted small mb-1 badge @php
-$jabatanClass = match (strtolower($item->jabatan)) {
+                            <p class="text-muted small mb-1 badge @php
+                                $jabatanClass = match (strtolower($item->jabatan)) {
                                     'ketua' => 'bg-danger',
                                     'wakil ketua' => 'bg-warning',
                                     'sekretaris' => 'bg-success',
@@ -133,8 +132,8 @@ $jabatanClass = match (strtolower($item->jabatan)) {
                                     'anggota' => 'bg-secondary',
                                     default => 'bg-secondary',
                                 };
-                                echo $jabatanClass; @endphp">
-                                {{ $item->jabatan }}</p>
+                                echo $jabatanClass;
+                            @endphp">{{ $item->jabatan }}</p>
                             <p class="text-muted small mb-1">{{ $item->kontak }}</p>
                             <p class="text-muted small mb-1">{{ $item->email }}</p>
                         </div>

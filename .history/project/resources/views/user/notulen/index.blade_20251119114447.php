@@ -177,7 +177,7 @@
                                 </h5>
                             </div>
 
-                            <p class="notulen-info text-start truncate-title" style="max-width: 300px;">
+                            <p class="notulen-info ">
                                 <i class="bi bi-person-circle text-primary"></i>
                                 {{ $data->penulis->nama }}
                             </p>

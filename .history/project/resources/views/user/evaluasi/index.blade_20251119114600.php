@@ -1,6 +1,6 @@
 @extends('user.layouts.app')
 
-@section('title', 'Notulen')
+@section('title', 'Evaluasi')
 
 @section('content')
 
@@ -45,7 +45,7 @@
             font-size: 15px;
         }
 
-        .notulen-card {
+        .evaluasi-card {
             background: #ffffff;
             border-radius: 16px;
             padding: 24px;
@@ -55,7 +55,7 @@
             height: 100%;
         }
 
-        .notulen-card:hover {
+        .evaluasi-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
@@ -72,7 +72,7 @@
             /* biar bisa multi-line */
         }
 
-        .notulen-info {
+        .evaluasi-info {
             color: #4a5568;
             /* abu-abu */
             font-size: 0.95rem;
@@ -82,7 +82,7 @@
             gap: 8px;
         }
 
-        .notulen-footer {
+        .evaluasi-footer {
             background: #f8fafc;
             padding: 14px 20px;
             border-radius: 0 0 16px 16px;
@@ -99,7 +99,7 @@
             font-weight: 600;
         }
 
-        .notulen-desc {
+        .evaluasi-desc {
             font-size: 0.9rem;
             color: #6c757d;
             /* Clamp to 4 lines for WebKit/Blink browsers */
@@ -120,7 +120,7 @@
         }
 
         .truncate-title {
-            max-width: 330px;
+            max-width: 320px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -131,20 +131,20 @@
     <!-- HERO -->
     <section class="hero-section">
         <div class="container">
-            <h1 class="fw-bold mb-2">Notulen</h1>
-            <p class="lead mb-0">Informasi Lengkap Notulen Dewan Ambalan</p>
+            <h1 class="fw-bold mb-2">Evaluasi</h1>
+            <p class="lead mb-0">Informasi Lengkap Evaluasi Dewan Ambalan</p>
         </div>
     </section>
 
     <section class="py-4">
         <div class="container d-flex justify-content-center">
-            <form action="{{ route('user.notulen.index') }}" method="GET" class="col-md-5">
+            <form action="{{ route('user.evaluasi.index') }}" method="GET" class="col-md-5">
                 <div class="search-wraper">
                     <i class="bi bi-search"></i>
-                    <input type="text" name="search" class="form-control" placeholder="Cari notulen..."
+                    <input type="text" name="search" class="form-control" placeholder="Cari evaluasi..."
                         value="{{ request('search') }}">
                     @if (request('search'))
-                        <a href="{{ route('user.notulen.index') }}" class="clear-search-btn" title="Clear search">
+                        <a href="{{ route('user.evaluasi.index') }}" class="clear-search-btn" title="Clear search">
                             <i class="bi bi-x-circle-fill"></i>
                         </a>
                     @endif
@@ -156,7 +156,7 @@
     @if (request('search'))
         <div class="text-center mb-3">
             <small class="text-muted">
-                Menampilkan {{ $notulen->count() }} dari {{ $notulen->total() }} hasil untuk
+                Menampilkan {{ $evaluasi->count() }} dari {{ $evaluasi->total() }} hasil untuk
                 "{{ request('search') }}"
             </small>
         </div>
@@ -166,10 +166,10 @@
         <div class="container text-center">
             <di class="row g-4 justify-content-center">
 
-                @forelse ($notulen as $data)
+                @forelse ($evaluasi as $data)
                     <div class="col-md-6 col-lg-4">
-                        <div class="notulen-card  shadow-lg"
-                            onclick="window.location='{{ route('user.notulen.show', $data->id) }}'">
+                        <div class="evaluasi-card  shadow-lg"
+                            onclick="window.location='{{ route('user.evaluasi.show', $data->id) }}'">
 
                             <div class="position-relative mb-3">
                                 <h5 class="program-title text-start truncate-title">
@@ -177,22 +177,22 @@
                                 </h5>
                             </div>
 
-                            <p class="notulen-info text-start truncate-title" style="max-width: 300px;">
+                            <p class="evaluasi-info text-start ">
                                 <i class="bi bi-person-circle text-primary"></i>
-                                {{ $data->penulis->nama }}
+                                {{ optional($data->penulisRelation)->nama ?? $data->penulis }}
                             </p>
                             <!-- Tanggal -->
-                            <p class="notulen-info">
+                            <p class="evaluasi-info">
                                 <i class="bi bi-calendar-event text-primary"></i>
-                                {{ \Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y') }}
+                                {{ \Carbon\Carbon::parse($data->tanggal ?? ($data->tanggal_evaluasi ?? now()))->translatedFormat('d F Y') }}
                             </p>
 
-                            <p class="notulen-info text-start truncate-title" style="max-width: 300px;">
+                            <p class="evaluasi-info text-start truncate-title" style="max-width: 300px;">
                                 <i class="bi bi-people-fill text-primary"></i>
                                 {{ $data->judul }}
                             </p>
                             <!-- Deskripsi (opsional jika ada) -->
-                            <p class="notulen-desc">{{ $data->isi }}</p>
+                            <p class="evaluasi-desc">{{ $data->isi }}</p>
 
                         </div>
                     </div>
@@ -201,16 +201,16 @@
                     <div class="col-12">
                         <div class="text-center py-5">
                             <i class="bi bi-folder-x display-1 text-muted"></i>
-                            <h5 class="text-muted mt-3">Belum ada notulen</h5>
-                            <p class="text-muted">notulen akan muncul di sini setelah ditambahkan oleh admin.</p>
+                            <h5 class="text-muted mt-3">Belum ada evaluasi</h5>
+                            <p class="text-muted">Evaluasi akan muncul di sini setelah ditambahkan oleh admin.</p>
                         </div>
                     </div>
                 @endforelse
 
 
-                @if ($notulen->hasPages())
+                @if ($evaluasi->hasPages())
                     <div class="d-flex justify-content-center mt-4">
-                        {{ $notulen->appends(request()->query())->links() }}
+                        {{ $evaluasi->appends(request()->query())->links() }}
                     </div>
                 @endif
             </di>

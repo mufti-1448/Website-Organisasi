@@ -118,7 +118,7 @@
                             @else
                                 <i class="bi bi-person-circle text-secondary fs-2"></i>
                             @endif
-                            <h5 class="mt-3 mb-1 text-truncate" style="max-width: 250px;">
+                            <h5 class="mt-3 mb-1 text-truncate" style="max-width: 200px;">
                                 {{ $item->nama }}
                             </h5>
                             <p class="text-muted small mb-1">{{ $item->kelas }}</p>

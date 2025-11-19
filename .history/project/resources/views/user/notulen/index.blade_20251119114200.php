@@ -177,7 +177,7 @@
                                 </h5>
                             </div>
 
-                            <p class="notulen-info text-start truncate-title" style="max-width: 300px;">
+                            <p class="notulen-info ">
                                 <i class="bi bi-person-circle text-primary"></i>
                                 {{ $data->penulis->nama }}
                             </p>
@@ -187,7 +187,7 @@
                                 {{ \Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y') }}
                             </p>
 
-                            <p class="notulen-info text-start truncate-title" style="max-width: 300px;">
+                            <p class="notulen-info text-truncate" style="max-width: 10px">
                                 <i class="bi bi-people-fill text-primary"></i>
                                 {{ $data->judul }}
                             </p>

@@ -189,7 +189,7 @@
                             <p class="program-desc">{{ $data->deskripsi }}</p>
 
                             <!-- AUTHOR -->
-                            <p class="program-author mb-0 text-start text-truncate" style="max-width: 250px;">
+                            <p class="program-author mb-0 text-truncate" style="max-width: 250px;">
                                 <i class="bi bi-person-fill"></i> {{ $data->penanggungJawab->nama ?? 'Tidak ada' }}
                             </p>
                         </div>

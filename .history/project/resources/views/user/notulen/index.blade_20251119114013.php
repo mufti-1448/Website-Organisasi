@@ -172,12 +172,12 @@
                             onclick="window.location='{{ route('user.notulen.show', $data->id) }}'">
 
                             <div class="position-relative mb-3">
-                                <h5 class="program-title text-start truncate-title">
+                                <h5 class="program-title text-start pe-5 truncate-title">
                                     {{ $data->judul }}
                                 </h5>
                             </div>
 
-                            <p class="notulen-info text-start truncate-title" style="max-width: 300px;">
+                            <p class="notulen-info">
                                 <i class="bi bi-person-circle text-primary"></i>
                                 {{ $data->penulis->nama }}
                             </p>
@@ -187,7 +187,7 @@
                                 {{ \Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y') }}
                             </p>
 
-                            <p class="notulen-info text-start truncate-title" style="max-width: 300px;">
+                            <p class="notulen-info">
                                 <i class="bi bi-people-fill text-primary"></i>
                                 {{ $data->judul }}
                             </p>

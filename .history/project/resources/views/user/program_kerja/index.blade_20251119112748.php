@@ -164,7 +164,7 @@
                             onclick="window.location='{{ route('user.program_kerja.show', $data->id) }}'">
                             <!-- TITLE & STATUS -->
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h5 class="program-title text-start text-truncate" style="max-width: 250px">{{ $data->nama }}</h5>
+                                <h5 class="program-title ">{{ $data->nama }}</h5>
 
                                 @php
                                     $statusClass = match ($data->status) {
@@ -189,7 +189,7 @@
                             <p class="program-desc">{{ $data->deskripsi }}</p>
 
                             <!-- AUTHOR -->
-                            <p class="program-author mb-0 text-start text-truncate" style="max-width: 250px;">
+                            <p class="program-author mb-0">
                                 <i class="bi bi-person-fill"></i> {{ $data->penanggungJawab->nama ?? 'Tidak ada' }}
                             </p>
                         </div>

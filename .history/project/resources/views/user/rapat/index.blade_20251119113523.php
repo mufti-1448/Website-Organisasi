@@ -1,8 +1,9 @@
 @extends('user.layouts.app')
 
-@section('title', 'Notulen')
+@section('title', 'Rapat')
 
 @section('content')
+
 
     <style>
         .hero-section {
@@ -45,7 +46,7 @@
             font-size: 15px;
         }
 
-        .notulen-card {
+        .rapat-card {
             background: #ffffff;
             border-radius: 16px;
             padding: 24px;
@@ -55,14 +56,13 @@
             height: 100%;
         }
 
-        .notulen-card:hover {
+        .rapat-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
 
         .program-title {
             font-size: 1.2rem;
-            font-weight: 700;
             color: #1a1a1a;
             text-align: left !important;
             /* memastikan rata kiri */
@@ -72,7 +72,29 @@
             /* biar bisa multi-line */
         }
 
-        .notulen-info {
+
+        .badge-status {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+            border-radius: 30px;
+        }
+
+        .badge-berjalan {
+            background: #d1f7d6;
+            color: #0f8f2f;
+        }
+
+        .badge-direncanakan {
+            background: #dce8ff;
+            color: #0d42ff;
+        }
+
+        .badge-selesai {
+            background: #b7b7b7;
+            color: #565656;
+        }
+
+        .rapat-info {
             color: #4a5568;
             /* abu-abu */
             font-size: 0.95rem;
@@ -82,7 +104,7 @@
             gap: 8px;
         }
 
-        .notulen-footer {
+        .rapat-footer {
             background: #f8fafc;
             padding: 14px 20px;
             border-radius: 0 0 16px 16px;
@@ -98,53 +120,25 @@
             font-size: 0.9rem;
             font-weight: 600;
         }
-
-        .notulen-desc {
-            font-size: 0.9rem;
-            color: #6c757d;
-            /* Clamp to 4 lines for WebKit/Blink browsers */
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.4;
-            /* Use em-based max-height so it scales with font-size */
-            max-height: calc(1.4em * 4);
-            /* ensure wrapping */
-            text-align: left !important;
-            /* memastikan rata kiri */
-            word-break: break-word;
-            /* mencegah nabrak */
-            white-space: normal;
-        }
-
-        .truncate-title {
-            max-width: 330px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: block;
-        }
     </style>
 
     <!-- HERO -->
     <section class="hero-section">
         <div class="container">
-            <h1 class="fw-bold mb-2">Notulen</h1>
-            <p class="lead mb-0">Informasi Lengkap Notulen Dewan Ambalan</p>
+            <h1 class="fw-bold mb-2">Rapat</h1>
+            <p class="lead mb-0">Informasi Rapat Dewan Ambalan</p>
         </div>
     </section>
 
     <section class="py-4">
         <div class="container d-flex justify-content-center">
-            <form action="{{ route('user.notulen.index') }}" method="GET" class="col-md-5">
+            <form action="{{ route('user.rapat.index') }}" method="GET" class="col-md-5">
                 <div class="search-wraper">
                     <i class="bi bi-search"></i>
-                    <input type="text" name="search" class="form-control" placeholder="Cari notulen..."
+                    <input type="text" name="search" class="form-control" placeholder="Cari rapat..."
                         value="{{ request('search') }}">
                     @if (request('search'))
-                        <a href="{{ route('user.notulen.index') }}" class="clear-search-btn" title="Clear search">
+                        <a href="{{ route('user.rapat.index') }}" class="clear-search-btn" title="Clear search">
                             <i class="bi bi-x-circle-fill"></i>
                         </a>
                     @endif
@@ -156,7 +150,7 @@
     @if (request('search'))
         <div class="text-center mb-3">
             <small class="text-muted">
-                Menampilkan {{ $notulen->count() }} dari {{ $notulen->total() }} hasil untuk
+                Menampilkan {{ $rapat->count() }} dari {{ $rapat->total() }} hasil untuk
                 "{{ request('search') }}"
             </small>
         </div>
@@ -166,33 +160,56 @@
         <div class="container text-center">
             <di class="row g-4 justify-content-center">
 
-                @forelse ($notulen as $data)
+                @forelse ($rapat as $data)
                     <div class="col-md-6 col-lg-4">
-                        <div class="notulen-card  shadow-lg"
-                            onclick="window.location='{{ route('user.notulen.show', $data->id) }}'">
+                        <div class="rapat-card  shadow-lg" onclick="window.location='{{ route('user.rapat.show', $data->id) }}'">
 
                             <div class="position-relative mb-3">
-                                <h5 class="program-title text-start truncate-title">
+                                <h5 class="program-title text-start text-truncate" style="max-width: 250px;">
                                     {{ $data->judul }}
                                 </h5>
+
+                                @php
+                                    $statusClass = match ($data->status) {
+                                        'berlangsung' => 'badge-berjalan',
+                                        'belum' => 'badge-direncanakan',
+                                        'selesai' => 'badge-selesai',
+                                        default => 'badge-secondary',
+                                    };
+
+                                    $statusText = match ($data->status) {
+                                        'berlangsung' => 'Berjalan',
+                                        'belum' => 'Direncanakan',
+                                        'selesai' => 'Selesai',
+                                        default => 'Unknown',
+                                    };
+                                @endphp
+
+                                <span class="badge-status {{ $statusClass }}" style="position:absolute; top:0; right:0;">
+                                    {{ $statusText }}
+                                </span>
                             </div>
 
-                            <p class="notulen-info text-start truncate-title" style="max-width: 300px;">
-                                <i class="bi bi-person-circle text-primary"></i>
-                                {{ $data->penulis->nama }}
-                            </p>
+
                             <!-- Tanggal -->
-                            <p class="notulen-info">
+                            <p class="rapat-info">
                                 <i class="bi bi-calendar-event text-primary"></i>
                                 {{ \Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y') }}
                             </p>
 
-                            <p class="notulen-info text-start truncate-title" style="max-width: 300px;">
-                                <i class="bi bi-people-fill text-primary"></i>
-                                {{ $data->judul }}
+                            <!-- Tempat -->
+                            <p class="rapat-info">
+                                <i class="bi bi-geo-alt text-primary"></i>
+                                {{ $data->tempat }}
                             </p>
+
                             <!-- Deskripsi (opsional jika ada) -->
-                            <p class="notulen-desc">{{ $data->isi }}</p>
+                            @if ($data->deskripsi)
+                                <p class="rapat-info">
+                                    <i class="bi bi-info-circle text-primary"></i>
+                                    {{ $data->deskripsi }}
+                                </p>
+                            @endif
 
                         </div>
                     </div>
@@ -201,16 +218,16 @@
                     <div class="col-12">
                         <div class="text-center py-5">
                             <i class="bi bi-folder-x display-1 text-muted"></i>
-                            <h5 class="text-muted mt-3">Belum ada notulen</h5>
-                            <p class="text-muted">notulen akan muncul di sini setelah ditambahkan oleh admin.</p>
+                            <h5 class="text-muted mt-3">Belum ada rapat</h5>
+                            <p class="text-muted">Rapat akan muncul di sini setelah ditambahkan oleh admin.</p>
                         </div>
                     </div>
                 @endforelse
 
 
-                @if ($notulen->hasPages())
+                @if ($rapat->hasPages())
                     <div class="d-flex justify-content-center mt-4">
-                        {{ $notulen->appends(request()->query())->links() }}
+                        {{ $rapat->appends(request()->query())->links() }}
                     </div>
                 @endif
             </di>

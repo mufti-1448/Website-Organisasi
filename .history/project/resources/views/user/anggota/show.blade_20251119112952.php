@@ -80,6 +80,7 @@
                                     <i class="bi bi-person-circle" style="font-size: 3rem;"></i>
                                 </div>
                             @endif
+
                             <h3 class="mt-3 mb-1 text">{{ $anggota->nama }}</h3>
                             <span class="badge bg-light text-primary px-3 py-2 fw-semibold">
                                 {{ $anggota->jabatan }}
