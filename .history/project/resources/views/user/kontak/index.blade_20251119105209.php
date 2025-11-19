@@ -72,7 +72,7 @@
     }
 </style>
 
-<div class="container py-4">
+<div class="container py-5">
 
     <!-- Header -->
     <div class="contact-hero">
@@ -118,8 +118,8 @@
         <div class="d-flex align-items-center">
             <span class="me-3">Ikuti kami:</span>
             <div class="social">
-                <a href="https://www.tiktok.com/@scoutsmksa?is_from_webapp=1&sender_device=pc" aria-label="Tiktok"><i><i class="bi bi-tiktok"></i></i></a>
-                <a href="https://www.instagram.com/scouts.smksa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                a
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
             </div>
         </div>
 

@@ -1,0 +1,124 @@
+@extends('user.layouts.app')
+
+@section('title', 'Kontak Kami')
+
+@section('content')
+
+    <style>
+        :root {
+            --card-radius: 14px;
+            --accent: #2563eb;
+            --muted: #6b7280;
+        }
+
+        .contact-hero {
+            padding: 3.5rem 0 2.5rem;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: .5rem;
+        }
+
+        .contact-hero p {
+            color: var(--muted);
+            margin-bottom: 0;
+            font-size: 1.05rem;
+        }
+
+        .contact-card {
+            border-radius: var(--card-radius);
+            padding: 1.6rem;
+            background: #fff;
+            border: 1px solid #eef2f6;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+        }
+
+        .contact-list .item i {
+            font-size: 1.35rem;
+            color: var(--accent);
+            width: 34px;
+        }
+
+        .contact-list .item h6 {
+            margin: 0 0 .15rem 0;
+            font-weight: 600;
+        }
+
+        .contact-list .item p {
+            margin: 0;
+            color: var(--muted);
+            font-size: .95rem;
+        }
+
+        .social a {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin-right: .6rem;
+        }
+    </style>
+
+    <div class="container py-5">
+
+        <div class="contact-hero">
+            <h1>Kontak Kami</h1>
+            <p>Butuh bantuan atau ingin berkolaborasi? Hubungi kami melalui formulir atau salah satu kontak di bawah.</p>
+        </div>
+
+
+        <div class="contact-card h-100 d-flex flex-column justify-content-center">
+            <div>
+                <h5 class="mb-3">Informasi Kantor</h5>
+
+                <div class="contact-list">
+                    <div class="d-flex gap-3 mb-3 item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <div>
+                            <h6>Alamat</h6>
+                            <p>Jl. Contoh No. 123, Kecamatan, Kota — Provinsi 12345</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mb-3 item">
+                        <i class="bi bi-telephone-fill"></i>
+                        <div>
+                            <h6>Telepon</h6>
+                            <p><a href="tel:+62211234567">(021) 123-4567</a></p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mb-3 item">
+                        <i class="bi bi-envelope-fill"></i>
+                        <div>
+                            <h6>Email</h6>
+                            <p><a href="mailto:info@organisasi.com">info@organisasi.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 item">
+                        <i class="bi bi-clock-fill"></i>
+                        <div>
+                            <h6>Jam Kerja</h6>
+                            <p>Senin - Jumat: 08:00 - 17:00<br>Sabtu: 08:00 - 12:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">Ikuti kami:</div>
+                    <div class="social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @endsection

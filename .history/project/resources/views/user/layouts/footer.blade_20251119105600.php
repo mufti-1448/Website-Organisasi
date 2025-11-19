@@ -24,11 +24,9 @@
 
             {{-- Kolom 3: Media Sosial --}}
             <div class="col-md-4">
-                <h6 class="fw-bold mb-1 ps-1">Media Sosial</h6>
+                <h6 class="fw-bold mb-1 ps-3">Media Sosial</h6>
                 <div class="d-flex">
-                    <a href="https://www.tiktok.com/@scoutsmksa?is_from_webapp=1&sender_device=pc" class="btn text-primary btn-lg p-1"><i class="bi bi-tiktok"></i></a>
-                    <a href="https://www.instagram.com/scouts.smksa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                        class="btn text-danger btn-lg p-1"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/scouts.smksa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn text-danger btn-lg"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
         </div>

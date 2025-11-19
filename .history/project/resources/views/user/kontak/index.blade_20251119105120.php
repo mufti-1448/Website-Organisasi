@@ -72,7 +72,7 @@
     }
 </style>
 
-<div class="container py-4">
+<div class="container py-5">
 
     <!-- Header -->
     <div class="contact-hero">
@@ -99,7 +99,7 @@
                 <i class="bi bi-telephone-fill"></i>
                 <div>
                     <h6>Telepon</h6>
-                    <p><a href="tel:+6285283983634">085283983634</a></p>
+                    <p><a href="tel:+62">(021) 123-4567</a></p>
                 </div>
             </div>
 
@@ -110,6 +110,15 @@
                     <p><a href="mailto:info@organisasi.com">info@organisasi.com</a></p>
                 </div>
             </div>
+
+            <div class="contact-item">
+                <i class="bi bi-clock-fill"></i>
+                <div>
+                    <h6>Jam Kerja</h6>
+                    <p>Senin–Jumat: 08:00–17:00<br>Sabtu: 08:00–12:00</p>
+                </div>
+            </div>
+
         </div>
 
         <hr class="my-4">
@@ -118,8 +127,10 @@
         <div class="d-flex align-items-center">
             <span class="me-3">Ikuti kami:</span>
             <div class="social">
-                <a href="https://www.tiktok.com/@scoutsmksa?is_from_webapp=1&sender_device=pc" aria-label="Tiktok"><i><i class="bi bi-tiktok"></i></i></a>
-                <a href="https://www.instagram.com/scouts.smksa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
             </div>
         </div>
 
