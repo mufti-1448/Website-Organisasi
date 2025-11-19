@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="col-md-6 text-center">
-                    <img src="{{ asset('images/herosection/hero1.jpeg') }}" alt="Gedung Dewan Ambalan"
+                    <img src="{{ asset('images/herosection/hero1.') }}" alt="Gedung Dewan Ambalan"
                         class="img-fluid rounded-4 shadow-lg tentang-img">
                 </div>
             </div>

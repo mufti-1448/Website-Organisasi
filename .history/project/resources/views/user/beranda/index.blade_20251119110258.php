@@ -7,7 +7,7 @@
         {{-- Background gambar --}}
         <div class="hero-bg"
             style="background: linear-gradient(rgba(0, 45, 134, 0.65), rgba(0, 45, 134, 0.65)), 
-                 url('{{ asset('images/herosection/hero1.jpeg') }}') center/cover no-repeat; 
+                 url('{{ asset('images/herosection/hero1.png') }}') center/cover no-repeat; 
                  height: 70vh;">
         </div>
 
@@ -68,7 +68,7 @@
 
                 {{-- Kolom kanan (gambar) --}}
                 <div class="col-md-6 text-center">
-                    <img src="{{ asset('images/herosection/hero1.jpeg') }}" alt="Profil Organisasi"
+                    <img src="{{ asset('images/herosection/hero1.png') }}" alt="Profil Organisasi"
                         class="img-fluid rounded-4 shadow-sm" style="max-width: 90%; height: auto;">
                 </div>
             </div>

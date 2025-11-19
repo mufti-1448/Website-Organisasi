@@ -115,7 +115,7 @@
     <section class="hero-section text-white py-5">
         <div class="container text-center py-5">
             <h1 class="fw-bold mb-3">Detail Program Kerja</h1>
-            <p class="lead">Informasi Lengkap Tentang Program Kerja yang Anda Pipilih</p>
+            <p class="lead">Informasi Lengkap tentang program kerja yang dipilih</p>
         </div>
     </section>
 

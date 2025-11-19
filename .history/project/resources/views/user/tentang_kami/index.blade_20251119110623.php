@@ -48,7 +48,7 @@
     <section class="hero-section text-white py-5">
         <div class="container text-center py-5">
             <h1 class="fw-bold mb-3">Tentang Kami</h1>
-            <p class="lead">Kenali Lebih Dekat Organisasi Dewan Ambalan</p>
+            <p class="lead">Kenali Lebih ekat organisasi Dewan Ambalan</p>
         </div>
     </section>
 
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="col-md-6 text-center">
-                    <img src="{{ asset('images/herosection/hero1.jpeg') }}" alt="Gedung Dewan Ambalan"
+                    <img src="{{ asset('images/herosection/hero1.png') }}" alt="Gedung Dewan Ambalan"
                         class="img-fluid rounded-4 shadow-lg tentang-img">
                 </div>
             </div>

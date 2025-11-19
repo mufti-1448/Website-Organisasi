@@ -121,7 +121,7 @@
     <section class="hero-section">
         <div class="container">
             <h1 class="fw-bold mb-2">Program Kerja</h1>
-            <p class="lead mb-0">Daftar Program Kerja Dewan Ambalan untuk Mencapai Tujuan Organisasi</p>
+            <p class="lead mb-0">Daftar program erja Dewan Ambalan untuk mencapai tujuan organisasi</p>
         </div>
     </section>
 

@@ -107,7 +107,7 @@
                 <i class="bi bi-envelope-fill"></i>
                 <div>
                     <h6>Email</h6>
-                    <p><a href="mailto:info@dewanambalan.org">info@dewanambalan.org</a></p>
+                    <p><a href="mailto:">info@dewanambalan.org</a></p>
                 </div>
             </div>
         </div>

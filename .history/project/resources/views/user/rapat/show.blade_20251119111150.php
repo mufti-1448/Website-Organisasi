@@ -141,11 +141,11 @@
                             <div class="tab-pane fade show active" id="detail">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Nama Rapat</label>
+                                        <label class="form-label">Nama rapat</label>
                                         <input type="text" class="form-control" value="{{ $rapat->judul }}" readonly>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Target Date</label>
+                                        <label class="form-label">Target date</label>
                                         <input type="date" class="form-control" value="{{ $rapat->tanggal }}" readonly>
                                     </div>
                                     <div class="col-md-6">
@@ -176,12 +176,12 @@
                             <div class="tab-pane fade" id="notulen">
                                 @if ($rapat->notulen)
                                     <div class="mb-3">
-                                        <label class="form-label">Judul Notulen</label>
+                                        <label class="form-label">Judul otulen</label>
                                         <input type="text" class="form-control" value="{{ $rapat->notulen->judul }}"
                                             readonly>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Isi Notulen</label>
+                                        <label class="form-label">Isi notulen</label>
                                         <textarea class="form-control" rows="5" readonly>{{ $rapat->notulen->isi }}</textarea>
                                     </div>
                                     <div class="row">

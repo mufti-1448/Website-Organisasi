@@ -164,7 +164,7 @@
                             onclick="window.location='{{ route('user.evaluasi.show', $data->id) }}'">
 
                             <div class="position-relative mb-3">
-                                <h5 class="program-title text-start">
+                                <h5 class="program-title text-start pe-">
                                     {{ $data->judul }}
                                 </h5>
                             </div>

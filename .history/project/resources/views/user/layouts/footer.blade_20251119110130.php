@@ -16,10 +16,10 @@
             {{-- Kolom 2: Kontak --}}
             <div class="col-md-4">
                 <h6 class="fw-bold mb-3">Kontak</h6>
-                <p class="mb-1"><i class="bi bi-geo-alt-fill me-2 text-primary"></i>Jenggot, Kec. Pekalongan Sel., Kota Pekalongan, Jawa Tengah 51133
+                <p class="mb-1"><i class="bi bi-geo-alt-fill me-2 text-primary"></i>
                     Selatan<br>Kota Pekalongan</p>
                 <p class="mb-1"><i class="bi bi-envelope-fill me-2 text-primary"></i>info@dewanambalan.org</p>
-                <p class="mb-0"><i class="bi bi-telephone-fill me-2 text-primary"></i>+62 85283983634</p>
+                <p class="mb-0"><i class="bi bi-telephone-fill me-2 text-primary"></i>+62 82322862143</p>
             </div>
 
             {{-- Kolom 3: Media Sosial --}}

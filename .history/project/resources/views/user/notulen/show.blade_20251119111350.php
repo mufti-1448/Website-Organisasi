@@ -115,7 +115,7 @@
     <section class="hero-section text-white py-5">
         <div class="container text-center py-5">
             <h1 class="fw-bold mb-3">Detail Notulen</h1>
-            <p class="lead">Informasi lengkap Tentang Notulen yang Anda Pilih</p>
+            <p class="lead">Informasi lengkap Tentang Notulen yang Anda pilih</p>
         </div>
     </section>
 
@@ -141,7 +141,7 @@
                             <div class="tab-pane fade show active" id="detail">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Judul Notulen</label>
+                                        <label class="form-label">Judul notulen</label>
                                         <input type="text" class="form-control" value="{{ $notulen->judul }}" readonly>
                                     </div>
                                     <div class="col-md-6">

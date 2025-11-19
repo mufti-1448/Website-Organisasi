@@ -1,6 +1,6 @@
 @extends('user.layouts.app')
 
-@section('title', 'Detail Program Kerja')
+@section('title', 'Detail ')
 
 @section('content')
 
@@ -114,8 +114,8 @@
 
     <section class="hero-section text-white py-5">
         <div class="container text-center py-5">
-            <h1 class="fw-bold mb-3">Detail Program Kerja</h1>
-            <p class="lead">Informasi Lengkap Tentang Program Kerja yang Anda Pipilih</p>
+            <h1 class="fw-bold mb-3">Detail rapat Kerja</h1>
+            <p class="lead">Informasi lengkap tentang rapat kerja yang dipilih</p>
         </div>
     </section>
 
@@ -125,160 +125,109 @@
                 <div class="col-lg-10">
                     <div class="detail-card">
                         <!-- Tabs -->
-                        <ul class="nav nav-tabs" id="programTab" role="tablist">
+                        <ul class="nav nav-tabs" id="rapatTab" role="tablist">
                             <li class="nav-item">
                                 <button class="nav-link active" id="detail-tab" data-bs-toggle="tab"
-                                    data-bs-target="#detail" type="button">Detail Program</button>
+                                    data-bs-target="#detail" type="button">Detail rapat</button>
                             </li>
                             <li class="nav-item">
                                 <button class="nav-link" id="notulen-tab" data-bs-toggle="tab" data-bs-target="#notulen"
                                     type="button">Notulen</button>
                             </li>
-                            <li class="nav-item">
-                                <button class="nav-link" id="evaluasi-tab" data-bs-toggle="tab" data-bs-target="#evaluasi"
-                                    type="button">Evaluasi</button>
-                            </li>
                         </ul>
 
                         <div class="tab-content mt-3">
-                            {{-- Detail Program --}}
+                            {{-- Detail rapat --}}
                             <div class="tab-pane fade show active" id="detail">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Nama Program</label>
-                                        <input type="text" class="form-control" value="{{ $program->nama }}" readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Penanggung Jawab</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ $program->penanggungJawab->nama ?? '-' }}" readonly>
+                                        <label class="form-label">Nama rapat</label>
+                                        <input type="text" class="form-control" value="{{ $rapat->judul }}" readonly>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Target Date</label>
-                                        <input type="date" class="form-control" value="{{ $program->target_date }}"
-                                            readonly>
+                                        <input type="date" class="form-control" value="{{ $rapat->tanggal }}" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Waktu</label>
+                                        <input type="time" class="form-control" value="{{ $rapat->waktu }}" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Tempat</label>
+                                        <input type="text" class="form-control" value="{{ $rapat->tempat }}" readonly>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Status</label>
                                         <select class="form-select" disabled>
-                                            <option value="belum" {{ $program->status == 'belum' ? 'selected' : '' }}>Belum
+                                            <option value="belum" {{ $rapat->status == 'belum' ? 'selected' : '' }}>Belum
                                             </option>
                                             <option value="berlangsung"
-                                                {{ $program->status == 'berlangsung' ? 'selected' : '' }}>
+                                                {{ $rapat->status == 'berlangsung' ? 'selected' : '' }}>
                                                 Berlangsung</option>
-                                            <option value="selesai" {{ $program->status == 'selesai' ? 'selected' : '' }}>
+                                            <option value="selesai" {{ $rapat->status == 'selesai' ? 'selected' : '' }}>
                                                 Selesai
                                             </option>
                                         </select>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Deskripsi</label>
-                                        <textarea class="form-control" rows="5" readonly>{{ $program->deskripsi ?? '-' }}</textarea>
                                     </div>
                                 </div>
                             </div>
 
                             {{-- Notulen --}}
                             <div class="tab-pane fade" id="notulen">
-                                @if ($program->notulen)
+                                @if ($rapat->notulen)
                                     <div class="mb-3">
                                         <label class="form-label">Judul Notulen</label>
-                                        <input type="text" class="form-control" value="{{ $program->notulen->judul }}"
+                                        <input type="text" class="form-control" value="{{ $rapat->notulen->judul }}"
                                             readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Isi Notulen</label>
-                                        <textarea class="form-control" rows="5" readonly>{{ $program->notulen->isi }}</textarea>
+                                        <textarea class="form-control" rows="5" readonly>{{ $rapat->notulen->isi }}</textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-3">
                                             <label class="form-label">Tanggal</label>
                                             <input type="date" class="form-control"
-                                                value="{{ $program->notulen->tanggal }}" readonly>
+                                                value="{{ $rapat->notulen->tanggal }}" readonly>
                                         </div>
                                         <div class="col-md-3">
                                             <label class="form-label">Waktu</label>
-                                            <input type="time" class="form-control"
-                                                value="{{ $program->notulen->waktu }}" readonly>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label class="form-label">Penulis</label>
-                                            <input type="text" class="form-control"
-                                                value="{{ $program->notulen->penulisRelation->nama ?? '-' }}" readonly>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label class="form-label">File</label>
-                                            @if ($program->notulen->file_path)
-                                                <br>
-                                                <a href="{{ asset('storage/' . $program->notulen->file_path) }}"
-                                                    target="_blank" class="btn btn-outline-primary">
-                                                    <i class="bi bi-download"></i> Lihat File
-                                                </a>
-                                            @else
-                                                <input type="text" class="form-control" value="Tidak ada file"
-                                                    readonly>
-                                            @endif
-                                        </div>
-                                    </div>
-                                @else
-                                    <p class="text-muted">Belum ada notulen untuk program kerja ini.</p>
-                                @endif
-                            </div>
-
-                            {{-- Evaluasi --}}
-                            <div class="tab-pane fade" id="evaluasi">
-                                @if ($program->evaluasi)
-                                    <div class="mb-3">
-                                        <label class="form-label">Judul Evaluasi</label>
-                                        <input type="text" class="form-control" value="{{ $program->evaluasi->judul }}"
-                                            readonly>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Isi Evaluasi</label>
-                                        <textarea class="form-control" rows="5" readonly>{{ $program->evaluasi->isi }}</textarea>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label class="form-label">Tanggal</label>
-                                            <input type="date" class="form-control"
-                                                value="{{ $program->evaluasi->tanggal }}" readonly>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="form-label">Penulis</label>
-                                            <input type="text" class="form-control"
-                                                value="{{ $program->evaluasi->penulisRelation->nama ?? $program->evaluasi->penulis }}"
+                                            <input type="time" class="form-control" value="{{ $rapat->notulen->waktu }}"
                                                 readonly>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
+                                            <label class="form-label">Penulis</label>
+                                            <input type="text" class="form-control"
+                                                value="{{ $rapat->notulen->penulisRelation->nama ?? '-' }}" readonly>
+                                        </div>
+                                        <div class="col-md-3">
                                             <label class="form-label">File</label>
-                                            @if ($program->evaluasi->file)
+                                            @if ($rapat->notulen->file_path)
                                                 <br>
-                                                <a href="{{ asset('storage/' . $program->evaluasi->file) }}"
+                                                <a href="{{ asset('storage/' . $rapat->notulen->file_path) }}"
                                                     target="_blank" class="btn btn-outline-primary">
                                                     <i class="bi bi-download"></i> Lihat File
                                                 </a>
                                             @else
-                                                <input type="text" class="form-control" value="Tidak ada file"
-                                                    readonly>
+                                                <input type="text" class="form-control" value="Tidak ada file" readonly>
                                             @endif
                                         </div>
                                     </div>
                                 @else
-                                    <p class="text-muted">Belum ada evaluasi untuk program kerja ini.</p>
+                                    <p class="text-muted">Belum ada notulen untuk rapat kerja ini.</p>
                                 @endif
                             </div>
-                        </div>
 
-                        <div class="mt-4">
-                            <a href="{{ route('user.program_kerja.index') }}" class="back-btn">
-                                <i class="bi bi-arrow-left"></i>
-                                Kembali
-                            </a>
+                            <div class="mt-4">
+                                <a href="{{ route('user.rapat.index') }}" class="back-btn">
+                                    <i class="bi bi-arrow-left"></i>
+                                    Kembali
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 @endsection

@@ -141,7 +141,7 @@
                             <div class="tab-pane fade show active" id="detail">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Judul Notulen</label>
+                                        <label class="form-label">Judul otulen</label>
                                         <input type="text" class="form-control" value="{{ $notulen->judul }}" readonly>
                                     </div>
                                     <div class="col-md-6">
