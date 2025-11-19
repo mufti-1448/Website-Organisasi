@@ -1,6 +1,6 @@
 @extends('user.layouts.app')
 
-@section('title', 'Detail Notulen')
+@section('title', 'Detail Evaluasi')
 
 @section('content')
 
@@ -114,8 +114,8 @@
 
     <section class="hero-section text-white py-5">
         <div class="container text-center py-5">
-            <h1 class="fw-bold mb-3">Detail Notulen</h1>
-            <p class="lead">Informasi lengkap tentang notulen yang dipilih</p>
+            <h1 class="fw-bold mb-3">Detail evaluasi</h1>
+            <p class="lead">Informasi lengkap tentang evaluasi yang dipilih</p>
         </div>
     </section>
 
@@ -125,48 +125,43 @@
                 <div class="col-lg-10">
                     <div class="detail-card">
                         <!-- Tabs -->
-                        <ul class="nav nav-tabs" id="notulenTab" role="tablist">
+                        <ul class="nav nav-tabs" id="evaluasiTab" role="tablist">
                             <li class="nav-item">
                                 <button class="nav-link active" id="detail-tab" data-bs-toggle="tab"
-                                    data-bs-target="#detail" type="button">Detail Notulen</button>
+                                    data-bs-target="#detail" type="button">Detail evaluasi</button>
                             </li>
                             <li class="nav-item">
-                                <button class="nav-link" id="notulen-tab" data-bs-toggle="tab" data-bs-target="#notulen"
-                                    type="button">Isi Notulen</button>
+                                <button class="nav-link" id="evaluasi-tab" data-bs-toggle="tab" data-bs-target="#evaluasi"
+                                    type="button">Isi evaluasi</button>
                             </li>
                         </ul>
 
                         <div class="tab-content mt-3">
-                            {{-- Detail notulen --}}
+                            {{-- Detail evaluasi --}}
                             <div class="tab-pane fade show active" id="detail">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Judul notulen</label>
-                                        <input type="text" class="form-control" value="{{ $notulen->judul }}" readonly>
+                                        <label class="form-label">Judul evaluasi</label>
+                                        <input type="text" class="form-control" value="{{ $evaluasi->judul }}" readonly>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Penulis</label>
-                                        <input type="text" class="form-control" value="{{ $notulen->penulis->nama }}"
+                                        <input type="text" class="form-control" value="{{ optional($evaluasi->penulisRelation)->nama ?? $evaluasi->penulis }}"
                                             readonly>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Tanggal</label>
-                                        <input type="date" class="form-control" value="{{ $notulen->tanggal }}" readonly>
+                                        <input type="date" class="form-control" value="{{ $evaluasi->tanggal }}" readonly>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Waktu</label>
-                                        <input type="time" class="form-control" value="{{ $notulen->waktu }}" readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Rapat Terkait</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ $notulen->rapat->judul ?? 'Tidak ada rapat terkait' }}" readonly>
+                                        <label class="form-label">Program Kerja</label>
+                                        <input type="text" class="form-control" value="{{ $evaluasi->programKerja->nama }}" readonly>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">File</label>
-                                        @if ($notulen->file_path)
+                                        @if ($evaluasi->file_path)
                                             <br>
-                                            <a href="{{ asset('storage/' . $notulen->file_path) }}" target="_blank"
+                                            <a href="{{ asset('storage/' . $evaluasi->file) }}" target="_blank"
                                                 class="btn btn-outline-primary">
                                                 <i class="bi bi-download"></i> Lihat File
                                             </a>
@@ -177,13 +172,13 @@
                                 </div>
                             </div>
 
-                            {{-- Isi notulen --}}
-                            <div class="tab-pane fade mt-3" id="notulen">
-                                        <label class="form-label">Isi Notulen</label>
-                                        <textarea class="form-control" rows="5" readonly>{{ $notulen->isi ?? '-' }}</textarea>
+                            {{-- Isi evaluasi --}}
+                            <div class="tab-pane fade mt-3" id="evaluasi">
+                                        <label class="form-label">Isi evaluasi</label>
+                                        <textarea class="form-control" rows="5" readonly>{{ $evaluasi->isi ?? '-' }}</textarea>
                                     </div>
                             <div class="mt-4">
-                                <a href="{{ route('user.notulen.index') }}" class="back-btn">
+                                <a href="{{ route('user.evaluasi.index') }}" class="back-btn">
                                     <i class="bi bi-arrow-left"></i>
                                     Kembali
                                 </a>

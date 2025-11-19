@@ -141,7 +141,7 @@
                 @empty
                     <div class="col-12">
                         <div class="text-center py-5">
-                            <i class="bi bi-emoji-frown display-1 text-muted"></i>
+                            <i class="bi b display-1 text-muted"></i>
                             <h5 class="text-muted mt-3">Belum ada anggota</h5>
                             <p class="text-muted">Anggota akan muncul di sini setelah ditambahkan oleh admin.</p>
                         </div>

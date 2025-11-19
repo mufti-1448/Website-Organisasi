@@ -18,10 +18,7 @@ class Anggota extends Model
     {
         return $this->hasMany(Notulen::class, 'penulis_id');
     }
-    public function evaluasi()
-    {
-        return $this->hasMany(Evaluasi::class, 'penulis_id');
-    }
+    public func
     public function programKerja()
     {
         return $this->hasMany(ProgramKerja::class, 'penanggung_jawab_id');

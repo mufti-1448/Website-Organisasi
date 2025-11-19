@@ -100,7 +100,7 @@
             white-space: normal;
             /* ensure wrapping */
             word-break: break-word;
-            text-align: left !important;
+                        text-align: left !important;
 
         }
 

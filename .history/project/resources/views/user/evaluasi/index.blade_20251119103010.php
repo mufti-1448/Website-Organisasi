@@ -124,7 +124,7 @@
     <section class="hero-section">
         <div class="container">
             <h1 class="fw-bold mb-2">Evaluasi</h1>
-            <p class="lead mb-0">Informasi Lengkap Evaluasi Dewan Ambalan</p>
+            <p class="lead mb-0">Informasi Lengkap evaluasi Dewan Ambalan</p>
         </div>
     </section>
 
@@ -194,7 +194,7 @@
                         <div class="text-center py-5">
                             <i class="bi bi-folder-x display-1 text-muted"></i>
                             <h5 class="text-muted mt-3">Belum ada evaluasi</h5>
-                            <p class="text-muted">Evaluasi akan muncul di sini setelah ditambahkan oleh admin.</p>
+                            <p class="text-muted">evaluasi akan muncul di sini setelah ditambahkan oleh admin.</p>
                         </div>
                     </div>
                 @endforelse

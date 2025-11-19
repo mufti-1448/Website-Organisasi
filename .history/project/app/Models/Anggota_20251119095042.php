@@ -20,7 +20,7 @@ class Anggota extends Model
     }
     public function evaluasi()
     {
-        return $this->hasMany(Evaluasi::class, 'penulis_id');
+        return $this->hasMany(Evaluasi::class, 'penulis');
     }
     public function programKerja()
     {

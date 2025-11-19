@@ -123,8 +123,8 @@
     <!-- HERO -->
     <section class="hero-section">
         <div class="container">
-            <h1 class="fw-bold mb-2">Evaluasi</h1>
-            <p class="lead mb-0">Informasi Lengkap Evaluasi Dewan Ambalan</p>
+            <h1 class="fw-bold mb-2">evaluasi</h1>
+            <p class="lead mb-0">Informasi Lengkap evaluasi Dewan Ambalan</p>
         </div>
     </section>
 
@@ -171,12 +171,12 @@
 
                             <p class="evaluasi-info">
                                 <i class="bi bi-person-circle text-primary"></i>
-                                {{ optional($data->penulisRelation)->nama ?? $data->penulis }}
+                                {{ $data->penulis->id }}
                             </p>
                             <!-- Tanggal -->
                             <p class="evaluasi-info">
                                 <i class="bi bi-calendar-event text-primary"></i>
-                                {{ \Carbon\Carbon::parse($data->tanggal ?? ($data->tanggal_evaluasi ?? now()))->translatedFormat('d F Y') }}
+                                {{ \Carbon\Carbon::parse($data->tanggal)->translatedFormat('d F Y') }}
                             </p>
 
                             <p class="evaluasi-info">
@@ -194,7 +194,7 @@
                         <div class="text-center py-5">
                             <i class="bi bi-folder-x display-1 text-muted"></i>
                             <h5 class="text-muted mt-3">Belum ada evaluasi</h5>
-                            <p class="text-muted">Evaluasi akan muncul di sini setelah ditambahkan oleh admin.</p>
+                            <p class="text-muted">evaluasi akan muncul di sini setelah ditambahkan oleh admin.</p>
                         </div>
                     </div>
                 @endforelse

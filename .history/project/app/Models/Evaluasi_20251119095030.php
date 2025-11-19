@@ -25,10 +25,7 @@ class Evaluasi extends Model
         return $this->belongsTo(ProgramKerja::class, 'program_id');
     }
 
-    public function penulis()
-    {
-        return $this->belongsTo(Anggota::class, 'penulis_id');
-    }
+    pub
     /**
      * Relasi ke Anggota (Penulis)
      */

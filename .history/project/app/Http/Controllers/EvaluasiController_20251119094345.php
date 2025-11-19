@@ -9,30 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class EvaluasiController extends Controller
 {
-    public function index(request $request)
+    public function index()
     {
-        // Build base query with eager loads (evaluasi uses programKerja and penulisRelation)
-        $query = Evaluasi::with(['programKerja', 'penulisRelation']);
 
-        // Apply search filters when provided
-        if ($request->filled('search')) {
-            $search = $request->search;
-            $query->where(function ($q) use ($search) {
-                $q->where('judul', 'LIKE', "%{$search}%")
-                    ->orWhere('isi', 'LIKE', "%{$search}%")
-                    ->orWhere('tanggal_evaluasi', 'LIKE', "%{$search}%")
-                    ->orWhereHas('penulisRelation', function ($q2) use ($search) {
-                        $q2->where('nama', 'LIKE', "%{$search}%");
-                    })
-                    ->orWhereHas('programKerja', function ($q2) use ($search) {
-                        $q2->where('nama', 'LIKE', "%{$search}%");
-                    });
-            });
-        }
-
-        // Finalize query with ordering and pagination
-        $evaluasi = $query->orderBy('tanggal_evaluasi', 'desc')->paginate(6)->withQueryString();
-
+        
+        $evaluasi = Evaluasi::with('programKerja', 'penulisRelation')->latest()->get();
         // Check if request is from admin or user
         if (request()->is('admin/*')) {
             return view('admin.evaluasi.index', compact('evaluasi'));
