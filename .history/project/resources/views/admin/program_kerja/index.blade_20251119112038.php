@@ -130,10 +130,11 @@
                                         {{ $p->nama }}
                                     </span>
                                 </td>
+                                <td>{{ $p->penanggungJawab->nama ?? '-' }}</td>
                                 <td style="max-width:200px;">
                                     <span class="d-inline-block text-truncate" style="max-width: 200px;"
-                                        title="{{ $p->penanggungJawab->nama ?? '-' }}">
-                                        {{ $p->penanggungJawab->nama ?? '-' }}
+                                        title="{{ $p->pe }}">
+                                        {{ $item->nama }}
                                     </span>
                                 </td>
                                 <td>{{ $p->target_date ? \Carbon\Carbon::parse($p->target_date)->format('d-m-Y') : '-' }}

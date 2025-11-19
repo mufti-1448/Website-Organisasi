@@ -130,6 +130,7 @@
                                         {{ $p->nama }}
                                     </span>
                                 </td>
+                                <td>{{ $p->penanggungJawab->nama ?? '-' }}</td>
                                 <td style="max-width:200px;">
                                     <span class="d-inline-block text-truncate" style="max-width: 200px;"
                                         title="{{ $p->penanggungJawab->nama ?? '-' }}">

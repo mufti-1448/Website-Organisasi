@@ -110,10 +110,11 @@
                                         <i class="bi bi-person-circle text-secondary fs-2"></i>
                                     @endif
                                 </td>
+                                <td>{{ $item->nama }}</td>
                                 <td style="max-width:200px;">
                                     <span class="d-inline-block text-truncate" style="max-width: 200px;"
-                                        title="{{ $item->nama }}">
-                                        {{ $item->nama }}
+                                        title="{{ $item->judul }}">
+                                        {{ $item->judul }}
                                     </span>
                                 </td>
                                 <td>{{ $item->kelas }}</td>
