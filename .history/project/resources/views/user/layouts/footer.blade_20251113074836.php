@@ -1,1 +1,0 @@
-footer.bg-darktext-whitep

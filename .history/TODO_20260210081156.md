@@ -1,2 +1,0 @@
-- [x] Update Anggota.php: Change evaluasi() relation foreign key from 'penulis_id' to 'penulis'
-- [x] Update Evaluasi.php: Remove the incorrect penulis() method
