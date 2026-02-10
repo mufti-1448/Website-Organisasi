@@ -1,0 +1,104 @@
+@extends('admin.layouts.app')
+
+@section('title', 'Detail Dokumentasi')
+
+@section('content')
+    <style>
+        /* Card Styling */
+        .card-custom {
+            border: none;
+            border-radius: 12px;
+            background: #ffffff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Image Styling */
+        .doc-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Info Section */
+        .info-section {
+            margin-bottom: 20px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            color: #6c757d;
+            line-height: 1.5;
+        }
+    </style>
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h4 class="page-title mb-1">Detail Dokumentasi</h4>
+                <small class="text-muted">Informasi lengkap dokumentasi</small>
+            </div>
+        </div>
+
+        <div class="card card-custom">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        @if ($dokumentasi->foto)
+                            <img src="{{ asset('storage/' . $dokumentasi->foto) }}" class="doc-image mb-3"
+                                alt="Foto Dokumentasi" style="max-height: 300px; width: auto;">
+                        @else
+                            <div class="bg-light rounded d-flex align-items-center justify-content-center mb-3"
+                                style="height: 300px;">
+                                <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-section">
+                            <div class="info-label">Judul Dokumentasi</div>
+                            <div class="info-value fs-5 fw-semibold">{{ $dokumentasi->judul }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="info-section">
+                                    <div class="info-label">Tanggal</div>
+                                    <div class="info-value">
+                                        {{ \Carbon\Carbon::parse($dokumentasi->tanggal)->format('d F Y') }}</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="info-section">
+                                    <div class="info-label">Kategori</div>
+                                    <div class="info-value">{{ $dokumentasi->kategori ?? 'Tidak ada kategori' }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <div class="info-label">Deskripsi</div>
+                            <div class="info-value">{{ $dokumentasi->deskripsi ?? 'Tidak ada deskripsi' }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('admin.dokumentasi.edit', $dokumentasi->id) }}" class="btn btn-warning">
+                        <i class="bi bi-pencil"></i> Edit
+                    </a>
+                    <a href="{{ route('admin.dokumentasi.index') }}" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Kembali
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

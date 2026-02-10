@@ -1,0 +1,39 @@
+<nav class="navbar navbar-dark bg-dark sticky-top shadow-sm">
+    <div class="container-fluid">
+        {{-- Brand / Logo --}}
+        <div class="d-flex align-items-center">
+            <button class="btn btn-outline-light me-3 d" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand d-flex align-items-center m-0" href="{{ route('dashboard.index') }}">
+                <i class="bi bi-mortarboard me-2"></i>
+                <span class="fw-semibold">Sistem Organisasi Sekolah</span>
+            </a>
+        </div>
+
+        {{-- User Dropdown --}}
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{{ asset('images/avatar.jpg') }}" alt="User Avatar" class="rounded-circle me-2" width="36"
+                    height="36">
+                <strong class="d-none d-sm-inline">{{ Auth::user()->name ?? 'Admin User' }}</strong>
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-small shadow"
+                aria-labelledby="userDropdown">
+                <li>
+                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="bi bi-box-arrow-right me-2"></i> Keluar
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
